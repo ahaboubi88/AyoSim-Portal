@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgble" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14182e"/>
+      <stop offset="100%" stop-color="#212b50"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgble)"/>
+  <!-- ESP32 Board outline -->
+  <rect x="70" y="80" width="160" height="180" rx="8" fill="#1C1C1C" stroke="#2980B9" stroke-width="2"/>
+  <rect x="100" y="110" width="100" height="90" rx="4" fill="#2C3E50" stroke="#3498DB" stroke-width="2"/>
+  <text x="150" y="155" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3498DB" font-weight="bold" text-anchor="middle">ESP32 BLE</text>
+  <!-- Bluetooth Rune in Center -->
+  <g transform="translate(300, 170)">
+    <circle cx="0" cy="0" r="45" fill="#0A3D62" stroke="#00A8FF" stroke-width="3"/>
+    <path d="M-8 -26 L8 0 L-8 26 L-8 -26 L12 -10 L-8 10 M-8 -10 L12 10 L-8 26" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  <!-- Smartphone receiver -->
+  <rect x="420" y="70" width="110" height="200" rx="14" fill="#0E1626" stroke="#3498DB" stroke-width="3"/>
+  <rect x="430" y="90" width="90" height="150" rx="6" fill="#1B2A47"/>
+  <text x="475" y="125" font-family="'JetBrains Mono', monospace" font-size="10" fill="#00A8FF" text-anchor="middle">GATT SERVER</text>
+  <text x="475" y="150" font-family="'JetBrains Mono', monospace" font-size="9" fill="#ECF0F1" text-anchor="middle">Service: 0x180D</text>
+  <text x="475" y="170" font-family="'JetBrains Mono', monospace" font-size="9" fill="#2ECC71" text-anchor="middle">HeartRate: 72 bpm</text>
+  <circle cx="475" cy="255" r="7" fill="#3498DB"/>
+</svg>

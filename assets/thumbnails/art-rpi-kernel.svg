@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgkrn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f0913"/>
+      <stop offset="100%" stop-color="#3b1123"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgkrn)"/>
+  <!-- Linux Kernel Layers Diagram -->
+  <g transform="translate(70, 50)">
+    <!-- User space -->
+    <rect x="0" y="0" width="460" height="45" rx="6" fill="#1C1C1C" stroke="#3498DB" stroke-width="2"/>
+    <text x="230" y="28" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3498DB" font-weight="bold" text-anchor="middle">USER SPACE (libgpiod, sysfs, Python/C App)</text>
+    <!-- System Call Interface -->
+    <line x1="30" y1="55" x2="430" y2="55" stroke="#F1C40F" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="230" y="70" font-family="'JetBrains Mono', monospace" font-size="10" fill="#F1C40F" text-anchor="middle">System Call Interface (ioctl, read, write)</text>
+    <!-- Kernel space -->
+    <rect x="0" y="80" width="460" height="90" rx="6" fill="#2A1620" stroke="#C62828" stroke-width="2"/>
+    <text x="230" y="105" font-family="'JetBrains Mono', monospace" font-size="12" fill="#E74C3C" font-weight="bold" text-anchor="middle">LINUX KERNEL GPIO SUBSYSTEM</text>
+    <rect x="20" y="120" width="130" height="35" rx="4" fill="#3A1E2C"/>
+    <text x="85" y="142" font-family="'JetBrains Mono', monospace" font-size="10" fill="#FFF" text-anchor="middle">GPIOLIB Core</text>
+    <rect x="165" y="120" width="130" height="35" rx="4" fill="#3A1E2C"/>
+    <text x="230" y="142" font-family="'JetBrains Mono', monospace" font-size="10" fill="#FFF" text-anchor="middle">pinctrl-bcm2835</text>
+    <rect x="310" y="120" width="130" height="35" rx="4" fill="#3A1E2C"/>
+    <text x="375" y="142" font-family="'JetBrains Mono', monospace" font-size="10" fill="#FFF" text-anchor="middle">Device Tree Overlay</text>
+    <!-- Hardware -->
+    <rect x="0" y="185" width="460" height="45" rx="6" fill="#1C1C1C" stroke="#2ECC71" stroke-width="2"/>
+    <text x="230" y="213" font-family="'JetBrains Mono', monospace" font-size="12" fill="#2ECC71" font-weight="bold" text-anchor="middle">HARDWARE (BCM2711 / BCM2712 SoC Memory Mapped I/O)</text>
+  </g>
+</svg>

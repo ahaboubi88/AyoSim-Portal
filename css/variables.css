@@ -75,9 +75,9 @@
   --space-24: 6rem;     /* 96px */
 
   /* ── Layout ── */
-  --container-max: 1200px;
-  --container-padding: var(--space-6);
-  --header-height: 72px;
+  --container-max: 100%;
+  --container-padding: clamp(16px, 2.5vw, 32px);
+  --header-height: 64px;
 
   /* ── Borders & Radius ── */
   --radius-sm: 6px;

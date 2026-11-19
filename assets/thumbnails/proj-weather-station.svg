@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgpj3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a1406"/>
+      <stop offset="100%" stop-color="#47220a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgpj3)"/>
+  <!-- Weather Display -->
+  <g transform="translate(100, 70)">
+    <rect width="180" height="190" rx="10" fill="#1C1C1C" stroke="#E65100" stroke-width="2"/>
+    <!-- Thermometer icon -->
+    <path d="M45 130 C45 145 65 145 65 130 L65 70 C65 65 45 65 45 70 Z" fill="#E74C3C"/>
+    <circle cx="55" cy="130" r="15" fill="#E74C3C"/>
+    <text x="125" y="100" font-family="'JetBrains Mono', monospace" font-size="28" fill="#FFF" font-weight="bold">24°C</text>
+    <text x="125" y="130" font-family="'JetBrains Mono', monospace" font-size="14" fill="#E65100">TEMP</text>
+    <text x="125" y="155" font-family="'JetBrains Mono', monospace" font-size="12" fill="#888">Humidity: 58%</text>
+    <text x="125" y="175" font-family="'JetBrains Mono', monospace" font-size="12" fill="#888">Press: 1013 hPa</text>
+  </g>
+  <g transform="translate(320, 70)">
+    <rect width="180" height="190" rx="10" fill="#1C1C1C" stroke="#3498DB" stroke-width="2"/>
+    <text x="90" y="45" font-family="'JetBrains Mono', monospace" font-size="12" fill="#3498DB" font-weight="bold" text-anchor="middle">MQTT BROKER TELEMETRY</text>
+    <rect x="20" y="65" width="140" height="30" rx="4" fill="#0A2A38"/>
+    <text x="90" y="85" font-family="'JetBrains Mono', monospace" font-size="11" fill="#2ECC71" text-anchor="middle">ayosim/weather/live</text>
+    <text x="90" y="130" font-family="'JetBrains Mono', monospace" font-size="18" fill="#2ECC71" font-weight="bold" text-anchor="middle">ONLINE</text>
+    <text x="90" y="155" font-family="'JetBrains Mono', monospace" font-size="11" fill="#888" text-anchor="middle">WiFi Signal: -52 dBm</text>
+  </g>
+</svg>

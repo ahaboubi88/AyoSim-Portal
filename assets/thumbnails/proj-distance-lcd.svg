@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgpj2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2119"/>
+      <stop offset="100%" stop-color="#143c2d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgpj2)"/>
+  <!-- 16x2 LCD Display -->
+  <rect x="120" y="80" width="360" height="170" rx="10" fill="#006266" stroke="#009432" stroke-width="3"/>
+  <rect x="150" y="105" width="300" height="120" rx="4" fill="#009432" stroke="#006266" stroke-width="2"/>
+  <text x="170" y="150" font-family="'JetBrains Mono', monospace" font-size="22" fill="#002b11" font-weight="bold">DIST: 18.5 cm</text>
+  <text x="170" y="195" font-family="'JetBrains Mono', monospace" font-size="18" fill="#002b11">STATUS: OBJECT DETECT</text>
+</svg>

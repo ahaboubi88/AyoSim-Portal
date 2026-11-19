@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgrpi2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e0711"/>
+      <stop offset="100%" stop-color="#3d0e20"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgrpi2)"/>
+  <!-- Code Editor Window -->
+  <rect x="70" y="55" width="460" height="230" rx="10" fill="#1E1E1E" stroke="#C62828" stroke-width="2"/>
+  <rect x="70" y="55" width="460" height="34" rx="10" fill="#2D2D2D"/>
+  <circle cx="95" cy="72" r="5" fill="#E74C3C"/>
+  <circle cx="112" cy="72" r="5" fill="#F1C40F"/>
+  <circle cx="129" cy="72" r="5" fill="#2ECC71"/>
+  <text x="300" y="77" font-family="'JetBrains Mono', monospace" font-size="12" fill="#CCC" text-anchor="middle">automate_gpio.py — Python 3</text>
+  <!-- Python code lines -->
+  <g font-family="'JetBrains Mono', monospace" font-size="13" xml:space="preserve">
+    <text x="100" y="125" fill="#E74C3C">import <tspan fill="#3498DB">RPi.GPIO</tspan> as <tspan fill="#FFF">GPIO</tspan></text>
+    <text x="100" y="150" fill="#E74C3C">import <tspan fill="#3498DB">time</tspan></text>
+    <text x="100" y="185" fill="#95A5A6"># Set board mode &amp; setup pin</text>
+    <text x="100" y="210" fill="#FFF">GPIO.<tspan fill="#F1C40F">setmode</tspan>(GPIO.BCM)</text>
+    <text x="100" y="235" fill="#FFF">GPIO.<tspan fill="#F1C40F">setup</tspan>(<tspan fill="#E67E22">18</tspan>, GPIO.OUT)</text>
+    <text x="100" y="260" fill="#FFF">GPIO.<tspan fill="#F1C40F">output</tspan>(<tspan fill="#E67E22">18</tspan>, GPIO.HIGH) <tspan fill="#2ECC71"># Active</tspan></text>
+  </g>
+</svg>

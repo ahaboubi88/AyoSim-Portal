@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgedu" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a0914"/>
+      <stop offset="100%" stop-color="#4a1223"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgedu)"/>
+  <!-- Academic Mortarboard Cap -->
+  <g transform="translate(180, 110)">
+    <polygon points="0,-25 70,5 0,35 -70,5" fill="#C62828" stroke="#E74C3C" stroke-width="2"/>
+    <path d="M-40 20 L-40 55 C-40 75 40 75 40 55 L40 20" fill="#900C3F" stroke="#C62828" stroke-width="2"/>
+    <line x1="70" y1="5" x2="85" y2="45" stroke="#F1C40F" stroke-width="3"/>
+    <circle cx="85" cy="50" r="5" fill="#F1C40F"/>
+  </g>
+  <!-- Research Metrics & Books on right -->
+  <rect x="310" y="75" width="220" height="190" rx="8" fill="#1C1E2D" stroke="#C62828" stroke-width="2"/>
+  <text x="330" y="105" font-family="'JetBrains Mono', monospace" font-size="12" fill="#E74C3C" font-weight="bold">STEM Education Review</text>
+  <!-- Chart Bars -->
+  <text x="330" y="135" font-family="sans-serif" font-size="11" fill="#DDD">Computer Science Lab</text>
+  <rect x="330" y="145" width="160" height="12" rx="3" fill="#C62828"/>
+  <text x="330" y="175" font-family="sans-serif" font-size="11" fill="#DDD">Robotics &amp; IoT Kits</text>
+  <rect x="330" y="185" width="130" height="12" rx="3" fill="#F39C12"/>
+  <text x="330" y="215" font-family="sans-serif" font-size="11" fill="#DDD">Embedded Linux Skills</text>
+  <rect x="330" y="225" width="180" height="12" rx="3" fill="#2ECC71"/>
+</svg>

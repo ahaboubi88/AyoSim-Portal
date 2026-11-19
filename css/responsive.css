@@ -131,7 +131,7 @@
 /* ── Wide (1280px+) ── */
 @media (min-width: 1280px) {
   :root {
-    --container-padding: var(--space-8);
+    --container-padding: clamp(16px, 2.5vw, 32px);
   }
 }
 

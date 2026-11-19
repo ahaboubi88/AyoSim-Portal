@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" fill="none">
+  <defs>
+    <linearGradient id="bgrf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#241006"/>
+      <stop offset="100%" stop-color="#421e0b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" rx="12" fill="url(#bgrf)"/>
+  <!-- RF Spectrum Display -->
+  <rect x="70" y="60" width="460" height="220" rx="8" fill="#111" stroke="#E65100" stroke-width="2"/>
+  <text x="90" y="90" font-family="'JetBrains Mono', monospace" font-size="12" fill="#E65100" font-weight="bold">2.4 GHz ISM Spectrum Coexistence (Wi-Fi + BLE)</text>
+  <!-- Spectrum Axis -->
+  <line x1="100" y1="240" x2="500" y2="240" stroke="#555" stroke-width="2"/>
+  <line x1="100" y1="240" x2="100" y2="110" stroke="#555" stroke-width="2"/>
+  <!-- WiFi 20MHz Dome -->
+  <path d="M120 240 Q 180 130 240 240" fill="rgba(230, 81, 0, 0.3)" stroke="#E65100" stroke-width="3"/>
+  <text x="180" y="165" font-family="'JetBrains Mono', monospace" font-size="11" fill="#FFF" font-weight="bold" text-anchor="middle">Wi-Fi Ch 1</text>
+  <text x="180" y="185" font-family="'JetBrains Mono', monospace" font-size="9" fill="#E65100" text-anchor="middle">2412 MHz (20MHz)</text>
+  <!-- BLE Hopping Channels -->
+  <rect x="270" y="180" width="12" height="60" rx="2" fill="#00A8FF"/>
+  <rect x="310" y="160" width="12" height="80" rx="2" fill="#00A8FF"/>
+  <rect x="370" y="190" width="12" height="50" rx="2" fill="#00A8FF"/>
+  <rect x="420" y="150" width="12" height="90" rx="2" fill="#00A8FF"/>
+  <text x="360" y="140" font-family="'JetBrains Mono', monospace" font-size="11" fill="#00A8FF" font-weight="bold" text-anchor="middle">BLE Adaptive Frequency Hopping (AFH)</text>
+</svg>
