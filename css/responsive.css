@@ -135,16 +135,64 @@
   }
 }
 
-/* ── RTL Support (Phase 3 hook) ── */
+/* ── RTL Support (Arabic) ── */
 [dir="rtl"] {
   direction: rtl;
 }
 
-[dir="rtl"] .header__logo {
+[dir="rtl"] body {
+  text-align: right;
+}
+
+/* RTL: Header */
+[dir="rtl"] .header .container {
   flex-direction: row-reverse;
 }
 
-[dir="rtl"] .sim-card__link-arrow {
+[dir="rtl"] .header__nav {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header__links {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .header__actions {
+  flex-direction: row-reverse;
+}
+
+/* RTL: Hero */
+[dir="rtl"] .hero__content {
+  text-align: center;
+}
+
+/* RTL: Sections - center alignment stays */
+[dir="rtl"] .section__header {
+  text-align: center;
+}
+
+/* RTL: Simulator cards */
+[dir="rtl"] .sim-card {
+  text-align: center;
+}
+
+[dir="rtl"] .sim-card__features {
+  text-align: right;
+}
+
+[dir="rtl"] .sim-card__features li {
+  padding-inline-start: var(--space-5);
+  padding-inline-end: 0;
+}
+
+[dir="rtl"] .sim-card__features li::before {
+  inset-inline-start: 0;
+  inset-inline-end: auto;
+}
+
+/* RTL: Flip arrows */
+[dir="rtl"] .sim-card__link-arrow,
+[dir="rtl"] .btn svg {
   transform: scaleX(-1);
 }
 
@@ -152,7 +200,53 @@
   transform: scaleX(-1) translateX(4px);
 }
 
+/* RTL: Content cards */
+[dir="rtl"] .content-card {
+  text-align: right;
+}
+
+[dir="rtl"] .content-card__meta {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+/* RTL: Tab bar stays centered */
+[dir="rtl"] .tab-bar {
+  flex-direction: row-reverse;
+}
+
+/* RTL: Language dropdown */
 [dir="rtl"] .lang-selector__dropdown {
   right: auto;
   left: 0;
+}
+
+[dir="rtl"] .lang-selector__option {
+  text-align: right;
+}
+
+/* RTL: Footer */
+[dir="rtl"] .footer__grid {
+  direction: rtl;
+}
+
+[dir="rtl"] .footer__col-links {
+  align-items: flex-start;
+}
+
+[dir="rtl"] .footer__bottom {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .footer__bottom-links {
+  flex-direction: row-reverse;
+}
+
+/* RTL: Back to top - inset-inline-end handles this via CSS already */
+
+/* RTL: Mobile nav */
+@media (max-width: 768px) {
+  [dir="rtl"] .header__nav.mobile-open .header__links {
+    align-items: flex-end;
+  }
 }
