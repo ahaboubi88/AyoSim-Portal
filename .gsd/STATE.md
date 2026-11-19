@@ -1,8 +1,8 @@
 # STATE.md — Project State
 
 > **Last Updated**: 2026-11-19
-> **Current Phase**: ALL PHASES COMPLETE ✅
-> **Status**: Ready for Vercel deployment
+> **Current Phase**: Polish & Visual Refinements Complete ✅
+> **Status**: Ready for testing and custom thumbnail drop-in
 
 ## Progress
 
@@ -12,17 +12,11 @@
 | Phase 2: Content Sections & Interactivity | ✅ Complete | 100% |
 | Phase 3: Internationalization & Theming | ✅ Complete | 100% |
 | Phase 4: Polish & Deploy | ✅ Complete | 100% |
+| User Refinements (Whitespace, Above-Fold Simulators, Real Photos, Thumbnails) | ✅ Complete | 100% |
 
-## Deployment
+## Recent Deliverables
 
-- **Target**: https://ayosim.vercel.app/
-- **Config**: vercel.json with security headers, caching, clean URLs
-- **Status**: Ready — push to GitHub to trigger Vercel deploy
-
-## Project Stats
-
-- **Files**: 21 project files + 7 GSD docs
-- **Total size**: ~150KB (excluding .git)
-- **Languages**: 110 keys × 3 languages = 330 translations
-- **Commits**: 7 (init → Phase 4)
-- **Dependencies**: Zero (vanilla HTML/CSS/JS)
+- [x] **Minimal Side Whitespace**: Expanded `--container-max: 100%` with minimal `clamp(16px, 2.5vw, 32px)` margins to eliminate empty side space on wide screens.
+- [x] **Above-the-Fold Simulators**: Relocated the 3 simulator cards directly into the Hero viewport so simulator launch buttons are visible immediately upon landing without any scrolling.
+- [x] **Real Board Photos**: Integrated authentic photographs of Arduino Uno, ESP32 DevKit, and Raspberry Pi 4 into the simulator cards.
+- [x] **Card Thumbnail Slots**: Added responsive 16:9 thumbnail picture slots to all tutorial, article, and project cards, ready to receive user-provided images.
