@@ -71,32 +71,36 @@
   height: 18px;
 }
 
-/* ── Simulator Card ── */
+/* ── Simulator Card (Direct Link) ── */
 .sim-card {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-6);
+  padding: var(--space-5);
   text-align: center;
   transition: all var(--transition-base);
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .sim-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--color-primary-200);
+  border-color: var(--color-primary);
 }
 
 /* Real Board Photo Showcase */
 .sim-card__photo {
-  height: 170px;
+  height: 210px;
   width: 100%;
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-5);
+  margin-bottom: var(--space-4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,154 +108,51 @@
   overflow: hidden;
   background: radial-gradient(circle at center, rgba(74, 94, 171, 0.08) 0%, rgba(74, 94, 171, 0.02) 70%, transparent 100%);
   border: 1px solid var(--color-border-light);
+  transition: background var(--transition-base);
 }
 
 .sim-card__photo--arduino {
-  background: radial-gradient(circle at center, rgba(46, 204, 113, 0.12) 0%, rgba(46, 204, 113, 0.02) 70%, transparent 100%);
+  background: radial-gradient(circle at center, rgba(46, 204, 113, 0.14) 0%, rgba(46, 204, 113, 0.02) 70%, transparent 100%);
 }
 
 .sim-card__photo--esp32 {
-  background: radial-gradient(circle at center, rgba(230, 81, 0, 0.12) 0%, rgba(230, 81, 0, 0.02) 70%, transparent 100%);
+  background: radial-gradient(circle at center, rgba(230, 81, 0, 0.14) 0%, rgba(230, 81, 0, 0.02) 70%, transparent 100%);
 }
 
 .sim-card__photo--rpi {
-  background: radial-gradient(circle at center, rgba(198, 40, 40, 0.12) 0%, rgba(198, 40, 40, 0.02) 70%, transparent 100%);
+  background: radial-gradient(circle at center, rgba(198, 40, 40, 0.14) 0%, rgba(198, 40, 40, 0.02) 70%, transparent 100%);
 }
 
 [data-theme="dark"] .sim-card__photo {
-  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.06) 0%, transparent 70%);
-  border-color: rgba(255, 255, 255, 0.06);
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 .sim-card__photo img {
-  max-height: 145px;
+  max-height: 180px;
   max-width: 90%;
   width: auto;
   height: auto;
   object-fit: contain;
   transition: transform var(--transition-base), filter var(--transition-base);
-  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.2));
 }
 
 .sim-card:hover .sim-card__photo img {
-  transform: scale(1.06);
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.26));
-}
-
-.sim-card__icon {
-  width: 72px;
-  height: 72px;
-  margin-inline: auto;
-  margin-bottom: var(--space-6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-lg);
-  font-size: 2rem;
-}
-
-.sim-card__icon--arduino {
-  background-color: #E8F5E9;
-  color: #2E7D32;
-}
-
-[data-theme="dark"] .sim-card__icon--arduino {
-  background-color: rgba(46, 125, 50, 0.15);
-}
-
-.sim-card__icon--esp32 {
-  background-color: #FFF3E0;
-  color: #E65100;
-}
-
-[data-theme="dark"] .sim-card__icon--esp32 {
-  background-color: rgba(230, 81, 0, 0.15);
-}
-
-.sim-card__icon--rpi {
-  background-color: #FCE4EC;
-  color: #C62828;
-}
-
-[data-theme="dark"] .sim-card__icon--rpi {
-  background-color: rgba(198, 40, 40, 0.15);
+  transform: scale(1.08);
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.3));
 }
 
 .sim-card__title {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
-  margin-bottom: var(--space-3);
+  margin-bottom: 0;
+  transition: color var(--transition-fast);
 }
 
-.sim-card__desc {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-6);
-  line-height: 1.6;
-}
-
-.sim-card__link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+.sim-card:hover .sim-card__title {
   color: var(--color-primary);
-  transition: gap var(--transition-fast);
-}
-
-.sim-card__link:hover {
-  gap: var(--space-3);
-}
-
-.sim-card__link-arrow {
-  transition: transform var(--transition-fast);
-}
-
-.sim-card__link:hover .sim-card__link-arrow {
-  transform: translateX(4px);
-}
-
-/* ── Simulator Card Feature List ── */
-.sim-card__features {
-  text-align: start;
-  margin-bottom: var(--space-5);
-  padding: 0;
-  flex: 1;
-}
-
-.sim-card__btn {
-  width: 100%;
-  margin-top: auto;
-  font-weight: var(--font-weight-bold);
-  padding: var(--space-3) var(--space-6);
-  font-size: var(--font-size-sm);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-}
-
-.sim-card__features li {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  padding-block: var(--space-1);
-  position: relative;
-  padding-inline-start: var(--space-5);
-  list-style: none;
-}
-
-.sim-card__features li::before {
-  content: '';
-  position: absolute;
-  inset-inline-start: 0;
-  top: 50%;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  transform: translateY(-50%);
 }
 
 /* ── Content Card (tutorials, articles, projects) ── */
@@ -259,48 +160,14 @@
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 0;
+  padding: var(--space-6);
   transition: all var(--transition-base);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 .content-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-hover);
   border-color: var(--color-primary-200);
-}
-
-/* Card Thumbnail */
-.content-card__thumb {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  background: var(--color-bg-alt);
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content-card__thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-base);
-}
-
-.content-card:hover .content-card__thumb img {
-  transform: scale(1.05);
-}
-
-.content-card__body {
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  flex: 1;
 }
 
 .content-card__tag {
