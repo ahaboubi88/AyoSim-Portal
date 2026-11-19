@@ -3,8 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="AyoSim — The simulation portal for Arduino, ESP32, and Raspberry Pi. Tutorials, academic articles, and project showcases.">
-  <title>AyoSim — Simulate. Learn. Build.</title>
+
+  <!-- SEO Meta -->
+  <title>AyoSim — Simulate. Learn. Build. | Arduino, ESP32 & Raspberry Pi</title>
+  <meta name="description" content="AyoSim is the AYOT simulation portal for Arduino, ESP32, and Raspberry Pi. Interactive simulators, step-by-step tutorials, academic articles, and real-world projects — available in English, French, and Arabic.">
+  <meta name="keywords" content="AyoSim, AYOT, Arduino simulator, ESP32 simulator, Raspberry Pi simulator, hardware simulation, electronics education, IoT, embedded systems, GPIO">
+  <meta name="author" content="AYOT">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ayosim.vercel.app/">
+
+  <!-- Open Graph (Facebook, LinkedIn, Discord) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ayosim.vercel.app/">
+  <meta property="og:title" content="AyoSim — Simulate. Learn. Build.">
+  <meta property="og:description" content="Your gateway to hardware simulation. Explore Arduino, ESP32, and Raspberry Pi with interactive simulators, tutorials, and projects.">
+  <meta property="og:image" content="https://ayosim.vercel.app/assets/logo.png">
+  <meta property="og:site_name" content="AyoSim by AYOT">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="ar_SA">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AyoSim — Simulate. Learn. Build.">
+  <meta name="twitter:description" content="Interactive simulators for Arduino, ESP32, and Raspberry Pi. Free & open-source.">
+  <meta name="twitter:image" content="https://ayosim.vercel.app/assets/logo.png">
+
+  <!-- Theme Color (browser address bar) -->
+  <meta name="theme-color" content="#4A5EAB" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1221" media="(prefers-color-scheme: dark)">
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Web Manifest -->
+  <link rel="manifest" href="manifest.json">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/variables.css">
@@ -12,11 +46,37 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/accessibility.css">
 
-  <!-- Favicon placeholder -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body>
+
+  <!-- Skip to main content (accessibility) -->
+  <a href="#hero" class="skip-link">Skip to main content</a>
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "AyoSim",
+    "alternateName": "AYOT Simulation Platform",
+    "url": "https://ayosim.vercel.app/",
+    "description": "Interactive simulation portal for Arduino, ESP32, and Raspberry Pi — tutorials, academic articles, and projects.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "AYOT",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ayosim.vercel.app/assets/logo.png"
+      }
+    },
+    "inLanguage": ["en", "fr", "ar"]
+  }
+  </script>
 
   <!-- ============================================
        HEADER
@@ -120,7 +180,7 @@
     <!-- ============================================
          STATS BANNER
          ============================================ -->
-    <section class="stats" id="stats">
+    <section class="stats" id="stats" aria-label="Platform statistics">
       <div class="container">
         <div class="stats__grid">
           <div class="stats__item fade-in">
@@ -146,7 +206,7 @@
     <!-- ============================================
          SIMULATORS SECTION
          ============================================ -->
-    <section class="section simulators" id="simulators">
+    <section class="section simulators" id="simulators" aria-label="Simulators">
       <div class="container">
         <div class="section__header fade-in">
           <h2 class="section__title" data-i18n="simulators.title">Choose Your Simulator<span class="dot-accent"></span></h2>
@@ -220,7 +280,7 @@
     <!-- ============================================
          TUTORIALS SECTION (6 cards)
          ============================================ -->
-    <section class="section tutorials" id="tutorials">
+    <section class="section tutorials" id="tutorials" aria-label="Tutorials">
       <div class="container">
         <div class="section__header fade-in">
           <h2 class="section__title" data-i18n="tutorials.title">Tutorials<span class="dot-accent"></span></h2>
@@ -325,7 +385,7 @@
     <!-- ============================================
          ACADEMIC ARTICLES SECTION (6 cards)
          ============================================ -->
-    <section class="section articles" id="articles">
+    <section class="section articles" id="articles" aria-label="Academic articles">
       <div class="container">
         <div class="section__header fade-in">
           <h2 class="section__title" data-i18n="articles.title">Academic Articles<span class="dot-accent"></span></h2>
@@ -412,7 +472,7 @@
     <!-- ============================================
          PROJECTS SECTION (6 cards)
          ============================================ -->
-    <section class="section projects" id="projects">
+    <section class="section projects" id="projects" aria-label="Projects">
       <div class="container">
         <div class="section__header fade-in">
           <h2 class="section__title" data-i18n="projects.title">Projects<span class="dot-accent"></span></h2>

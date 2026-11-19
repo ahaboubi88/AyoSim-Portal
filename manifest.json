@@ -1,0 +1,16 @@
+{
+  "name": "AyoSim",
+  "short_name": "AyoSim",
+  "description": "AyoSim — The simulation portal for Arduino, ESP32, and Raspberry Pi",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4A5EAB",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

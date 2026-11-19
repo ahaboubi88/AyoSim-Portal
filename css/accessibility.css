@@ -1,0 +1,126 @@
+/* ============================================
+   ACCESSIBILITY.CSS — A11y Enhancements
+   ============================================ */
+
+/* ── Skip Link (keyboard navigation) ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4);
+  z-index: 200;
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  text-decoration: none;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* ── Focus Styles ── */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Remove outline for mouse clicks */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Focus ring on buttons */
+.btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--color-primary);
+}
+
+.theme-toggle:focus-visible,
+.lang-selector__btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.tab-btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sim-card__link:focus-visible,
+.content-card:focus-visible,
+.sim-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.header__link:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+.back-to-top:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 5px var(--color-primary);
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .fade-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero__badge-dot {
+    animation: none;
+  }
+}
+
+/* ── High Contrast Mode ── */
+@media (forced-colors: active) {
+  .btn--primary {
+    border: 2px solid ButtonText;
+  }
+
+  .sim-card,
+  .content-card {
+    border: 2px solid ButtonText;
+  }
+
+  .tab-btn.active {
+    border: 2px solid Highlight;
+  }
+}
+
+/* ── Screen Reader Only ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

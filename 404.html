@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | AyoSim</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <style>
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: var(--space-6);
+    }
+    .error-page h1 {
+      font-size: 6rem;
+      font-weight: 800;
+      color: var(--color-primary);
+      margin-bottom: var(--space-4);
+      line-height: 1;
+    }
+    .error-page p {
+      font-size: var(--font-size-lg);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-8);
+    }
+    .error-page a {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background-color: var(--color-primary);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+    .error-page a:hover {
+      background-color: var(--color-primary-dark);
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <h1>404</h1>
+    <p>This page doesn't exist. Let's get you back to simulating.</p>
+    <a href="/">← Back to AyoSim</a>
+  </div>
+</body>
+</html>
