@@ -164,6 +164,34 @@
   transform: translateX(4px);
 }
 
+/* ── Simulator Card Feature List ── */
+.sim-card__features {
+  text-align: start;
+  margin-bottom: var(--space-6);
+  padding: 0;
+}
+
+.sim-card__features li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding-block: var(--space-1);
+  position: relative;
+  padding-inline-start: var(--space-5);
+  list-style: none;
+}
+
+.sim-card__features li::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  transform: translateY(-50%);
+}
+
 /* ── Content Card (tutorials, articles, projects) ── */
 .content-card {
   background-color: var(--color-bg-card);
@@ -342,7 +370,79 @@
   border-radius: 0 0 var(--radius-md) var(--radius-md);
 }
 
-/* ── Scroll Animations (Phase 2 hook) ── */
+/* ── Difficulty Badge ── */
+.content-card__difficulty {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  margin-inline-start: var(--space-2);
+}
+
+.content-card__difficulty--beginner {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.content-card__difficulty--intermediate {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.content-card__difficulty--advanced {
+  background-color: #FCE4EC;
+  color: #C62828;
+}
+
+[data-theme="dark"] .content-card__difficulty--beginner {
+  background-color: rgba(46, 125, 50, 0.15);
+}
+[data-theme="dark"] .content-card__difficulty--intermediate {
+  background-color: rgba(230, 81, 0, 0.15);
+}
+[data-theme="dark"] .content-card__difficulty--advanced {
+  background-color: rgba(198, 40, 40, 0.15);
+}
+
+/* ── Back to Top ── */
+.back-to-top {
+  position: fixed;
+  bottom: var(--space-8);
+  inset-inline-end: var(--space-8);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: all var(--transition-base);
+  z-index: 90;
+  cursor: pointer;
+  border: none;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* ── Scroll Animations ── */
 .fade-in {
   opacity: 0;
   transform: translateY(24px);

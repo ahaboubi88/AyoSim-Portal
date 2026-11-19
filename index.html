@@ -59,11 +59,9 @@
 
           <!-- Theme Toggle -->
           <button class="theme-toggle" aria-label="Toggle dark mode">
-            <!-- Moon (shown in light mode) -->
             <svg class="theme-toggle__moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
-            <!-- Sun (shown in dark mode) -->
             <svg class="theme-toggle__sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="5"/>
               <line x1="12" y1="1" x2="12" y2="3"/>
@@ -120,6 +118,32 @@
     </section>
 
     <!-- ============================================
+         STATS BANNER
+         ============================================ -->
+    <section class="stats" id="stats">
+      <div class="container">
+        <div class="stats__grid">
+          <div class="stats__item fade-in">
+            <span class="stats__number" data-count="3">0</span>
+            <span class="stats__label" data-i18n="stats.simulators">Simulators</span>
+          </div>
+          <div class="stats__item fade-in">
+            <span class="stats__number" data-count="50">0</span><span class="stats__suffix">+</span>
+            <span class="stats__label" data-i18n="stats.tutorials">Tutorials</span>
+          </div>
+          <div class="stats__item fade-in">
+            <span class="stats__number" data-count="3">0</span>
+            <span class="stats__label" data-i18n="stats.languages">Languages</span>
+          </div>
+          <div class="stats__item fade-in">
+            <span class="stats__number" data-count="100">0</span><span class="stats__suffix">%</span>
+            <span class="stats__label" data-i18n="stats.free">Free &amp; Open Source</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
          SIMULATORS SECTION
          ============================================ -->
     <section class="section simulators" id="simulators">
@@ -133,60 +157,60 @@
           <!-- Arduino Card -->
           <div class="sim-card fade-in">
             <div class="sim-card__icon sim-card__icon--arduino">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-              </svg>
+              <img src="assets/icons/arduino.svg" alt="Arduino board" width="48" height="48">
             </div>
             <h3 class="sim-card__title" data-i18n="simulators.arduino.title">AyoSim Arduino</h3>
             <p class="sim-card__desc" data-i18n="simulators.arduino.desc">
               Simulate Arduino circuits, write and test sketches, and visualize component interactions in real-time.
             </p>
-            <a href="https://ayosim-arduino.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card__link">
+            <ul class="sim-card__features">
+              <li data-i18n="simulators.arduino.f1">Circuit simulation with virtual components</li>
+              <li data-i18n="simulators.arduino.f2">Code editor with syntax highlighting</li>
+              <li data-i18n="simulators.arduino.f3">Real-time serial monitor output</li>
+            </ul>
+            <a href="https://ayosim-arduino.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
               <span data-i18n="simulators.launch">Launch Simulator</span>
-              <svg class="sim-card__link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </div>
 
           <!-- ESP32 Card -->
           <div class="sim-card fade-in">
             <div class="sim-card__icon sim-card__icon--esp32">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6v-2zm0 4h8v2H6v-2zm10-4h2v2h-2v-2zm-4 0h2v2h-2v-2z"/>
-              </svg>
+              <img src="assets/icons/esp32.svg" alt="ESP32 board" width="48" height="48">
             </div>
             <h3 class="sim-card__title" data-i18n="simulators.esp32.title">AyoSim ESP32</h3>
             <p class="sim-card__desc" data-i18n="simulators.esp32.desc">
               Explore WiFi and Bluetooth-enabled projects with the ESP32 simulator. Test IoT applications before deploying.
             </p>
-            <a href="https://ayosim-esp32.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card__link">
+            <ul class="sim-card__features">
+              <li data-i18n="simulators.esp32.f1">WiFi &amp; Bluetooth connectivity simulation</li>
+              <li data-i18n="simulators.esp32.f2">Dual-core task scheduling</li>
+              <li data-i18n="simulators.esp32.f3">GPIO &amp; peripheral emulation</li>
+            </ul>
+            <a href="https://ayosim-esp32.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
               <span data-i18n="simulators.launch">Launch Simulator</span>
-              <svg class="sim-card__link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </div>
 
           <!-- Raspberry Pi Card -->
           <div class="sim-card fade-in">
             <div class="sim-card__icon sim-card__icon--rpi">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M7 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3V2h-2v2H9V2H7zm13 16H4V8h16v10zm-6-1h4v-4h-4v4z"/>
-              </svg>
+              <img src="assets/icons/rpi.svg" alt="Raspberry Pi board" width="48" height="48">
             </div>
             <h3 class="sim-card__title" data-i18n="simulators.rpi.title">AyoSim Raspberry Pi</h3>
             <p class="sim-card__desc" data-i18n="simulators.rpi.desc">
               Simulate Raspberry Pi GPIO pins, run Python scripts, and prototype embedded Linux projects.
             </p>
-            <a href="https://ayosim-rpi.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card__link">
+            <ul class="sim-card__features">
+              <li data-i18n="simulators.rpi.f1">40-pin GPIO header simulation</li>
+              <li data-i18n="simulators.rpi.f2">Python script execution</li>
+              <li data-i18n="simulators.rpi.f3">Linux terminal emulation</li>
+            </ul>
+            <a href="https://ayosim-rpi.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm">
               <span data-i18n="simulators.launch">Launch Simulator</span>
-              <svg class="sim-card__link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"/>
-                <polyline points="12 5 19 12 12 19"/>
-              </svg>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
           </div>
         </div>
@@ -194,7 +218,7 @@
     </section>
 
     <!-- ============================================
-         TUTORIALS SECTION
+         TUTORIALS SECTION (6 cards)
          ============================================ -->
     <section class="section tutorials" id="tutorials">
       <div class="container">
@@ -211,9 +235,12 @@
         </div>
 
         <div class="content-grid">
-          <!-- Tutorial 1 -->
+          <!-- T1: Arduino Beginner -->
           <div class="content-card fade-in" data-board="arduino">
-            <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+            <div>
+              <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+              <span class="content-card__difficulty content-card__difficulty--beginner">Beginner</span>
+            </div>
             <h3 class="content-card__title" data-i18n="tutorials.t1.title">Getting Started with AyoSim Arduino</h3>
             <p class="content-card__desc" data-i18n="tutorials.t1.desc">Learn the basics of the Arduino simulator — setting up your first circuit and running a blink sketch.</p>
             <div class="content-card__meta">
@@ -222,25 +249,73 @@
             </div>
           </div>
 
-          <!-- Tutorial 2 -->
-          <div class="content-card fade-in" data-board="esp32">
-            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
-            <h3 class="content-card__title" data-i18n="tutorials.t2.title">WiFi Setup on ESP32 Simulator</h3>
-            <p class="content-card__desc" data-i18n="tutorials.t2.desc">Configure WiFi connectivity in the ESP32 simulator and test a simple HTTP server project.</p>
+          <!-- T2: Arduino Intermediate -->
+          <div class="content-card fade-in" data-board="arduino">
+            <div>
+              <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+              <span class="content-card__difficulty content-card__difficulty--intermediate">Intermediate</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="tutorials.t2.title">Sensor Integration &amp; Serial Monitor</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t2.desc">Connect temperature, ultrasonic, and light sensors to your Arduino and read data through the serial monitor.</p>
             <div class="content-card__meta">
               <span>📖</span>
-              <span data-i18n="tutorials.t2.meta">Intermediate · 15 min read</span>
+              <span data-i18n="tutorials.t2.meta">Intermediate · 20 min read</span>
             </div>
           </div>
 
-          <!-- Tutorial 3 -->
-          <div class="content-card fade-in" data-board="rpi">
-            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
-            <h3 class="content-card__title" data-i18n="tutorials.t3.title">GPIO Basics with Raspberry Pi</h3>
-            <p class="content-card__desc" data-i18n="tutorials.t3.desc">Understand GPIO pin configuration and control LEDs and sensors in the Raspberry Pi simulator.</p>
+          <!-- T3: ESP32 Beginner -->
+          <div class="content-card fade-in" data-board="esp32">
+            <div>
+              <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+              <span class="content-card__difficulty content-card__difficulty--beginner">Beginner</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="tutorials.t3.title">WiFi Setup on ESP32 Simulator</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t3.desc">Configure WiFi connectivity in the ESP32 simulator and test a simple HTTP server project.</p>
             <div class="content-card__meta">
               <span>📖</span>
-              <span data-i18n="tutorials.t3.meta">Beginner · 12 min read</span>
+              <span data-i18n="tutorials.t3.meta">Beginner · 15 min read</span>
+            </div>
+          </div>
+
+          <!-- T4: ESP32 Advanced -->
+          <div class="content-card fade-in" data-board="esp32">
+            <div>
+              <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+              <span class="content-card__difficulty content-card__difficulty--advanced">Advanced</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="tutorials.t4.title">BLE Communication with ESP32</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t4.desc">Set up Bluetooth Low Energy services and characteristics to communicate between devices in the simulator.</p>
+            <div class="content-card__meta">
+              <span>📖</span>
+              <span data-i18n="tutorials.t4.meta">Advanced · 25 min read</span>
+            </div>
+          </div>
+
+          <!-- T5: RPi Beginner -->
+          <div class="content-card fade-in" data-board="rpi">
+            <div>
+              <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+              <span class="content-card__difficulty content-card__difficulty--beginner">Beginner</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="tutorials.t5.title">GPIO Basics with Raspberry Pi</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t5.desc">Understand GPIO pin configuration and control LEDs and sensors in the Raspberry Pi simulator.</p>
+            <div class="content-card__meta">
+              <span>📖</span>
+              <span data-i18n="tutorials.t5.meta">Beginner · 12 min read</span>
+            </div>
+          </div>
+
+          <!-- T6: RPi Intermediate -->
+          <div class="content-card fade-in" data-board="rpi">
+            <div>
+              <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+              <span class="content-card__difficulty content-card__difficulty--intermediate">Intermediate</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="tutorials.t6.title">Python Automation on Raspberry Pi</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t6.desc">Write Python scripts that automate GPIO tasks — from LED sequences to sensor data logging.</p>
+            <div class="content-card__meta">
+              <span>📖</span>
+              <span data-i18n="tutorials.t6.meta">Intermediate · 18 min read</span>
             </div>
           </div>
         </div>
@@ -248,7 +323,7 @@
     </section>
 
     <!-- ============================================
-         ACADEMIC ARTICLES SECTION
+         ACADEMIC ARTICLES SECTION (6 cards)
          ============================================ -->
     <section class="section articles" id="articles">
       <div class="container">
@@ -265,10 +340,10 @@
         </div>
 
         <div class="content-grid">
-          <!-- Article 1 -->
+          <!-- A1: Arduino -->
           <div class="content-card fade-in" data-board="arduino">
             <span class="content-card__tag content-card__tag--arduino">Arduino</span>
-            <h3 class="content-card__title" data-i18n="articles.a1.title">Arduino Architecture & ATmega328P Overview</h3>
+            <h3 class="content-card__title" data-i18n="articles.a1.title">Arduino Architecture &amp; ATmega328P Overview</h3>
             <p class="content-card__desc" data-i18n="articles.a1.desc">A comprehensive look at the Arduino Uno architecture, the ATmega328P microcontroller, and its instruction set.</p>
             <div class="content-card__meta">
               <span>🎓</span>
@@ -276,25 +351,58 @@
             </div>
           </div>
 
-          <!-- Article 2 -->
-          <div class="content-card fade-in" data-board="esp32">
-            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
-            <h3 class="content-card__title" data-i18n="articles.a2.title">ESP32: Dual-Core Programming & FreeRTOS</h3>
-            <p class="content-card__desc" data-i18n="articles.a2.desc">Explore the ESP32's dual-core Xtensa architecture, task scheduling with FreeRTOS, and power management.</p>
+          <!-- A2: Arduino -->
+          <div class="content-card fade-in" data-board="arduino">
+            <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+            <h3 class="content-card__title" data-i18n="articles.a2.title">PWM &amp; Timer Interrupts Deep Dive</h3>
+            <p class="content-card__desc" data-i18n="articles.a2.desc">Understanding pulse-width modulation generation, timer registers, and interrupt-driven programming on AVR.</p>
             <div class="content-card__meta">
               <span>🎓</span>
               <span data-i18n="articles.a2.meta">Research Paper</span>
             </div>
           </div>
 
-          <!-- Article 3 -->
-          <div class="content-card fade-in" data-board="rpi">
-            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
-            <h3 class="content-card__title" data-i18n="articles.a3.title">Raspberry Pi in Education: A Systematic Review</h3>
-            <p class="content-card__desc" data-i18n="articles.a3.desc">Survey of Raspberry Pi applications in STEM education, covering embedded systems, IoT, and computer science teaching.</p>
+          <!-- A3: ESP32 -->
+          <div class="content-card fade-in" data-board="esp32">
+            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+            <h3 class="content-card__title" data-i18n="articles.a3.title">ESP32: Dual-Core Programming &amp; FreeRTOS</h3>
+            <p class="content-card__desc" data-i18n="articles.a3.desc">Explore the ESP32's dual-core Xtensa architecture, task scheduling with FreeRTOS, and power management.</p>
             <div class="content-card__meta">
               <span>🎓</span>
-              <span data-i18n="articles.a3.meta">Literature Review</span>
+              <span data-i18n="articles.a3.meta">Research Paper</span>
+            </div>
+          </div>
+
+          <!-- A4: ESP32 -->
+          <div class="content-card fade-in" data-board="esp32">
+            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+            <h3 class="content-card__title" data-i18n="articles.a4.title">ESP32 WiFi &amp; Bluetooth Coexistence</h3>
+            <p class="content-card__desc" data-i18n="articles.a4.desc">Technical analysis of simultaneous WiFi and Bluetooth operation on the ESP32, including antenna sharing strategies.</p>
+            <div class="content-card__meta">
+              <span>🎓</span>
+              <span data-i18n="articles.a4.meta">Technical Note</span>
+            </div>
+          </div>
+
+          <!-- A5: RPi -->
+          <div class="content-card fade-in" data-board="rpi">
+            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+            <h3 class="content-card__title" data-i18n="articles.a5.title">Raspberry Pi in Education: A Systematic Review</h3>
+            <p class="content-card__desc" data-i18n="articles.a5.desc">Survey of Raspberry Pi applications in STEM education, covering embedded systems, IoT, and computer science teaching.</p>
+            <div class="content-card__meta">
+              <span>🎓</span>
+              <span data-i18n="articles.a5.meta">Literature Review</span>
+            </div>
+          </div>
+
+          <!-- A6: RPi -->
+          <div class="content-card fade-in" data-board="rpi">
+            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+            <h3 class="content-card__title" data-i18n="articles.a6.title">Linux Kernel &amp; GPIO Driver Internals</h3>
+            <p class="content-card__desc" data-i18n="articles.a6.desc">Deep dive into the Raspberry Pi's Linux kernel GPIO subsystem, device tree overlays, and driver architecture.</p>
+            <div class="content-card__meta">
+              <span>🎓</span>
+              <span data-i18n="articles.a6.meta">Technical Reference</span>
             </div>
           </div>
         </div>
@@ -302,7 +410,7 @@
     </section>
 
     <!-- ============================================
-         PROJECTS SECTION
+         PROJECTS SECTION (6 cards)
          ============================================ -->
     <section class="section projects" id="projects">
       <div class="container">
@@ -319,9 +427,12 @@
         </div>
 
         <div class="content-grid">
-          <!-- Project 1 -->
+          <!-- P1: Arduino Beginner -->
           <div class="content-card fade-in" data-board="arduino">
-            <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+            <div>
+              <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+              <span class="content-card__difficulty content-card__difficulty--beginner">Beginner</span>
+            </div>
             <h3 class="content-card__title" data-i18n="projects.p1.title">Smart Traffic Light System</h3>
             <p class="content-card__desc" data-i18n="projects.p1.desc">Build a traffic light controller with pedestrian crossing detection using LEDs and sensors.</p>
             <div class="content-card__meta">
@@ -330,25 +441,73 @@
             </div>
           </div>
 
-          <!-- Project 2 -->
-          <div class="content-card fade-in" data-board="esp32">
-            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
-            <h3 class="content-card__title" data-i18n="projects.p2.title">IoT Weather Station</h3>
-            <p class="content-card__desc" data-i18n="projects.p2.desc">Create a connected weather station that reads sensor data and publishes it via MQTT over WiFi.</p>
+          <!-- P2: Arduino Intermediate -->
+          <div class="content-card fade-in" data-board="arduino">
+            <div>
+              <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+              <span class="content-card__difficulty content-card__difficulty--intermediate">Intermediate</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="projects.p2.title">Ultrasonic Distance Meter with LCD</h3>
+            <p class="content-card__desc" data-i18n="projects.p2.desc">Use an HC-SR04 ultrasonic sensor to measure distances and display the readings on a 16×2 LCD screen.</p>
             <div class="content-card__meta">
               <span>🔧</span>
               <span data-i18n="projects.p2.meta">Intermediate Project</span>
             </div>
           </div>
 
-          <!-- Project 3 -->
-          <div class="content-card fade-in" data-board="rpi">
-            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
-            <h3 class="content-card__title" data-i18n="projects.p3.title">Home Automation Dashboard</h3>
-            <p class="content-card__desc" data-i18n="projects.p3.desc">Prototype a home automation system with a web-based dashboard controlling GPIO-connected devices.</p>
+          <!-- P3: ESP32 Intermediate -->
+          <div class="content-card fade-in" data-board="esp32">
+            <div>
+              <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+              <span class="content-card__difficulty content-card__difficulty--intermediate">Intermediate</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="projects.p3.title">IoT Weather Station</h3>
+            <p class="content-card__desc" data-i18n="projects.p3.desc">Create a connected weather station that reads sensor data and publishes it via MQTT over WiFi.</p>
             <div class="content-card__meta">
               <span>🔧</span>
-              <span data-i18n="projects.p3.meta">Advanced Project</span>
+              <span data-i18n="projects.p3.meta">Intermediate Project</span>
+            </div>
+          </div>
+
+          <!-- P4: ESP32 Advanced -->
+          <div class="content-card fade-in" data-board="esp32">
+            <div>
+              <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+              <span class="content-card__difficulty content-card__difficulty--advanced">Advanced</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="projects.p4.title">Real-Time Chat over WebSocket</h3>
+            <p class="content-card__desc" data-i18n="projects.p4.desc">Build a WebSocket server on the ESP32 that enables real-time messaging between connected clients.</p>
+            <div class="content-card__meta">
+              <span>🔧</span>
+              <span data-i18n="projects.p4.meta">Advanced Project</span>
+            </div>
+          </div>
+
+          <!-- P5: RPi Advanced -->
+          <div class="content-card fade-in" data-board="rpi">
+            <div>
+              <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+              <span class="content-card__difficulty content-card__difficulty--advanced">Advanced</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="projects.p5.title">Home Automation Dashboard</h3>
+            <p class="content-card__desc" data-i18n="projects.p5.desc">Prototype a home automation system with a web-based dashboard controlling GPIO-connected devices.</p>
+            <div class="content-card__meta">
+              <span>🔧</span>
+              <span data-i18n="projects.p5.meta">Advanced Project</span>
+            </div>
+          </div>
+
+          <!-- P6: RPi Intermediate -->
+          <div class="content-card fade-in" data-board="rpi">
+            <div>
+              <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+              <span class="content-card__difficulty content-card__difficulty--intermediate">Intermediate</span>
+            </div>
+            <h3 class="content-card__title" data-i18n="projects.p6.title">Motion Detection with Camera Module</h3>
+            <p class="content-card__desc" data-i18n="projects.p6.desc">Use the Pi Camera module with OpenCV to detect motion and trigger alerts or capture snapshots.</p>
+            <div class="content-card__meta">
+              <span>🔧</span>
+              <span data-i18n="projects.p6.meta">Intermediate Project</span>
             </div>
           </div>
         </div>
@@ -406,6 +565,13 @@
       </div>
     </div>
   </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"/>
+    </svg>
+  </button>
 
   <!-- Scripts -->
   <script src="js/main.js"></script>

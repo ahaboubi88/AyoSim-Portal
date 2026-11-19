@@ -64,6 +64,11 @@
     gap: var(--space-4);
   }
 
+  .stats__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
   /* Footer: stack columns */
   .footer__grid {
     grid-template-columns: 1fr;

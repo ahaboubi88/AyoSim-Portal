@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Arduino Uno board outline -->
+  <rect x="8" y="12" width="48" height="40" rx="3" stroke="#2E7D32" stroke-width="2" fill="none"/>
+  <!-- USB connector -->
+  <rect x="6" y="18" width="8" height="10" rx="1" stroke="#2E7D32" stroke-width="2" fill="#E8F5E9"/>
+  <!-- Power jack -->
+  <rect x="6" y="34" width="6" height="8" rx="1" stroke="#2E7D32" stroke-width="2" fill="#E8F5E9"/>
+  <!-- Digital pins (top) -->
+  <g stroke="#2E7D32" stroke-width="1.5">
+    <line x1="20" y1="12" x2="20" y2="8"/>
+    <line x1="24" y1="12" x2="24" y2="8"/>
+    <line x1="28" y1="12" x2="28" y2="8"/>
+    <line x1="32" y1="12" x2="32" y2="8"/>
+    <line x1="36" y1="12" x2="36" y2="8"/>
+    <line x1="40" y1="12" x2="40" y2="8"/>
+    <line x1="44" y1="12" x2="44" y2="8"/>
+    <line x1="48" y1="12" x2="48" y2="8"/>
+  </g>
+  <!-- Analog pins (bottom) -->
+  <g stroke="#2E7D32" stroke-width="1.5">
+    <line x1="22" y1="52" x2="22" y2="56"/>
+    <line x1="26" y1="52" x2="26" y2="56"/>
+    <line x1="30" y1="52" x2="30" y2="56"/>
+    <line x1="34" y1="52" x2="34" y2="56"/>
+    <line x1="38" y1="52" x2="38" y2="56"/>
+    <line x1="42" y1="52" x2="42" y2="56"/>
+  </g>
+  <!-- Microcontroller chip -->
+  <rect x="24" y="24" width="20" height="16" rx="1" stroke="#2E7D32" stroke-width="2" fill="#E8F5E9"/>
+  <!-- Chip notch -->
+  <circle cx="27" cy="32" r="1.5" fill="#2E7D32"/>
+  <!-- Reset button -->
+  <circle cx="50" cy="20" r="3" stroke="#2E7D32" stroke-width="1.5" fill="#E8F5E9"/>
+  <!-- LED indicators -->
+  <circle cx="46" cy="44" r="2" fill="#2E7D32" opacity="0.6"/>
+  <circle cx="50" cy="44" r="2" fill="#2E7D32"/>
+</svg>

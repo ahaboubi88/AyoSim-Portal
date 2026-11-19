@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Raspberry Pi board -->
+  <rect x="6" y="10" width="52" height="44" rx="3" stroke="#C62828" stroke-width="2" fill="none"/>
+  <!-- GPIO header (40 pins, 2 rows) -->
+  <g stroke="#C62828" stroke-width="1">
+    <line x1="14" y1="10" x2="14" y2="6"/>
+    <line x1="17" y1="10" x2="17" y2="6"/>
+    <line x1="20" y1="10" x2="20" y2="6"/>
+    <line x1="23" y1="10" x2="23" y2="6"/>
+    <line x1="26" y1="10" x2="26" y2="6"/>
+    <line x1="29" y1="10" x2="29" y2="6"/>
+    <line x1="32" y1="10" x2="32" y2="6"/>
+    <line x1="35" y1="10" x2="35" y2="6"/>
+    <line x1="38" y1="10" x2="38" y2="6"/>
+    <line x1="41" y1="10" x2="41" y2="6"/>
+    <line x1="44" y1="10" x2="44" y2="6"/>
+    <line x1="47" y1="10" x2="47" y2="6"/>
+    <line x1="50" y1="10" x2="50" y2="6"/>
+  </g>
+  <g stroke="#C62828" stroke-width="1">
+    <line x1="14" y1="10" x2="14" y2="4"/>
+    <line x1="20" y1="10" x2="20" y2="4"/>
+    <line x1="26" y1="10" x2="26" y2="4"/>
+    <line x1="32" y1="10" x2="32" y2="4"/>
+    <line x1="38" y1="10" x2="38" y2="4"/>
+    <line x1="44" y1="10" x2="44" y2="4"/>
+    <line x1="50" y1="10" x2="50" y2="4"/>
+  </g>
+  <!-- SoC chip -->
+  <rect x="16" y="22" width="18" height="18" rx="2" stroke="#C62828" stroke-width="2" fill="#FCE4EC"/>
+  <!-- RAM chip -->
+  <rect x="38" y="26" width="12" height="10" rx="1" stroke="#C62828" stroke-width="1.5" fill="#FCE4EC"/>
+  <!-- USB ports (right side) -->
+  <rect x="52" y="16" width="8" height="8" rx="1" stroke="#C62828" stroke-width="2" fill="#FCE4EC"/>
+  <rect x="52" y="28" width="8" height="8" rx="1" stroke="#C62828" stroke-width="2" fill="#FCE4EC"/>
+  <!-- Ethernet port -->
+  <rect x="52" y="40" width="8" height="10" rx="1" stroke="#C62828" stroke-width="2" fill="#FCE4EC"/>
+  <!-- HDMI port -->
+  <rect x="20" y="50" width="10" height="6" rx="1" stroke="#C62828" stroke-width="2" fill="#FCE4EC"/>
+  <!-- USB-C power -->
+  <rect x="8" y="50" width="8" height="5" rx="2" stroke="#C62828" stroke-width="1.5" fill="#FCE4EC"/>
+  <!-- SD card slot -->
+  <rect x="2" y="30" width="6" height="10" rx="1" stroke="#C62828" stroke-width="1.5" fill="#FCE4EC"/>
+  <!-- Activity LEDs -->
+  <circle cx="12" cy="16" r="2" fill="#C62828"/>
+  <circle cx="12" cy="22" r="2" fill="#2E7D32" opacity="0.7"/>
+  <!-- Raspberry Pi text -->
+  <text x="25" y="34" font-family="sans-serif" font-size="4" fill="#C62828" text-anchor="middle" font-weight="bold">RPi</text>
+</svg>

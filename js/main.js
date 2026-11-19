@@ -2,6 +2,7 @@
    MAIN.JS — Core Interactions
    ============================================
    Phase 1: Theme toggle, mobile menu, scroll animations
+   Phase 2: Animated counters, back-to-top, per-section stagger
    Phase 3 will add: i18n, language switching
    ============================================ */
 
@@ -12,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initLangSelector();
   initTabFilters();
   initSmoothScroll();
+  initAnimatedCounters();
+  initBackToTop();
 });
 
 /* ── Theme Toggle ── */
@@ -56,6 +59,14 @@ function initScrollAnimations() {
   const elements = document.querySelectorAll('.fade-in');
   if (!elements.length) return;
 
+  // Assign stagger delays per-section so each section animates independently
+  document.querySelectorAll('.section, .hero, .stats').forEach(section => {
+    const sectionElements = section.querySelectorAll('.fade-in');
+    sectionElements.forEach((el, index) => {
+      el.style.transitionDelay = `${index * 100}ms`;
+    });
+  });
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -71,10 +82,65 @@ function initScrollAnimations() {
     }
   );
 
-  elements.forEach((el, index) => {
-    // Stagger animation delay
-    el.style.transitionDelay = `${index * 80}ms`;
+  elements.forEach((el) => {
     observer.observe(el);
+  });
+}
+
+/* ── Animated Counters ── */
+function initAnimatedCounters() {
+  const counters = document.querySelectorAll('[data-count]');
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
+
+  counters.forEach((counter) => observer.observe(counter));
+}
+
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-count'), 10);
+  const duration = 1500; // ms
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Ease out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+
+    el.textContent = current;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+/* ── Back to Top ── */
+function initBackToTop() {
+  const btn = document.querySelector('.back-to-top');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 500);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- ESP32 DevKit board -->
+  <rect x="12" y="6" width="40" height="52" rx="3" stroke="#E65100" stroke-width="2" fill="none"/>
+  <!-- Antenna notch -->
+  <path d="M18 6 L18 2 L46 2 L46 6" stroke="#E65100" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <line x1="24" y1="3" x2="40" y2="3" stroke="#E65100" stroke-width="1" stroke-dasharray="2 2"/>
+  <!-- WiFi symbol on antenna -->
+  <path d="M28 8 Q32 4 36 8" stroke="#E65100" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M30 11 Q32 8 34 11" stroke="#E65100" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <circle cx="32" cy="13" r="1" fill="#E65100"/>
+  <!-- Left pin row -->
+  <g stroke="#E65100" stroke-width="1.5">
+    <line x1="12" y1="16" x2="8" y2="16"/>
+    <line x1="12" y1="20" x2="8" y2="20"/>
+    <line x1="12" y1="24" x2="8" y2="24"/>
+    <line x1="12" y1="28" x2="8" y2="28"/>
+    <line x1="12" y1="32" x2="8" y2="32"/>
+    <line x1="12" y1="36" x2="8" y2="36"/>
+    <line x1="12" y1="40" x2="8" y2="40"/>
+    <line x1="12" y1="44" x2="8" y2="44"/>
+    <line x1="12" y1="48" x2="8" y2="48"/>
+  </g>
+  <!-- Right pin row -->
+  <g stroke="#E65100" stroke-width="1.5">
+    <line x1="52" y1="16" x2="56" y2="16"/>
+    <line x1="52" y1="20" x2="56" y2="20"/>
+    <line x1="52" y1="24" x2="56" y2="24"/>
+    <line x1="52" y1="28" x2="56" y2="28"/>
+    <line x1="52" y1="32" x2="56" y2="32"/>
+    <line x1="52" y1="36" x2="56" y2="36"/>
+    <line x1="52" y1="40" x2="56" y2="40"/>
+    <line x1="52" y1="44" x2="56" y2="44"/>
+    <line x1="52" y1="48" x2="56" y2="48"/>
+  </g>
+  <!-- Main chip -->
+  <rect x="22" y="22" width="20" height="20" rx="2" stroke="#E65100" stroke-width="2" fill="#FFF3E0"/>
+  <!-- Chip label -->
+  <text x="32" y="34" font-family="monospace" font-size="5" fill="#E65100" text-anchor="middle" font-weight="bold">ESP32</text>
+  <!-- USB-C connector -->
+  <rect x="26" y="52" width="12" height="6" rx="2" stroke="#E65100" stroke-width="2" fill="#FFF3E0"/>
+  <!-- Boot/Reset buttons -->
+  <rect x="16" y="48" width="6" height="4" rx="1" stroke="#E65100" stroke-width="1.5" fill="#FFF3E0"/>
+  <rect x="42" y="48" width="6" height="4" rx="1" stroke="#E65100" stroke-width="1.5" fill="#FFF3E0"/>
+</svg>

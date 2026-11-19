@@ -318,6 +318,59 @@ body {
 }
 
 /* ============================================
+   STATS BANNER
+   ============================================ */
+
+.stats {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  padding-block: var(--space-10);
+  position: relative;
+}
+
+.stats::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+.stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-8);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stats__item {
+  color: #FFFFFF;
+}
+
+.stats__number {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-extrabold);
+  display: inline;
+  letter-spacing: -0.02em;
+}
+
+.stats__suffix {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.stats__label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: var(--space-2);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
    FOOTER
    ============================================ */
 
