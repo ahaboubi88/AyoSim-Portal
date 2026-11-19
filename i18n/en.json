@@ -118,5 +118,25 @@
   "footer.link.contact": "Contact",
   "footer.link.github": "GitHub",
   "footer.privacy": "Privacy Policy",
-  "footer.terms": "Terms of Service"
+  "footer.terms": "Terms of Service",
+
+  "sim_loader.badge": "PROVISIONING TARGET",
+  "sim_loader.subtitle": "Synthesizing virtual hardware target & compiling simulation runtime...",
+  "sim_loader.hint": "Press Esc or click ✕ to cancel",
+  "sim_loader.status_ready": "Compilation complete! Launching...",
+  "sim_loader.arduino.step1": "[CORE] Initializing ATmega328P 8-bit AVR virtual core @ 16 MHz...",
+  "sim_loader.arduino.step2": "[IO] Mapping 14 digital I/O pins, 6 PWM channels & 6 ADC inputs...",
+  "sim_loader.arduino.step3": "[MEM] Allocating 32KB flash memory & 2KB SRAM buffer...",
+  "sim_loader.arduino.step4": "[BUS] Binding UART serial monitor bridge at 115200 baud...",
+  "sim_loader.arduino.step5": "[READY] Environment compiled. Launching AyoSim Arduino...",
+  "sim_loader.esp32.step1": "[CORE] Initializing dual-core Tensilica Xtensa LX6 @ 240 MHz...",
+  "sim_loader.esp32.step2": "[RTOS] Spawning FreeRTOS kernel scheduler & IPC queues...",
+  "sim_loader.esp32.step3": "[PHY] Allocating 802.11 b/g/n virtual Wi-Fi & BLE 4.2 stack...",
+  "sim_loader.esp32.step4": "[MEM] Mounting 4MB SPI Flash & 520KB internal SRAM heap...",
+  "sim_loader.esp32.step5": "[READY] Environment compiled. Launching AyoSim ESP32...",
+  "sim_loader.rpi.step1": "[SOC] Initializing Broadcom BCM2711 quad-core Cortex-A72 @ 1.5 GHz...",
+  "sim_loader.rpi.step2": "[KERNEL] Booting embedded Linux kernel v6.1 & systemd rootfs...",
+  "sim_loader.rpi.step3": "[GPIO] Configuring 40-pin header & memory-mapped peripherals...",
+  "sim_loader.rpi.step4": "[VFS] Mounting virtual disk image & Python 3.11 runtime...",
+  "sim_loader.rpi.step5": "[READY] Environment compiled. Launching AyoSim Raspberry Pi..."
 }

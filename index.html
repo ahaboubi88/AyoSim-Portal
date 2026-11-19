@@ -47,12 +47,12 @@
   <link rel="manifest" href="manifest.json">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/variables.css?v=1.7">
-  <link rel="stylesheet" href="css/reset.css?v=1.7">
-  <link rel="stylesheet" href="css/layout.css?v=1.7">
-  <link rel="stylesheet" href="css/components.css?v=1.7">
-  <link rel="stylesheet" href="css/responsive.css?v=1.7">
-  <link rel="stylesheet" href="css/accessibility.css?v=1.7">
+  <link rel="stylesheet" href="css/variables.css?v=1.9">
+  <link rel="stylesheet" href="css/reset.css?v=1.9">
+  <link rel="stylesheet" href="css/layout.css?v=1.9">
+  <link rel="stylesheet" href="css/components.css?v=1.9">
+  <link rel="stylesheet" href="css/responsive.css?v=1.9">
+  <link rel="stylesheet" href="css/accessibility.css?v=1.9">
 
   <!-- Preconnect for fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -177,7 +177,7 @@
           <!-- 3 Simulators Links with Only the Thumbnail and the Name -->
           <div class="simulators__grid" id="simulators" aria-label="Simulators">
             <!-- Arduino Card Link -->
-            <a href="https://ayosim-arduino.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card">
+            <a href="https://ayosim-arduino.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card" data-sim="arduino" data-sim-url="https://ayosim-arduino.vercel.app/">
               <div class="sim-card__photo sim-card__photo--arduino">
                 <img src="assets/boards/arduino-technical.jpg" alt="AyoSim Arduino Simulator" width="1376" height="768" loading="eager">
               </div>
@@ -185,7 +185,7 @@
             </a>
 
             <!-- ESP32 Card Link -->
-            <a href="https://ayosim-esp32.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card">
+            <a href="https://ayosim-esp32.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card" data-sim="esp32" data-sim-url="https://ayosim-esp32.vercel.app/">
               <div class="sim-card__photo sim-card__photo--esp32">
                 <img src="assets/boards/esp32-technical.jpg" alt="AyoSim ESP32 Simulator" width="1376" height="768" loading="eager">
               </div>
@@ -193,7 +193,7 @@
             </a>
 
             <!-- Raspberry Pi Card Link -->
-            <a href="https://ayosim-rpi.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card">
+            <a href="https://ayosim-rpi.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card" data-sim="rpi" data-sim-url="https://ayosim-rpi.vercel.app/">
               <div class="sim-card__photo sim-card__photo--rpi">
                 <img src="assets/boards/rpi-technical.jpg" alt="AyoSim Raspberry Pi Simulator" width="1376" height="768" loading="eager">
               </div>
@@ -579,6 +579,83 @@
     </div>
   </footer>
 
+  <!-- ============================================
+       SIMULATOR LAUNCH MODAL (Cinematic Provisioning Interface)
+       ============================================ -->
+  <div id="sim-modal" class="sim-modal" role="dialog" aria-modal="true" aria-labelledby="sim-modal-title" aria-hidden="true">
+    <div class="sim-modal__backdrop" id="sim-modal-backdrop"></div>
+    <div class="sim-modal__dialog">
+      <!-- Modal Header -->
+      <div class="sim-modal__header">
+        <div class="sim-modal__badge">
+          <span class="sim-modal__badge-dot"></span>
+          <span class="sim-modal__badge-text" data-i18n="sim_loader.badge">PROVISIONING TARGET</span>
+        </div>
+        <button type="button" class="sim-modal__close" id="sim-modal-close" aria-label="Cancel launch">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Cybernetic Synthesis Graphic -->
+      <div class="sim-modal__visual">
+        <div class="sim-modal__rings">
+          <div class="sim-modal__ring sim-modal__ring--outer"></div>
+          <div class="sim-modal__ring sim-modal__ring--mid"></div>
+          <div class="sim-modal__ring sim-modal__ring--inner"></div>
+          <div class="sim-modal__core-chip">
+            <svg class="sim-modal__chip-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor">
+              <rect x="12" y="12" width="24" height="24" rx="4" stroke-width="2.2" class="sim-modal__chip-rect"/>
+              <circle cx="24" cy="24" r="5" stroke-width="2" class="sim-modal__chip-circle"/>
+              <path d="M17 12V5M24 12V5M31 12V5" stroke-width="2" stroke-linecap="round"/>
+              <path d="M17 43V36M24 43V36M31 43V36" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17H5M12 24H5M12 31H5" stroke-width="2" stroke-linecap="round"/>
+              <path d="M43 17H36M43 24H36M43 31H36" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <h3 id="sim-modal-title" class="sim-modal__title">AyoSim Arduino</h3>
+      <p class="sim-modal__subtitle" data-i18n="sim_loader.subtitle">Synthesizing virtual hardware target & compiling simulation runtime...</p>
+
+      <!-- Terminal Output Window -->
+      <div class="sim-modal__terminal" aria-live="polite">
+        <div class="sim-modal__terminal-header">
+          <div class="sim-modal__terminal-dots">
+            <span class="sim-dot sim-dot--red"></span>
+            <span class="sim-dot sim-dot--amber"></span>
+            <span class="sim-dot sim-dot--green"></span>
+          </div>
+          <span class="sim-modal__terminal-file">kernel://ayosim/provision.sh</span>
+          <span class="sim-modal__terminal-speed">2.0s REALTIME</span>
+        </div>
+        <div class="sim-modal__terminal-stream" id="sim-modal-stream">
+          <!-- Live log lines dynamically inserted -->
+        </div>
+      </div>
+
+      <!-- Progress Meter -->
+      <div class="sim-modal__progress-block">
+        <div class="sim-modal__progress-info">
+          <span class="sim-modal__step-name" id="sim-modal-step-name">Initializing core...</span>
+          <span class="sim-modal__percentage" id="sim-modal-percentage">0%</span>
+        </div>
+        <div class="sim-modal__progress-bar">
+          <div class="sim-modal__progress-fill" id="sim-modal-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Footer Help / Abort Notice -->
+      <div class="sim-modal__footer">
+        <span class="sim-modal__esc-hint" data-i18n="sim_loader.hint">Press Esc or click ✕ to cancel</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Back to Top -->
   <button class="back-to-top" aria-label="Back to top" title="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -587,6 +664,6 @@
   </button>
 
   <!-- Scripts -->
-  <script src="js/main.js?v=1.7"></script>
+  <script src="js/main.js?v=1.9"></script>
 </body>
 </html>

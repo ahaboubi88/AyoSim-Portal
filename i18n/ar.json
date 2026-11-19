@@ -118,5 +118,25 @@
   "footer.link.contact": "اتصل بنا",
   "footer.link.github": "GitHub",
   "footer.privacy": "سياسة الخصوصية",
-  "footer.terms": "شروط الاستخدام"
+  "footer.terms": "شروط الاستخدام",
+
+  "sim_loader.badge": "تهيئة العتاد الافتراضي",
+  "sim_loader.subtitle": "جاري بناء البيئة الافتراضية للعتاد وتجميع محرك المحاكاة...",
+  "sim_loader.hint": "اضغط Esc أو انقر ✕ للإلغاء",
+  "sim_loader.status_ready": "اكتمل البناء بنجاح! جاري التوجيه...",
+  "sim_loader.arduino.step1": "[CORE] تهيئة نواة المعالج ATmega328P AVR بتردد 16 ميغاهرتز...",
+  "sim_loader.arduino.step2": "[IO] تعيين 14 منفذ رقمي و 6 قنوات PWM ومداخل المحول التناظري...",
+  "sim_loader.arduino.step3": "[MEM] تخصيص 32 كيلوبايت ذاكرة فلاش و 2 كيلوبايت ذاكرة SRAM...",
+  "sim_loader.arduino.step4": "[BUS] ربط جسر المراقبة التسلسلية UART بسرعة 115200 باود...",
+  "sim_loader.arduino.step5": "[READY] اكتمل بناء البيئة. جاري تشغيل محاكي AyoSim Arduino...",
+  "sim_loader.esp32.step1": "[CORE] تهيئة المعالج ثنائي النواة Xtensa LX6 بتردد 240 ميغاهرتز...",
+  "sim_loader.esp32.step2": "[RTOS] بدء جدولة مهام نظام التشغيل الفوري FreeRTOS...",
+  "sim_loader.esp32.step3": "[PHY] تخصيص حزمة اتصالات Wi-Fi 802.11 و BLE 4.2 الافتراضية...",
+  "sim_loader.esp32.step4": "[MEM] تركيب ذاكرة فلاش SPI بحجم 4 ميجابايت وذاكرة SRAM...",
+  "sim_loader.esp32.step5": "[READY] اكتمل بناء البيئة. جاري تشغيل محاكي AyoSim ESP32...",
+  "sim_loader.rpi.step1": "[SOC] تهيئة معالج Broadcom BCM2711 رباعي النواة Cortex-A72...",
+  "sim_loader.rpi.step2": "[KERNEL] إقلاع نواة نظام لينكس المدمج v6.1 ونظام الملفات...",
+  "sim_loader.rpi.step3": "[GPIO] تكوين منافذ 40-pin GPIO وربط الأجهزة الطرفية...",
+  "sim_loader.rpi.step4": "[VFS] تحميل صورة القرص الافتراضية وبيئة تشغيل بايثون 3.11...",
+  "sim_loader.rpi.step5": "[READY] اكتمل بناء البيئة. جاري تشغيل محاكي AyoSim Raspberry Pi..."
 }

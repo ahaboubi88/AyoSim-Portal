@@ -118,5 +118,25 @@
   "footer.link.contact": "Contact",
   "footer.link.github": "GitHub",
   "footer.privacy": "Politique de confidentialité",
-  "footer.terms": "Conditions d'utilisation"
+  "footer.terms": "Conditions d'utilisation",
+
+  "sim_loader.badge": "PROVISIONNEMENT MATÉRIEL",
+  "sim_loader.subtitle": "Synthèse du matériel virtuel et compilation du moteur d'exécution...",
+  "sim_loader.hint": "Appuyez sur Échap ou cliquez sur ✕ pour annuler",
+  "sim_loader.status_ready": "Compilation terminée ! Lancement...",
+  "sim_loader.arduino.step1": "[CORE] Initialisation du cœur AVR 8-bit ATmega328P @ 16 MHz...",
+  "sim_loader.arduino.step2": "[IO] Configuration des 14 broches E/S, 6 canaux PWM et 6 entrées ADC...",
+  "sim_loader.arduino.step3": "[MEM] Allocation de 32 Ko de mémoire flash et 2 Ko de tampon SRAM...",
+  "sim_loader.arduino.step4": "[BUS] Liaison du moniteur série UART à 115200 bauds...",
+  "sim_loader.arduino.step5": "[READY] Environnement compilé. Lancement d'AyoSim Arduino...",
+  "sim_loader.esp32.step1": "[CORE] Initialisation du processeur double cœur Xtensa LX6 @ 240 MHz...",
+  "sim_loader.esp32.step2": "[RTOS] Démarrage de l'ordonnanceur de tâches FreeRTOS...",
+  "sim_loader.esp32.step3": "[PHY] Allocation de la pile virtuelle Wi-Fi 802.11 et BLE 4.2...",
+  "sim_loader.esp32.step4": "[MEM] Montage de la Flash SPI 4 Mo et du tas SRAM 520 Ko...",
+  "sim_loader.esp32.step5": "[READY] Environnement compilé. Lancement d'AyoSim ESP32...",
+  "sim_loader.rpi.step1": "[SOC] Initialisation du processeur quad-core ARM Cortex-A72 @ 1.5 GHz...",
+  "sim_loader.rpi.step2": "[KERNEL] Démarrage du noyau Linux embarqué v6.1 et rootfs...",
+  "sim_loader.rpi.step3": "[GPIO] Configuration du connecteur 40 broches et périphériques...",
+  "sim_loader.rpi.step4": "[VFS] Montage de l'image disque virtuelle et runtime Python 3.11...",
+  "sim_loader.rpi.step5": "[READY] Environnement compilé. Lancement d'AyoSim Raspberry Pi..."
 }

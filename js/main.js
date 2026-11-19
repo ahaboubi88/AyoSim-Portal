@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimatedCounters();
   initBackToTop();
   initI18n(); // Must come last — loads translations and triggers lang selector
+  initSimulatorLauncher(); // Phase 5: Interstitial provisioning modal
 });
 
 /* ── Theme Toggle ── */
@@ -278,5 +279,171 @@ function initSmoothScroll() {
       const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
       window.scrollTo({ top, behavior: 'smooth' });
     });
+  });
+}
+
+/* ============================================
+   SIMULATOR LAUNCH ORCHESTRATOR (Phase 5)
+   ============================================
+   Intercepts simulator clicks, displays a high-tech
+   cinematic provisioning modal with blurred backdrop,
+   streams technically realistic kernel build actions
+   for 2.0s, and redirects to the target simulator.
+   ============================================ */
+
+let activeLaunchTimeouts = [];
+
+function cancelLaunch() {
+  activeLaunchTimeouts.forEach(t => clearTimeout(t));
+  activeLaunchTimeouts = [];
+  const modal = document.getElementById('sim-modal');
+  if (modal) {
+    modal.classList.remove('is-active');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  document.body.classList.remove('sim-modal-active');
+}
+
+function initSimulatorLauncher() {
+  const cards = document.querySelectorAll('.sim-card[data-sim]');
+  const modal = document.getElementById('sim-modal');
+  const closeBtn = document.getElementById('sim-modal-close');
+  const backdrop = document.getElementById('sim-modal-backdrop');
+
+  if (!cards.length || !modal) return;
+
+  const BOARD_SEQUENCES = {
+    arduino: {
+      titleKey: 'simulators.arduino.title',
+      defaultTitle: 'AyoSim Arduino',
+      steps: [
+        { tag: 'CORE', tagClass: 'sim-log-tag--core', key: 'sim_loader.arduino.step1', fallback: '[CORE] Initializing ATmega328P 8-bit AVR virtual core @ 16 MHz...', delay: 0, progress: 20 },
+        { tag: 'IO', tagClass: 'sim-log-tag--io', key: 'sim_loader.arduino.step2', fallback: '[IO] Mapping 14 digital I/O pins, 6 PWM channels & 6 ADC inputs...', delay: 420, progress: 48 },
+        { tag: 'MEM', tagClass: 'sim-log-tag--mem', key: 'sim_loader.arduino.step3', fallback: '[MEM] Allocating 32KB flash memory & 2KB SRAM buffer...', delay: 900, progress: 74 },
+        { tag: 'BUS', tagClass: 'sim-log-tag--bus', key: 'sim_loader.arduino.step4', fallback: '[BUS] Binding UART serial monitor bridge at 115200 baud...', delay: 1380, progress: 92 },
+        { tag: 'READY', tagClass: 'sim-log-tag--ready', key: 'sim_loader.arduino.step5', fallback: '[READY] Environment compiled. Launching AyoSim Arduino...', delay: 1800, progress: 100 }
+      ]
+    },
+    esp32: {
+      titleKey: 'simulators.esp32.title',
+      defaultTitle: 'AyoSim ESP32',
+      steps: [
+        { tag: 'CORE', tagClass: 'sim-log-tag--core', key: 'sim_loader.esp32.step1', fallback: '[CORE] Initializing dual-core Tensilica Xtensa LX6 @ 240 MHz...', delay: 0, progress: 20 },
+        { tag: 'RTOS', tagClass: 'sim-log-tag--rtos', key: 'sim_loader.esp32.step2', fallback: '[RTOS] Spawning FreeRTOS kernel scheduler & IPC queues...', delay: 420, progress: 48 },
+        { tag: 'PHY', tagClass: 'sim-log-tag--phy', key: 'sim_loader.esp32.step3', fallback: '[PHY] Allocating 802.11 b/g/n virtual Wi-Fi & BLE 4.2 stack...', delay: 900, progress: 74 },
+        { tag: 'MEM', tagClass: 'sim-log-tag--mem', key: 'sim_loader.esp32.step4', fallback: '[MEM] Mounting 4MB SPI Flash & 520KB internal SRAM heap...', delay: 1380, progress: 92 },
+        { tag: 'READY', tagClass: 'sim-log-tag--ready', key: 'sim_loader.esp32.step5', fallback: '[READY] Environment compiled. Launching AyoSim ESP32...', delay: 1800, progress: 100 }
+      ]
+    },
+    rpi: {
+      titleKey: 'simulators.rpi.title',
+      defaultTitle: 'AyoSim Raspberry Pi',
+      steps: [
+        { tag: 'SOC', tagClass: 'sim-log-tag--soc', key: 'sim_loader.rpi.step1', fallback: '[SOC] Initializing Broadcom BCM2711 quad-core Cortex-A72 @ 1.5 GHz...', delay: 0, progress: 20 },
+        { tag: 'KERNEL', tagClass: 'sim-log-tag--kernel', key: 'sim_loader.rpi.step2', fallback: '[KERNEL] Booting embedded Linux kernel v6.1 & systemd rootfs...', delay: 420, progress: 48 },
+        { tag: 'GPIO', tagClass: 'sim-log-tag--gpio', key: 'sim_loader.rpi.step3', fallback: '[GPIO] Configuring 40-pin header & memory-mapped peripherals...', delay: 900, progress: 74 },
+        { tag: 'VFS', tagClass: 'sim-log-tag--vfs', key: 'sim_loader.rpi.step4', fallback: '[VFS] Mounting virtual disk image & Python 3.11 runtime...', delay: 1380, progress: 92 },
+        { tag: 'READY', tagClass: 'sim-log-tag--ready', key: 'sim_loader.rpi.step5', fallback: '[READY] Environment compiled. Launching AyoSim Raspberry Pi...', delay: 1800, progress: 100 }
+      ]
+    }
+  };
+
+  function startSimulatorLaunch(boardId, targetUrl) {
+    cancelLaunch();
+
+    const modalTitle = document.getElementById('sim-modal-title');
+    const stream = document.getElementById('sim-modal-stream');
+    const stepName = document.getElementById('sim-modal-step-name');
+    const percentage = document.getElementById('sim-modal-percentage');
+    const progressFill = document.getElementById('sim-modal-progress-fill');
+
+    const boardConfig = BOARD_SEQUENCES[boardId] || BOARD_SEQUENCES.arduino;
+    const boardTitle = (translations[currentLang] && translations[currentLang][boardConfig.titleKey]) || boardConfig.defaultTitle;
+    if (modalTitle) modalTitle.textContent = boardTitle;
+
+    // Reset interface elements
+    if (stream) stream.innerHTML = '';
+    if (progressFill) progressFill.style.width = '0%';
+    if (percentage) percentage.textContent = '0%';
+    if (stepName) stepName.textContent = 'Initializing virtual kernel...';
+
+    // Show modal & blurred page backdrop
+    modal.classList.add('is-active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('sim-modal-active');
+
+    // Run timed sequence (2.0s duration)
+    boardConfig.steps.forEach((step) => {
+      const timer = setTimeout(() => {
+        const fullText = (translations[currentLang] && translations[currentLang][step.key]) || step.fallback;
+        
+        let cleanText = fullText;
+        let tagText = step.tag;
+        const tagMatch = fullText.match(/^\[([A-Z0-9_-]+)\]\s*(.*)$/);
+        if (tagMatch) {
+          tagText = tagMatch[1];
+          cleanText = tagMatch[2];
+        }
+
+        if (stream) {
+          const oldCursor = stream.querySelector('.sim-log-cursor');
+          if (oldCursor) oldCursor.remove();
+
+          const row = document.createElement('div');
+          row.className = 'sim-log-line';
+          row.innerHTML = `
+            <span class="sim-log-tag ${step.tagClass}">[${tagText}]</span>
+            <span class="sim-log-text">${cleanText}<span class="sim-log-cursor"></span></span>
+          `;
+          stream.appendChild(row);
+          stream.scrollTop = stream.scrollHeight;
+        }
+
+        if (progressFill) progressFill.style.width = `${step.progress}%`;
+        if (percentage) percentage.textContent = `${step.progress}%`;
+        if (stepName) stepName.textContent = cleanText;
+      }, step.delay);
+
+      activeLaunchTimeouts.push(timer);
+    });
+
+    // At 2050ms redirect to target simulator
+    const redirectTimer = setTimeout(() => {
+      if (progressFill) progressFill.style.width = '100%';
+      if (percentage) percentage.textContent = '100%';
+      if (!window.__testPauseRedirect) {
+        window.location.href = targetUrl;
+      }
+    }, 2050);
+
+    activeLaunchTimeouts.push(redirectTimer);
+  }
+
+  // Expose for testing and external trigger
+  window.startSimulatorLaunch = startSimulatorLaunch;
+  window.cancelLaunch = cancelLaunch;
+
+  // Intercept click on simulator cards
+  cards.forEach(card => {
+    card.addEventListener('click', (e) => {
+      // Allow user to Ctrl+click / Cmd+click or middle click to open tab naturally if desired
+      if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      e.preventDefault();
+
+      const boardId = card.getAttribute('data-sim');
+      const targetUrl = card.getAttribute('data-sim-url') || card.getAttribute('href');
+      startSimulatorLaunch(boardId, targetUrl);
+    });
+  });
+
+  // Close button & backdrop click
+  if (closeBtn) closeBtn.addEventListener('click', cancelLaunch);
+  if (backdrop) backdrop.addEventListener('click', cancelLaunch);
+
+  // Keyboard Esc key to abort
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+      cancelLaunch();
+    }
   });
 }
