@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AyoSim — The simulation portal for Arduino, ESP32, and Raspberry Pi. Tutorials, academic articles, and project showcases.">
+  <title>AyoSim — Simulate. Learn. Build.</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- ============================================
+       HEADER
+       ============================================ -->
+  <header class="header" role="banner">
+    <div class="container">
+      <a href="/" class="header__logo" aria-label="AyoSim Home">
+        <img src="assets/logo.png" alt="AYOT Logo" class="header__logo-img">
+        <span class="header__logo-text">AyoSim</span>
+      </a>
+
+      <nav class="header__nav" role="navigation" aria-label="Main navigation">
+        <ul class="header__links">
+          <li><a href="#simulators" class="header__link" data-i18n="nav.simulators">Simulators</a></li>
+          <li><a href="#tutorials" class="header__link" data-i18n="nav.tutorials">Tutorials</a></li>
+          <li><a href="#articles" class="header__link" data-i18n="nav.articles">Articles</a></li>
+          <li><a href="#projects" class="header__link" data-i18n="nav.projects">Projects</a></li>
+        </ul>
+
+        <div class="header__actions">
+          <!-- Language Selector -->
+          <div class="lang-selector">
+            <button class="lang-selector__btn" aria-label="Select language" aria-expanded="false">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span data-i18n="lang.current">EN</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </button>
+            <div class="lang-selector__dropdown" role="listbox">
+              <button class="lang-selector__option" data-lang="en" role="option">🇬🇧 English</button>
+              <button class="lang-selector__option" data-lang="fr" role="option">🇫🇷 Français</button>
+              <button class="lang-selector__option" data-lang="ar" role="option">🇸🇦 العربية</button>
+            </div>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button class="theme-toggle" aria-label="Toggle dark mode">
+            <!-- Moon (shown in light mode) -->
+            <svg class="theme-toggle__moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <!-- Sun (shown in dark mode) -->
+            <svg class="theme-toggle__sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+          </button>
+
+          <!-- Mobile Menu Toggle -->
+          <button class="header__menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================================
+         HERO SECTION
+         ============================================ -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero__content">
+          <div class="hero__badge">
+            <span class="hero__badge-dot"></span>
+            <span data-i18n="hero.badge">Open-source simulation platform</span>
+          </div>
+          <h1 class="hero__title">
+            <span data-i18n="hero.title_1">Simulate.</span>
+            <span class="hero__title-highlight" data-i18n="hero.title_2">Learn.</span>
+            <span data-i18n="hero.title_3">Build.</span>
+          </h1>
+          <p class="hero__subtitle" data-i18n="hero.subtitle">
+            Your gateway to hardware simulation. Explore Arduino, ESP32, and Raspberry Pi with interactive simulators, guided tutorials, and real-world projects.
+          </p>
+          <div class="hero__cta">
+            <a href="#simulators" class="btn btn--primary btn--lg" data-i18n="hero.cta_explore">
+              Explore Simulators
+            </a>
+            <a href="#tutorials" class="btn btn--outline btn--lg" data-i18n="hero.cta_learn">
+              Start Learning
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SIMULATORS SECTION
+         ============================================ -->
+    <section class="section simulators" id="simulators">
+      <div class="container">
+        <div class="section__header fade-in">
+          <h2 class="section__title" data-i18n="simulators.title">Choose Your Simulator<span class="dot-accent"></span></h2>
+          <p class="section__subtitle" data-i18n="simulators.subtitle">Three powerful platforms, one seamless experience. Pick your board and start simulating instantly.</p>
+        </div>
+
+        <div class="simulators__grid">
+          <!-- Arduino Card -->
+          <div class="sim-card fade-in">
+            <div class="sim-card__icon sim-card__icon--arduino">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm0-4h-2V7h2v6zm4 4h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+            </div>
+            <h3 class="sim-card__title" data-i18n="simulators.arduino.title">AyoSim Arduino</h3>
+            <p class="sim-card__desc" data-i18n="simulators.arduino.desc">
+              Simulate Arduino circuits, write and test sketches, and visualize component interactions in real-time.
+            </p>
+            <a href="https://ayosim-arduino.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card__link">
+              <span data-i18n="simulators.launch">Launch Simulator</span>
+              <svg class="sim-card__link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- ESP32 Card -->
+          <div class="sim-card fade-in">
+            <div class="sim-card__icon sim-card__icon--esp32">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6v-2zm0 4h8v2H6v-2zm10-4h2v2h-2v-2zm-4 0h2v2h-2v-2z"/>
+              </svg>
+            </div>
+            <h3 class="sim-card__title" data-i18n="simulators.esp32.title">AyoSim ESP32</h3>
+            <p class="sim-card__desc" data-i18n="simulators.esp32.desc">
+              Explore WiFi and Bluetooth-enabled projects with the ESP32 simulator. Test IoT applications before deploying.
+            </p>
+            <a href="https://ayosim-esp32.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card__link">
+              <span data-i18n="simulators.launch">Launch Simulator</span>
+              <svg class="sim-card__link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Raspberry Pi Card -->
+          <div class="sim-card fade-in">
+            <div class="sim-card__icon sim-card__icon--rpi">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 2v2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3V2h-2v2H9V2H7zm13 16H4V8h16v10zm-6-1h4v-4h-4v4z"/>
+              </svg>
+            </div>
+            <h3 class="sim-card__title" data-i18n="simulators.rpi.title">AyoSim Raspberry Pi</h3>
+            <p class="sim-card__desc" data-i18n="simulators.rpi.desc">
+              Simulate Raspberry Pi GPIO pins, run Python scripts, and prototype embedded Linux projects.
+            </p>
+            <a href="https://ayosim-rpi.vercel.app/" target="_blank" rel="noopener noreferrer" class="sim-card__link">
+              <span data-i18n="simulators.launch">Launch Simulator</span>
+              <svg class="sim-card__link-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         TUTORIALS SECTION
+         ============================================ -->
+    <section class="section tutorials" id="tutorials">
+      <div class="container">
+        <div class="section__header fade-in">
+          <h2 class="section__title" data-i18n="tutorials.title">Tutorials<span class="dot-accent"></span></h2>
+          <p class="section__subtitle" data-i18n="tutorials.subtitle">Step-by-step guides to get you started with each simulator and board.</p>
+        </div>
+
+        <div class="tab-bar fade-in">
+          <button class="tab-btn active" data-filter="all" data-i18n="filter.all">All</button>
+          <button class="tab-btn" data-filter="arduino" data-i18n="filter.arduino">Arduino</button>
+          <button class="tab-btn" data-filter="esp32" data-i18n="filter.esp32">ESP32</button>
+          <button class="tab-btn" data-filter="rpi" data-i18n="filter.rpi">Raspberry Pi</button>
+        </div>
+
+        <div class="content-grid">
+          <!-- Tutorial 1 -->
+          <div class="content-card fade-in" data-board="arduino">
+            <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+            <h3 class="content-card__title" data-i18n="tutorials.t1.title">Getting Started with AyoSim Arduino</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t1.desc">Learn the basics of the Arduino simulator — setting up your first circuit and running a blink sketch.</p>
+            <div class="content-card__meta">
+              <span>📖</span>
+              <span data-i18n="tutorials.t1.meta">Beginner · 10 min read</span>
+            </div>
+          </div>
+
+          <!-- Tutorial 2 -->
+          <div class="content-card fade-in" data-board="esp32">
+            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+            <h3 class="content-card__title" data-i18n="tutorials.t2.title">WiFi Setup on ESP32 Simulator</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t2.desc">Configure WiFi connectivity in the ESP32 simulator and test a simple HTTP server project.</p>
+            <div class="content-card__meta">
+              <span>📖</span>
+              <span data-i18n="tutorials.t2.meta">Intermediate · 15 min read</span>
+            </div>
+          </div>
+
+          <!-- Tutorial 3 -->
+          <div class="content-card fade-in" data-board="rpi">
+            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+            <h3 class="content-card__title" data-i18n="tutorials.t3.title">GPIO Basics with Raspberry Pi</h3>
+            <p class="content-card__desc" data-i18n="tutorials.t3.desc">Understand GPIO pin configuration and control LEDs and sensors in the Raspberry Pi simulator.</p>
+            <div class="content-card__meta">
+              <span>📖</span>
+              <span data-i18n="tutorials.t3.meta">Beginner · 12 min read</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         ACADEMIC ARTICLES SECTION
+         ============================================ -->
+    <section class="section articles" id="articles">
+      <div class="container">
+        <div class="section__header fade-in">
+          <h2 class="section__title" data-i18n="articles.title">Academic Articles<span class="dot-accent"></span></h2>
+          <p class="section__subtitle" data-i18n="articles.subtitle">Research papers, technical documentation, and in-depth references for each board.</p>
+        </div>
+
+        <div class="tab-bar fade-in">
+          <button class="tab-btn active" data-filter="all" data-i18n="filter.all">All</button>
+          <button class="tab-btn" data-filter="arduino" data-i18n="filter.arduino">Arduino</button>
+          <button class="tab-btn" data-filter="esp32" data-i18n="filter.esp32">ESP32</button>
+          <button class="tab-btn" data-filter="rpi" data-i18n="filter.rpi">Raspberry Pi</button>
+        </div>
+
+        <div class="content-grid">
+          <!-- Article 1 -->
+          <div class="content-card fade-in" data-board="arduino">
+            <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+            <h3 class="content-card__title" data-i18n="articles.a1.title">Arduino Architecture & ATmega328P Overview</h3>
+            <p class="content-card__desc" data-i18n="articles.a1.desc">A comprehensive look at the Arduino Uno architecture, the ATmega328P microcontroller, and its instruction set.</p>
+            <div class="content-card__meta">
+              <span>🎓</span>
+              <span data-i18n="articles.a1.meta">Technical Reference</span>
+            </div>
+          </div>
+
+          <!-- Article 2 -->
+          <div class="content-card fade-in" data-board="esp32">
+            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+            <h3 class="content-card__title" data-i18n="articles.a2.title">ESP32: Dual-Core Programming & FreeRTOS</h3>
+            <p class="content-card__desc" data-i18n="articles.a2.desc">Explore the ESP32's dual-core Xtensa architecture, task scheduling with FreeRTOS, and power management.</p>
+            <div class="content-card__meta">
+              <span>🎓</span>
+              <span data-i18n="articles.a2.meta">Research Paper</span>
+            </div>
+          </div>
+
+          <!-- Article 3 -->
+          <div class="content-card fade-in" data-board="rpi">
+            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+            <h3 class="content-card__title" data-i18n="articles.a3.title">Raspberry Pi in Education: A Systematic Review</h3>
+            <p class="content-card__desc" data-i18n="articles.a3.desc">Survey of Raspberry Pi applications in STEM education, covering embedded systems, IoT, and computer science teaching.</p>
+            <div class="content-card__meta">
+              <span>🎓</span>
+              <span data-i18n="articles.a3.meta">Literature Review</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         PROJECTS SECTION
+         ============================================ -->
+    <section class="section projects" id="projects">
+      <div class="container">
+        <div class="section__header fade-in">
+          <h2 class="section__title" data-i18n="projects.title">Projects<span class="dot-accent"></span></h2>
+          <p class="section__subtitle" data-i18n="projects.subtitle">Real-world project ideas you can build and test right in the simulators.</p>
+        </div>
+
+        <div class="tab-bar fade-in">
+          <button class="tab-btn active" data-filter="all" data-i18n="filter.all">All</button>
+          <button class="tab-btn" data-filter="arduino" data-i18n="filter.arduino">Arduino</button>
+          <button class="tab-btn" data-filter="esp32" data-i18n="filter.esp32">ESP32</button>
+          <button class="tab-btn" data-filter="rpi" data-i18n="filter.rpi">Raspberry Pi</button>
+        </div>
+
+        <div class="content-grid">
+          <!-- Project 1 -->
+          <div class="content-card fade-in" data-board="arduino">
+            <span class="content-card__tag content-card__tag--arduino">Arduino</span>
+            <h3 class="content-card__title" data-i18n="projects.p1.title">Smart Traffic Light System</h3>
+            <p class="content-card__desc" data-i18n="projects.p1.desc">Build a traffic light controller with pedestrian crossing detection using LEDs and sensors.</p>
+            <div class="content-card__meta">
+              <span>🔧</span>
+              <span data-i18n="projects.p1.meta">Beginner Project</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="content-card fade-in" data-board="esp32">
+            <span class="content-card__tag content-card__tag--esp32">ESP32</span>
+            <h3 class="content-card__title" data-i18n="projects.p2.title">IoT Weather Station</h3>
+            <p class="content-card__desc" data-i18n="projects.p2.desc">Create a connected weather station that reads sensor data and publishes it via MQTT over WiFi.</p>
+            <div class="content-card__meta">
+              <span>🔧</span>
+              <span data-i18n="projects.p2.meta">Intermediate Project</span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="content-card fade-in" data-board="rpi">
+            <span class="content-card__tag content-card__tag--rpi">Raspberry Pi</span>
+            <h3 class="content-card__title" data-i18n="projects.p3.title">Home Automation Dashboard</h3>
+            <p class="content-card__desc" data-i18n="projects.p3.desc">Prototype a home automation system with a web-based dashboard controlling GPIO-connected devices.</p>
+            <div class="content-card__meta">
+              <span>🔧</span>
+              <span data-i18n="projects.p3.meta">Advanced Project</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/logo.png" alt="AYOT Logo" style="height: 32px; filter: brightness(0) invert(1);">
+          <p class="footer__brand-desc" data-i18n="footer.desc">
+            AyoSim is the AYOT simulation ecosystem for hardware education. Simulate Arduino, ESP32, and Raspberry Pi — learn electronics without the hardware.
+          </p>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__col-title" data-i18n="footer.simulators">Simulators</h4>
+          <div class="footer__col-links">
+            <a href="https://ayosim-arduino.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer__col-link">AyoSim Arduino</a>
+            <a href="https://ayosim-esp32.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer__col-link">AyoSim ESP32</a>
+            <a href="https://ayosim-rpi.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer__col-link">AyoSim Raspberry Pi</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__col-title" data-i18n="footer.resources">Resources</h4>
+          <div class="footer__col-links">
+            <a href="#tutorials" class="footer__col-link" data-i18n="footer.link.tutorials">Tutorials</a>
+            <a href="#articles" class="footer__col-link" data-i18n="footer.link.articles">Academic Articles</a>
+            <a href="#projects" class="footer__col-link" data-i18n="footer.link.projects">Projects</a>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4 class="footer__col-title" data-i18n="footer.about">About</h4>
+          <div class="footer__col-links">
+            <a href="#" class="footer__col-link" data-i18n="footer.link.about_ayot">About AYOT</a>
+            <a href="#" class="footer__col-link" data-i18n="footer.link.contact">Contact</a>
+            <a href="#" class="footer__col-link" data-i18n="footer.link.github">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 AYOT. All rights reserved.</p>
+        <div class="footer__bottom-links">
+          <a href="#" class="footer__bottom-link" data-i18n="footer.privacy">Privacy Policy</a>
+          <a href="#" class="footer__bottom-link" data-i18n="footer.terms">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+/* ============================================
+   RESPONSIVE.CSS — Mobile-First Breakpoints
+   ============================================ */
+
+/* ── Mobile (< 480px) ── */
+@media (max-width: 480px) {
+  :root {
+    --font-size-hero: 2rem;
+    --font-size-3xl: 1.75rem;
+    --container-padding: var(--space-4);
+  }
+
+  .hero {
+    padding-block: var(--space-16) var(--space-12);
+  }
+
+  .hero__cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero__cta .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+/* ── Small screens (max 768px) ── */
+@media (max-width: 768px) {
+  :root {
+    --font-size-hero: 2.25rem;
+    --font-size-3xl: 1.875rem;
+    --header-height: 64px;
+  }
+
+  /* Header: show hamburger, hide nav links */
+  .header__links {
+    display: none;
+  }
+
+  .header__menu-toggle {
+    display: flex;
+  }
+
+  /* Mobile nav overlay */
+  .header__nav.mobile-open .header__links {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-6);
+    gap: var(--space-4);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Grids: single column */
+  .simulators__grid,
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  /* Footer: stack columns */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  /* Section spacing */
+  .section {
+    padding-block: var(--space-12);
+  }
+
+  .section__header {
+    margin-bottom: var(--space-8);
+  }
+}
+
+/* ── Tablet (481px - 1023px) ── */
+@media (min-width: 481px) and (max-width: 1023px) {
+  :root {
+    --font-size-hero: 2.75rem;
+  }
+
+  .simulators__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Third card spans full on tablet for balance */
+  .simulators__grid .sim-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 400px;
+    margin-inline: auto;
+  }
+
+  .content-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── Desktop (1024px+) ── */
+@media (min-width: 1024px) {
+  .simulators__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .content-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Wide (1280px+) ── */
+@media (min-width: 1280px) {
+  :root {
+    --container-padding: var(--space-8);
+  }
+}
+
+/* ── RTL Support (Phase 3 hook) ── */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+[dir="rtl"] .header__logo {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .sim-card__link-arrow {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .sim-card__link:hover .sim-card__link-arrow {
+  transform: scaleX(-1) translateX(4px);
+}
+
+[dir="rtl"] .lang-selector__dropdown {
+  right: auto;
+  left: 0;
+}

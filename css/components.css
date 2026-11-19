@@ -1,0 +1,355 @@
+/* ============================================
+   COMPONENTS.CSS — Reusable UI Components
+   ============================================ */
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  line-height: 1.4;
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+}
+
+.btn--primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.btn--outline:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-2px);
+}
+
+.btn--ghost {
+  background-color: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+
+.btn--ghost:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary);
+}
+
+.btn--lg {
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-lg);
+}
+
+.btn--sm {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-xs);
+}
+
+.btn__icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Simulator Card ── */
+.sim-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.sim-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-primary-200);
+}
+
+.sim-card__icon {
+  width: 72px;
+  height: 72px;
+  margin-inline: auto;
+  margin-bottom: var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  font-size: 2rem;
+}
+
+.sim-card__icon--arduino {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+[data-theme="dark"] .sim-card__icon--arduino {
+  background-color: rgba(46, 125, 50, 0.15);
+}
+
+.sim-card__icon--esp32 {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+[data-theme="dark"] .sim-card__icon--esp32 {
+  background-color: rgba(230, 81, 0, 0.15);
+}
+
+.sim-card__icon--rpi {
+  background-color: #FCE4EC;
+  color: #C62828;
+}
+
+[data-theme="dark"] .sim-card__icon--rpi {
+  background-color: rgba(198, 40, 40, 0.15);
+}
+
+.sim-card__title {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.sim-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+}
+
+.sim-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  transition: gap var(--transition-fast);
+}
+
+.sim-card__link:hover {
+  gap: var(--space-3);
+}
+
+.sim-card__link-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.sim-card__link:hover .sim-card__link-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Content Card (tutorials, articles, projects) ── */
+.content-card {
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.content-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--color-primary-200);
+}
+
+.content-card__tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+}
+
+.content-card__tag--arduino {
+  background-color: #E8F5E9;
+  color: #2E7D32;
+}
+
+.content-card__tag--esp32 {
+  background-color: #FFF3E0;
+  color: #E65100;
+}
+
+.content-card__tag--rpi {
+  background-color: #FCE4EC;
+  color: #C62828;
+}
+
+[data-theme="dark"] .content-card__tag--arduino {
+  background-color: rgba(46, 125, 50, 0.15);
+}
+[data-theme="dark"] .content-card__tag--esp32 {
+  background-color: rgba(230, 81, 0, 0.15);
+}
+[data-theme="dark"] .content-card__tag--rpi {
+  background-color: rgba(198, 40, 40, 0.15);
+}
+
+.content-card__title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+  line-height: 1.4;
+}
+
+.content-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-4);
+}
+
+.content-card__meta {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ── Theme Toggle ── */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+.theme-toggle__icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Sun icon visible in dark mode, moon in light */
+.theme-toggle__sun { display: none; }
+.theme-toggle__moon { display: block; }
+
+[data-theme="dark"] .theme-toggle__sun { display: block; }
+[data-theme="dark"] .theme-toggle__moon { display: none; }
+
+/* ── Language Selector ── */
+.lang-selector {
+  position: relative;
+}
+
+.lang-selector__btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: transparent;
+}
+
+.lang-selector__btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.lang-selector__dropdown {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 140px;
+  background-color: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all var(--transition-fast);
+  z-index: 50;
+}
+
+.lang-selector__dropdown.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-selector__option {
+  display: block;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: start;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.lang-selector__option:hover {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .lang-selector__option:hover {
+  background-color: rgba(74, 94, 171, 0.1);
+}
+
+.lang-selector__option:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.lang-selector__option:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* ── Scroll Animations (Phase 2 hook) ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
