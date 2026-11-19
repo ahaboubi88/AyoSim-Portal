@@ -6,7 +6,7 @@
   "nav.articles": "Articles",
   "nav.projects": "Projects",
 
-  "hero.badge": "Open-source simulation platform",
+  "hero.badge": "Interactive hardware simulation platform",
   "hero.title_1": "Simulate.",
   "hero.title_2": "Learn.",
   "hero.title_3": "Build.",
@@ -17,7 +17,8 @@
   "stats.simulators": "Simulators",
   "stats.tutorials": "Tutorials",
   "stats.languages": "Languages",
-  "stats.free": "Free & Open Source",
+  "stats.in_browser": "In-Browser",
+  "stats.free": "In-Browser",
 
   "simulators.title": "Choose Your Simulator",
   "simulators.subtitle": "Three powerful platforms, one seamless experience. Pick your board and start simulating instantly.",

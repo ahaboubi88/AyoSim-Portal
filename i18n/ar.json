@@ -6,7 +6,7 @@
   "nav.articles": "المقالات",
   "nav.projects": "المشاريع",
 
-  "hero.badge": "منصة محاكاة مفتوحة المصدر",
+  "hero.badge": "منصة تفاعلية لمحاكاة العتاد",
   "hero.title_1": "حاكِ.",
   "hero.title_2": "تعلَّم.",
   "hero.title_3": "ابنِ.",
@@ -17,7 +17,8 @@
   "stats.simulators": "محاكيات",
   "stats.tutorials": "دروس",
   "stats.languages": "لغات",
-  "stats.free": "مجاني ومفتوح المصدر",
+  "stats.in_browser": "عبر المتصفح بالكامل",
+  "stats.free": "عبر المتصفح بالكامل",
 
   "simulators.title": "اختر المحاكي الخاص بك",
   "simulators.subtitle": "ثلاث منصات قوية، تجربة واحدة سلسة. اختر لوحتك وابدأ المحاكاة فوراً.",

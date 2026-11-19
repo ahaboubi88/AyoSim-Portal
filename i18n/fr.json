@@ -6,7 +6,7 @@
   "nav.articles": "Articles",
   "nav.projects": "Projets",
 
-  "hero.badge": "Plateforme de simulation open-source",
+  "hero.badge": "Plateforme interactive de simulation matérielle",
   "hero.title_1": "Simulez.",
   "hero.title_2": "Apprenez.",
   "hero.title_3": "Construisez.",
@@ -17,7 +17,8 @@
   "stats.simulators": "Simulateurs",
   "stats.tutorials": "Tutoriels",
   "stats.languages": "Langues",
-  "stats.free": "Gratuit & Open Source",
+  "stats.in_browser": "Dans le navigateur",
+  "stats.free": "Dans le navigateur",
 
   "simulators.title": "Choisissez votre simulateur",
   "simulators.subtitle": "Trois plateformes puissantes, une expérience fluide. Choisissez votre carte et commencez à simuler instantanément.",
