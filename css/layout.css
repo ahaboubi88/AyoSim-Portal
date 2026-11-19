@@ -87,8 +87,9 @@ body {
 }
 
 .header__logo img {
-  height: 36px;
+  height: 38px;
   width: auto;
+  display: block;
 }
 
 .header__logo-text {
