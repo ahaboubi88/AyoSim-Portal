@@ -411,9 +411,7 @@ function initSimulatorLauncher() {
     const redirectTimer = setTimeout(() => {
       if (progressFill) progressFill.style.width = '100%';
       if (percentage) percentage.textContent = '100%';
-      if (!window.__testPauseRedirect) {
-        window.location.href = targetUrl;
-      }
+      window.location.href = targetUrl;
     }, 2050);
 
     activeLaunchTimeouts.push(redirectTimer);
@@ -443,6 +441,13 @@ function initSimulatorLauncher() {
   // Keyboard Esc key to abort
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+      cancelLaunch();
+    }
+  });
+
+  // Clear modal when page is restored from bfcache (browser Back button)
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
       cancelLaunch();
     }
   });
