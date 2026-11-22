@@ -13,9 +13,11 @@
  * Demo/Mock Auth Mode, enabling full client testing without live credentials.
  */
 
-window.AYOSIM_SUPABASE_CONFIG = {
-  url: 'https://placeholder-project.supabase.co',
-  anonKey: 'placeholder-anon-key-replace-with-your-supabase-anon-key',
+var targetScope = typeof window !== 'undefined' ? window : (typeof global !== 'undefined' ? global : this);
+
+targetScope.AYOSIM_SUPABASE_CONFIG = {
+  url: 'https://czyutlgavugzgvzwfviz.supabase.co',
+  anonKey: 'sb_publishable_yV-pg4Y50yepyPER1tmcEA_pPuHLmOU',
 
   /**
    * Checks whether valid live Supabase credentials have been configured.

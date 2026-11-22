@@ -62,7 +62,7 @@ fakeWindow.window = fakeWindow;
 const ctx = vm.createContext(fakeWindow);
 vm.runInContext(fs.readFileSync('js/supabase-config.js', 'utf8'), ctx);
 assert(ctx.window.AYOSIM_SUPABASE_CONFIG, 'AYOSIM_SUPABASE_CONFIG not found');
-assert.strictEqual(ctx.window.AYOSIM_SUPABASE_CONFIG.isConfigured(), false, 'Default config should report isConfigured = false');
+assert.strictEqual(ctx.window.AYOSIM_SUPABASE_CONFIG.isConfigured(), true, 'Live config should report isConfigured = true');
 
 vm.runInContext(fs.readFileSync('js/auth.js', 'utf8'), ctx);
 assert(ctx.window.AyoSimAuth, 'AyoSimAuth not found on window');
