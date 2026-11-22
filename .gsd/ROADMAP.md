@@ -67,3 +67,14 @@
 - Close/Cancel button and `Escape` key handling to abort sequence
 - Full trilingual support (EN, FR, AR) and RTL layout adaptation
 - Empirical validation with headless browser visual and functional tests
+
+### Phase 6: Search Engine Optimization (SEO) & Generative Engine Optimization (GEO)
+**Status**: ✅ Complete
+**Objective**: Maximize organic visibility across traditional search engines (Google, Bing) and AI search answer engines (Perplexity, ChatGPT Search, Google AI Overviews, Claude, Gemini).
+**Deliverables**:
+- GEO architecture: `llms.txt` and `llms-full.txt` implementation for AI ingestion
+- AI crawler rules in `robots.txt` (GPTBot, PerplexityBot, ClaudeBot, Google-Extended)
+- JSON-LD structured data (SoftwareApplication, Organization, FAQPage with competitor comparisons)
+- Multilingual SEO (`hreflang` tags across EN, FR, AR in HTML and XML sitemap)
+- High-intent keyword optimization for Arduino, ESP32 WiFi/BLE, and Raspberry Pi Linux simulation
+- Google Search Console and Bing Webmaster Tools verification hooks

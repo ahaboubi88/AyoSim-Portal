@@ -5,12 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta -->
-  <title>AyoSim — Simulate. Learn. Build. | Arduino, ESP32 & Raspberry Pi</title>
-  <meta name="description" content="AyoSim is the AYOT simulation portal for Arduino, ESP32, and Raspberry Pi. Interactive simulators, step-by-step tutorials, academic articles, and real-world projects — available in English, French, and Arabic.">
-  <meta name="keywords" content="AyoSim, AYOT, Arduino simulator, ESP32 simulator, Raspberry Pi simulator, hardware simulation, electronics education, IoT, embedded systems, GPIO">
+  <title>AyoSim — In-Browser Hardware Simulator | Arduino, ESP32 & Raspberry Pi</title>
+  <meta name="description" content="AyoSim is an interactive in-browser hardware simulation platform for Arduino (ATmega328P), ESP32 (Wi-Fi & BLE), and Raspberry Pi (Linux & 40-pin GPIO). 50+ tutorials, real-world IoT projects, available in English, French, and Arabic.">
+  <meta name="keywords" content="AyoSim, AYOT, Arduino simulator, ESP32 simulator, Raspberry Pi simulator, browser hardware simulation, ESP32 Bluetooth simulation, Raspberry Pi Linux simulator, online circuit simulator, Wokwi alternative, Tinkercad alternative, IoT simulation, embedded systems">
   <meta name="author" content="AYOT">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://ayosim.vercel.app/">
+
+  <!-- Multilingual SEO (hreflang) -->
+  <link rel="alternate" hreflang="x-default" href="https://ayosim.vercel.app/">
+  <link rel="alternate" hreflang="en" href="https://ayosim.vercel.app/">
+  <link rel="alternate" hreflang="fr" href="https://ayosim.vercel.app/">
+  <link rel="alternate" hreflang="ar" href="https://ayosim.vercel.app/">
+
+  <!-- AI & Generative Engine Knowledge File -->
+  <link rel="alternate" type="text/plain" href="https://ayosim.vercel.app/llms.txt" title="AyoSim LLM Knowledge Base">
+
+  <!-- Search Engine Verification Placeholders -->
+  <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE"> -->
+  <!-- <meta name="msvalidate.01" content="YOUR_BING_VERIFICATION_CODE"> -->
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -69,24 +82,118 @@
   <!-- Skip to main content (accessibility) -->
   <a href="#hero" class="skip-link">Skip to main content</a>
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data (Schema.org JSON-LD Graph) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "AyoSim",
-    "alternateName": "AYOT Simulation Platform",
-    "url": "https://ayosim.vercel.app/",
-    "description": "Interactive simulation portal for Arduino, ESP32, and Raspberry Pi — tutorials, academic articles, and projects.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "AYOT",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://ayosim.vercel.app/assets/logo.png"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://ayosim.vercel.app/#website",
+        "url": "https://ayosim.vercel.app/",
+        "name": "AyoSim",
+        "alternateName": ["AYOT Simulation Platform", "AyoSim Hardware Simulator"],
+        "description": "Interactive in-browser hardware simulation platform for Arduino, ESP32, and Raspberry Pi.",
+        "publisher": {
+          "@id": "https://ayosim.vercel.app/#organization"
+        },
+        "inLanguage": ["en", "fr", "ar"]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://ayosim.vercel.app/#organization",
+        "name": "AYOT",
+        "url": "https://ayosim.vercel.app/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://ayosim.vercel.app/assets/logo.png?v=1.8",
+          "width": 994,
+          "height": 246
+        }
+      },
+      {
+        "@type": "WebApplication",
+        "@id": "https://ayosim.vercel.app/#webapp",
+        "name": "AyoSim Hardware Simulator",
+        "url": "https://ayosim.vercel.app/",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Web Browser",
+        "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas & WebGL support.",
+        "description": "In-browser embedded electronics simulation suite featuring Arduino (ATmega328P), ESP32 (Wi-Fi & BLE), and full Raspberry Pi (Linux & 40-pin GPIO).",
+        "image": "https://ayosim.vercel.app/assets/og-image.png?v=2.1",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock"
+        },
+        "featureList": [
+          "Interactive Arduino ATmega328P simulation with virtual UART serial monitor",
+          "ESP32 dual-core Xtensa simulation with FreeRTOS, Wi-Fi, and BLE 4.2",
+          "Raspberry Pi Cortex-A72 simulation with embedded Linux v6.1 and Python 3 runtime",
+          "Trilingual support in English, French, and Arabic with native RTL layout",
+          "50+ step-by-step guided tutorials and real-world project builds",
+          "Zero software installation, 100% in-browser execution"
+        ],
+        "author": {
+          "@id": "https://ayosim.vercel.app/#organization"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://ayosim.vercel.app/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is AyoSim?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AyoSim is an in-browser hardware simulation platform by AYOT that allows engineers, students, and makers to design, program, and simulate Arduino, ESP32, and Raspberry Pi circuits without physical components."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does AyoSim compare to Wokwi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "While Wokwi supports Arduino, ESP32, and the Raspberry Pi Pico (RP2040 microcontroller), AyoSim simulates the full Raspberry Pi Single Board Computer (Cortex-A72) with Linux terminal emulation, Python 3, and 40-pin GPIO. AyoSim also includes ESP32 Bluetooth Low Energy (BLE) simulation, which Wokwi lacks, and provides native trilingual support (English, French, Arabic)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does AyoSim compare to Tinkercad Circuits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tinkercad Circuits only supports 8-bit Arduino microcontrollers and lacks both ESP32 and Raspberry Pi. AyoSim supports Arduino, ESP32 with Wi-Fi and Bluetooth, and full Raspberry Pi with Linux terminal and Python programming."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does AyoSim support Bluetooth and Wi-Fi simulation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AyoSim's ESP32 simulator features both virtual 802.11 b/g/n Wi-Fi and Bluetooth Low Energy (BLE 4.2) stack emulation, allowing you to build real-world IoT projects without physical hardware."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you simulate a full Raspberry Pi on AyoSim?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AyoSim provides full Raspberry Pi simulation featuring Broadcom BCM2711 quad-core Cortex-A72 architecture, an embedded Linux kernel v6.1 with bash shell, Python 3.11 runtime, and interactive 40-pin GPIO emulation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What languages does AyoSim support?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AyoSim is fully localized in English, French, and Arabic, featuring complete Right-to-Left (RTL) layout switching."
+            }
+          }
+        ]
       }
-    },
-    "inLanguage": ["en", "fr", "ar"]
+    ]
   }
   </script>
 
