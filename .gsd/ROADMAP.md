@@ -95,10 +95,13 @@
 - **Localization**: Full trilingual support across English, French, and Arabic with RTL layout
 - **Future Integration**: Ready for cloud saving of user simulation circuits and projects
 
-**Tasks**:
-- [ ] TBD (run /plan 7 to create execution plans)
+**Plans**:
+- [ ] [Plan 7.1: Supabase Client & Auth State Engine](phases/7/01-PLAN.md) (Wave 1)
+- [ ] [Plan 7.2: Auth Modal & Header UI Components](phases/7/02-PLAN.md) (Wave 2)
+- [ ] [Plan 7.3: Auth Interaction Flows, Localization & Verification](phases/7/03-PLAN.md) (Wave 3)
 
 **Verification**:
-- TBD
+- Automated headless test verifying DOM nodes, scripts, styles, auth modal interactions, and trilingual i18n dictionaries.
+
 
 
