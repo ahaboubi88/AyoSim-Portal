@@ -28,12 +28,12 @@ function initThemeToggle() {
   const toggle = document.querySelector('.theme-toggle');
   if (!toggle) return;
 
-  // Load saved theme
-  const savedTheme = localStorage.getItem('ayosim-theme') || 'light';
+  // Load saved theme (defaults to dark mode)
+  const savedTheme = localStorage.getItem('ayosim-theme') || 'dark';
   document.documentElement.setAttribute('data-theme', savedTheme);
 
   toggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('ayosim-theme', next);
