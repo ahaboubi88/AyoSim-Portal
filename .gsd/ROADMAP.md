@@ -103,5 +103,25 @@
 **Verification**:
 - Automated test script (`scripts/verify-phase-7.js`) verifying DOM nodes, scripts, styles, auth modal interactions, and trilingual i18n dictionaries. Verified in [VERIFICATION.md](phases/7/VERIFICATION.md).
 
+---
+
+### Phase 8: Unified Simulator Ecosystem (Making All Simulators Feel Like One App Safely)
+**Status**: ⬜ Not Started
+**Objective**: Unify all three hardware simulators (AyoSim-Arduino, AyoSim-ESP32, AyoSim-Raspberry) and the AyoSim Portal into a seamless, unified single-platform experience without risky monolithic code bloat or WebGL/WASM memory crashes.
+**Depends on**: Phase 7
+
+**Scope & Specifications**:
+- **Domain & Sub-Path Federation**: Route `/arduino`, `/esp32`, and `/rpi` under the primary domain (`ayosim.vercel.app`) via Vercel rewrites or unified monorepo deployment while maintaining independent runtime sandboxes.
+- **Unified Global Navigation & Board Switcher**: Provide an identical responsive top bar across all simulators featuring the AYOT brand mark, quick board switcher dropdown (`Arduino Uno` / `ESP32` / `Raspberry Pi 4`), and "Back to Portal" shortcut.
+- **Shared Authentication & Project Cloud Sync**: Share Supabase authentication state and user sessions across the portal and all simulators; enable unified project saving and user profile dashboard.
+- **Runtime Process Isolation**: Preserve separate WASM and Three.js memory lifecycles (`@live-codes/clang-wasm` for Arduino, `pyodide` for ESP32/RPi) to guarantee 100% stability, fast loading, and zero mobile memory crashes.
+
+**Tasks**:
+- [ ] TBD (run /plan 8 to create)
+
+**Verification**:
+- TBD
+
+
 
 

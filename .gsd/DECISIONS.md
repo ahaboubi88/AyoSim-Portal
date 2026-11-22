@@ -21,3 +21,11 @@
 **Context**: Need trilingual support (EN/FR/AR) without a backend
 **Decision**: Store translations in JSON files, switch via JS with localStorage
 **Rationale**: Simple, no dependencies, works with static hosting
+
+## ADR-004: Ecosystem Federation & Sub-Path Routing over Monolithic Bundle
+**Date**: 2026-11-22
+**Status**: Accepted
+**Context**: Need to make all three simulators (Arduino, ESP32, RPi) feel like one integrated platform under AyoSim. Merging all codebases into a single monolithic bundle risks severe WASM memory collisions (Clang + Pyodide), WebGL context exhaustion, and COOP/COEP OAuth conflicts.
+**Decision**: Keep independent build targets and runtime sandboxes, but unify user experience via sub-path routing (`/arduino`, `/esp32`, `/rpi`), shared global navigation/board switcher, and unified Supabase auth/storage.
+**Rationale**: Guarantees zero runtime crashes and process isolation while delivering a seamless "single app" feel to the end user.
+
