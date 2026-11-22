@@ -13,11 +13,11 @@ AyoSim Portal is the central hub for the AYOT simulation ecosystem — a triling
 3. **Trilingual accessibility** — Full English, French, and Arabic support with proper RTL layout
 4. **Brand cohesion** — Visual identity derived from the AYOT logo (blue palette, modern, clean)
 5. **Dark/light theme** — User-toggleable theme with persistence
+6. **User authentication & accounts** — Secure user identity, sessions, and profile UI to support saving circuits/projects (Phase 7)
 
 ## Non-Goals (Out of Scope)
 
 - Embedding simulators directly (they are separate apps)
-- User authentication or accounts (future consideration, not v1)
 - Blog or CMS backend
 - Real-time collaboration features
 - Mobile apps

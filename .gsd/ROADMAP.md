@@ -78,3 +78,17 @@
 - Multilingual SEO (`hreflang` tags across EN, FR, AR in HTML and XML sitemap)
 - High-intent keyword optimization for Arduino, ESP32 WiFi/BLE, and Raspberry Pi Linux simulation
 - Google Search Console and Bing Webmaster Tools verification hooks
+
+---
+
+### Phase 7: User Authentication & Account System
+**Status**: ⬜ Not Started
+**Objective**: Implement secure user authentication (Sign Up, Sign In, Sign Out, Password Reset, and OAuth social providers) with session management, header profile UI, and trilingual support (EN, FR, AR) to establish user identity across AyoSim.
+**Depends on**: Phase 4 & Phase 6
+
+**Tasks**:
+- [ ] TBD (run /plan 7 to create)
+
+**Verification**:
+- TBD
+
