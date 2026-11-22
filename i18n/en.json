@@ -138,5 +138,22 @@
   "sim_loader.rpi.step2": "[KERNEL] Booting embedded Linux kernel v6.1 & systemd rootfs...",
   "sim_loader.rpi.step3": "[GPIO] Configuring 40-pin header & memory-mapped peripherals...",
   "sim_loader.rpi.step4": "[VFS] Mounting virtual disk image & Python 3.11 runtime...",
-  "sim_loader.rpi.step5": "[READY] Environment compiled. Launching AyoSim Raspberry Pi..."
+  "sim_loader.rpi.step5": "[READY] Environment compiled. Launching AyoSim Raspberry Pi...",
+
+  "auth.signIn": "Sign In",
+  "auth.signUp": "Sign Up",
+  "auth.signOut": "Sign Out",
+  "auth.email": "Email Address",
+  "auth.password": "Password",
+  "auth.fullName": "Full Name",
+  "auth.forgotPassword": "Forgot password?",
+  "auth.backToSignIn": "← Back to Sign In",
+  "auth.sendResetLink": "Send Reset Link",
+  "auth.resetInstruction": "Enter your email address and we will send you a password reset link.",
+  "auth.orContinueWith": "or continue with",
+  "auth.google": "Google",
+  "auth.github": "GitHub",
+  "auth.demoBadge": "Demo Mode Active (Live Supabase API ready)",
+  "auth.freePlan": "Free Plan",
+  "auth.termsHint": "By continuing, you agree to AyoSim's terms of service and privacy policy."
 }

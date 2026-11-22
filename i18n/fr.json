@@ -138,5 +138,22 @@
   "sim_loader.rpi.step2": "[KERNEL] Démarrage du noyau Linux embarqué v6.1 et rootfs...",
   "sim_loader.rpi.step3": "[GPIO] Configuration du connecteur 40 broches et périphériques...",
   "sim_loader.rpi.step4": "[VFS] Montage de l'image disque virtuelle et runtime Python 3.11...",
-  "sim_loader.rpi.step5": "[READY] Environnement compilé. Lancement d'AyoSim Raspberry Pi..."
+  "sim_loader.rpi.step5": "[READY] Environnement compilé. Lancement d'AyoSim Raspberry Pi...",
+
+  "auth.signIn": "Connexion",
+  "auth.signUp": "Inscription",
+  "auth.signOut": "Déconnexion",
+  "auth.email": "Adresse e-mail",
+  "auth.password": "Mot de passe",
+  "auth.fullName": "Nom complet",
+  "auth.forgotPassword": "Mot de passe oublié ?",
+  "auth.backToSignIn": "← Retour à la connexion",
+  "auth.sendResetLink": "Envoyer le lien de réinitialisation",
+  "auth.resetInstruction": "Entrez votre adresse e-mail pour recevoir un lien de réinitialisation.",
+  "auth.orContinueWith": "ou continuer avec",
+  "auth.google": "Google",
+  "auth.github": "GitHub",
+  "auth.demoBadge": "Mode Démo Actif (API Supabase prête)",
+  "auth.freePlan": "Plan Gratuit",
+  "auth.termsHint": "En continuant, vous acceptez les conditions d'utilisation et la politique de confidentialité d'AyoSim."
 }

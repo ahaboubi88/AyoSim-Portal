@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initI18n(); // Must come last — loads translations and triggers lang selector
   initSimulatorLauncher(); // Phase 5: Interstitial provisioning modal
+  initAuthUI(); // Phase 7: Supabase Authentication UI
 });
 
 /* ── Theme Toggle ── */
@@ -481,4 +482,270 @@ function initSimulatorLauncher() {
   window.addEventListener('popstate', () => {
     cancelLaunch();
   });
+}
+
+/* ============================================
+   Phase 7: Supabase Authentication UI
+   ============================================ */
+
+function initAuthUI() {
+  if (typeof window.AyoSimAuth === 'undefined') return;
+
+  // Header Elements
+  const authSignInBtn = document.getElementById('auth-sign-in-btn');
+  const userMenu = document.getElementById('user-menu');
+  const userMenuBtn = document.getElementById('user-menu-btn');
+  const userMenuDropdown = document.getElementById('user-menu-dropdown');
+  const userMenuAvatar = document.getElementById('user-menu-avatar');
+  const userMenuName = document.getElementById('user-menu-name');
+  const userMenuEmail = document.getElementById('user-menu-email');
+  const authSignOutBtn = document.getElementById('auth-sign-out-btn');
+
+  // Modal Elements
+  const authModal = document.getElementById('auth-modal');
+  const authModalBackdrop = document.getElementById('auth-modal-backdrop');
+  const authModalClose = document.getElementById('auth-modal-close');
+  const authTabSignin = document.getElementById('auth-tab-signin');
+  const authTabSignup = document.getElementById('auth-tab-signup');
+  const authFieldName = document.getElementById('auth-field-name');
+  const authInputName = document.getElementById('auth-input-name');
+  const authInputEmail = document.getElementById('auth-input-email');
+  const authInputPassword = document.getElementById('auth-input-password');
+  const authForm = document.getElementById('auth-form');
+  const authSubmitBtn = document.getElementById('auth-submit-btn');
+  const authSubmitText = document.getElementById('auth-submit-text');
+  const authSubmitSpinner = document.getElementById('auth-submit-spinner');
+  const authAlert = document.getElementById('auth-alert');
+  const authDemoBadge = document.getElementById('auth-demo-badge');
+  const authForgotPasswordLink = document.getElementById('auth-forgot-password-link');
+  const authResetForm = document.getElementById('auth-reset-form');
+  const authResetEmail = document.getElementById('auth-reset-email');
+  const authResetSubmitBtn = document.getElementById('auth-reset-submit-btn');
+  const authBackToLogin = document.getElementById('auth-back-to-login');
+  const authGoogleBtn = document.getElementById('auth-google-btn');
+  const authGithubBtn = document.getElementById('auth-github-btn');
+
+  if (!authModal || !authSignInBtn) return;
+
+  let currentAuthTab = 'signin'; // 'signin' | 'signup'
+
+  function getI18nText(key, fallback) {
+    if (translations[currentLang] && translations[currentLang][key]) {
+      return translations[currentLang][key];
+    }
+    return fallback;
+  }
+
+  function showAlert(message, type) {
+    if (!authAlert) return;
+    authAlert.textContent = message;
+    authAlert.className = 'auth-modal__alert auth-modal__alert--' + (type || 'info');
+    authAlert.style.display = 'block';
+  }
+
+  function clearAlert() {
+    if (!authAlert) return;
+    authAlert.textContent = '';
+    authAlert.style.display = 'none';
+  }
+
+  function setSubmitting(isSubmitting) {
+    if (!authSubmitBtn) return;
+    authSubmitBtn.disabled = isSubmitting;
+    if (authSubmitSpinner) {
+      authSubmitSpinner.style.display = isSubmitting ? 'inline-block' : 'none';
+    }
+  }
+
+  function switchTab(tab) {
+    currentAuthTab = tab;
+    clearAlert();
+
+    // Toggle active tab classes & ARIA
+    if (tab === 'signup') {
+      authTabSignup?.classList.add('auth-modal__tab--active');
+      authTabSignup?.setAttribute('aria-selected', 'true');
+      authTabSignin?.classList.remove('auth-modal__tab--active');
+      authTabSignin?.setAttribute('aria-selected', 'false');
+
+      if (authFieldName) authFieldName.style.display = 'block';
+      if (authSubmitText) authSubmitText.textContent = getI18nText('auth.signUp', 'Sign Up');
+      authInputName?.focus();
+    } else {
+      authTabSignin?.classList.add('auth-modal__tab--active');
+      authTabSignin?.setAttribute('aria-selected', 'true');
+      authTabSignup?.classList.remove('auth-modal__tab--active');
+      authTabSignup?.setAttribute('aria-selected', 'false');
+
+      if (authFieldName) authFieldName.style.display = 'none';
+      if (authSubmitText) authSubmitText.textContent = getI18nText('auth.signIn', 'Sign In');
+      authInputEmail?.focus();
+    }
+
+    // Ensure primary form is visible and reset form is hidden
+    if (authForm) authForm.style.display = 'block';
+    if (authResetForm) authResetForm.style.display = 'none';
+  }
+
+  function openModal(tab) {
+    switchTab(tab || 'signin');
+    authModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    // Update demo badge visibility
+    if (authDemoBadge) {
+      authDemoBadge.style.display = window.AyoSimAuth.isDemoMode() ? 'inline-flex' : 'none';
+    }
+  }
+
+  function closeModal() {
+    authModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    clearAlert();
+    setSubmitting(false);
+  }
+
+  // Header Trigger: Open Modal
+  authSignInBtn.addEventListener('click', () => {
+    openModal('signin');
+  });
+
+  // Modal Close Triggers
+  authModalClose?.addEventListener('click', closeModal);
+  authModalBackdrop?.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && authModal.getAttribute('aria-hidden') === 'false') {
+      closeModal();
+    }
+  });
+
+  // Tab Switching
+  authTabSignin?.addEventListener('click', () => switchTab('signin'));
+  authTabSignup?.addEventListener('click', () => switchTab('signup'));
+
+  // Forgot Password Toggle
+  authForgotPasswordLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    clearAlert();
+    if (authForm) authForm.style.display = 'none';
+    if (authResetForm) authResetForm.style.display = 'block';
+    authResetEmail?.focus();
+  });
+
+  authBackToLogin?.addEventListener('click', (e) => {
+    e.preventDefault();
+    clearAlert();
+    if (authForm) authForm.style.display = 'block';
+    if (authResetForm) authResetForm.style.display = 'none';
+    authInputEmail?.focus();
+  });
+
+  // Primary Form Submit (Sign In or Sign Up)
+  authForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearAlert();
+
+    const email = authInputEmail?.value.trim() || '';
+    const password = authInputPassword?.value || '';
+    const fullName = authInputName?.value.trim() || '';
+
+    if (!email || !password) {
+      showAlert(getI18nText('auth.invalidFields', 'Please enter your email and password.'), 'error');
+      return;
+    }
+
+    setSubmitting(true);
+
+    if (currentAuthTab === 'signup') {
+      await window.AyoSimAuth.signUp(email, password, fullName);
+    } else {
+      await window.AyoSimAuth.signInWithPassword(email, password);
+    }
+
+    setSubmitting(false);
+  });
+
+  // Forgot Password Form Submit
+  authResetForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearAlert();
+
+    const email = authResetEmail?.value.trim() || '';
+    if (!email) {
+      showAlert(getI18nText('auth.invalidEmail', 'Please enter your email address.'), 'error');
+      return;
+    }
+
+    if (authResetSubmitBtn) authResetSubmitBtn.disabled = true;
+    await window.AyoSimAuth.resetPassword(email);
+    if (authResetSubmitBtn) authResetSubmitBtn.disabled = false;
+  });
+
+  // Social OAuth Triggers
+  authGoogleBtn?.addEventListener('click', () => {
+    clearAlert();
+    window.AyoSimAuth.signInWithOAuth('google');
+  });
+
+  authGithubBtn?.addEventListener('click', () => {
+    clearAlert();
+    window.AyoSimAuth.signInWithOAuth('github');
+  });
+
+  // User Profile Menu Dropdown
+  userMenuBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isOpen = userMenuDropdown?.classList.toggle('active');
+    userMenuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+
+  document.addEventListener('click', () => {
+    userMenuDropdown?.classList.remove('active');
+    userMenuBtn?.setAttribute('aria-expanded', 'false');
+  });
+
+  // Sign Out Trigger
+  authSignOutBtn?.addEventListener('click', () => {
+    window.AyoSimAuth.signOut();
+  });
+
+  // Auth State Reactive Synchronization
+  window.addEventListener('ayosim:auth:change', (e) => {
+    const detail = e.detail || {};
+    const user = detail.user;
+
+    if (user) {
+      // Authenticated state
+      authSignInBtn.style.display = 'none';
+      if (userMenu) userMenu.style.display = 'inline-flex';
+
+      const displayName = user.user_metadata?.full_name || user.email?.split('@')[0] || 'User';
+      const initial = displayName.charAt(0).toUpperCase();
+
+      if (userMenuAvatar) userMenuAvatar.textContent = initial;
+      if (userMenuName) userMenuName.textContent = displayName;
+      if (userMenuEmail) userMenuEmail.textContent = user.email || '';
+
+      closeModal();
+    } else {
+      // Unauthenticated state
+      authSignInBtn.style.display = 'inline-flex';
+      if (userMenu) userMenu.style.display = 'none';
+      userMenuDropdown?.classList.remove('active');
+    }
+  });
+
+  window.addEventListener('ayosim:auth:error', (e) => {
+    showAlert(e.detail?.message || 'Authentication error', 'error');
+    setSubmitting(false);
+  });
+
+  window.addEventListener('ayosim:auth:message', (e) => {
+    showAlert(e.detail?.message || 'Notice', e.detail?.type || 'info');
+    setSubmitting(false);
+  });
+
+  // Initialize engine
+  window.AyoSimAuth.init();
 }

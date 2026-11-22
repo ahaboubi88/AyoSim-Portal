@@ -138,5 +138,22 @@
   "sim_loader.rpi.step2": "[KERNEL] إقلاع نواة نظام لينكس المدمج v6.1 ونظام الملفات...",
   "sim_loader.rpi.step3": "[GPIO] تكوين منافذ 40-pin GPIO وربط الأجهزة الطرفية...",
   "sim_loader.rpi.step4": "[VFS] تحميل صورة القرص الافتراضية وبيئة تشغيل بايثون 3.11...",
-  "sim_loader.rpi.step5": "[READY] اكتمل بناء البيئة. جاري تشغيل محاكي AyoSim Raspberry Pi..."
+  "sim_loader.rpi.step5": "[READY] اكتمل بناء البيئة. جاري تشغيل محاكي AyoSim Raspberry Pi...",
+
+  "auth.signIn": "تسجيل الدخول",
+  "auth.signUp": "إنشاء حساب",
+  "auth.signOut": "تسجيل الخروج",
+  "auth.email": "البريد الإلكتروني",
+  "auth.password": "كلمة المرور",
+  "auth.fullName": "الاسم الكامل",
+  "auth.forgotPassword": "نسيت كلمة المرور؟",
+  "auth.backToSignIn": "← العودة إلى تسجيل الدخول",
+  "auth.sendResetLink": "إرسال رابط إعادة التعيين",
+  "auth.resetInstruction": "أدخل عنوان بريدك الإلكتروني وسنرسل لك رابط إعادة تعيين كلمة المرور.",
+  "auth.orContinueWith": "أو المتابعة باستخدام",
+  "auth.google": "جوجل",
+  "auth.github": "جيت هاب",
+  "auth.demoBadge": "الوضع التجريبي نشط (جاهز لربط Supabase)",
+  "auth.freePlan": "خطة مجانية",
+  "auth.termsHint": "بالمتابعة، فإنك توافق على شروط خدمة وسياسة خصوصية AyoSim."
 }
