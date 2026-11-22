@@ -229,10 +229,9 @@ function applyTranslations(dict) {
     const key = el.getAttribute('data-i18n');
     if (dict[key] !== undefined) {
       // For elements that contain child elements (like section titles with dot-accent span),
-      // only replace text nodes
+      // only replace non-empty text nodes
       if (el.children.length > 0 && key !== 'lang.current') {
-        // Find first text node and update it
-        const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE);
+        const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim().length > 0);
         if (textNodes.length > 0) {
           textNodes[0].textContent = dict[key];
         }
