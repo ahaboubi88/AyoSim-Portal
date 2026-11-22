@@ -116,11 +116,14 @@
 - **Shared Authentication & Project Cloud Sync**: Share Supabase authentication state and user sessions across the portal and all simulators; enable unified project saving and user profile dashboard.
 - **Runtime Process Isolation**: Preserve separate WASM and Three.js memory lifecycles (`@live-codes/clang-wasm` for Arduino, `pyodide` for ESP32/RPi) to guarantee 100% stability, fast loading, and zero mobile memory crashes.
 
-**Tasks**:
-- [ ] TBD (run /plan 8 to create)
+**Plans**:
+- [ ] [Plan 8.1: Vercel Sub-Path Routing & Reverse Proxy Federation](phases/8/01-PLAN.md) (Wave 1)
+- [ ] [Plan 8.2: Unified Global Header & Board Switcher Specification](phases/8/02-PLAN.md) (Wave 2)
+- [ ] [Plan 8.3: Cross-Simulator Supabase Auth Sharing & Unified Project Data Model](phases/8/03-PLAN.md) (Wave 3)
 
 **Verification**:
-- TBD
+- Automated test script (`scripts/verify-phase-8.js`) validating rewrites, sub-path routes, database schema, and project state engine.
+
 
 
 

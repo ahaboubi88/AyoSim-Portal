@@ -18,7 +18,16 @@
 | Mobile Modal Back-Navigation Resolution | ✅ Complete | 100% |
 | Phase 6: SEO & Generative Engine Optimization (GEO) | ✅ Complete | 100% |
 | Phase 7: User Authentication & Account System (Supabase) | ✅ Complete | 100% |
-| Phase 8: Unified Simulator Ecosystem | ⬜ Not Started | 0% |
+| Phase 8: Unified Simulator Ecosystem | 📋 Planned | 0% |
+
+## Phase 8 Execution Plans (3 Plans across 3 Waves)
+
+| Plan | Wave | Focus | Files | Status |
+|------|------|-------|-------|--------|
+| [Plan 8.1](phases/8/01-PLAN.md) | Wave 1 | Sub-Path Rewrites & Isolation Headers | `vercel.json`, `index.html`, `js/main.js` | ⬜ Planned |
+| [Plan 8.2](phases/8/02-PLAN.md) | Wave 2 | Global Nav Spec & Board Switcher | `docs/GLOBAL_NAV_SPEC.md`, `css/styles.css`, `index.html` | ⬜ Planned |
+| [Plan 8.3](phases/8/03-PLAN.md) | Wave 3 | Cross-App Supabase Auth & Cloud Projects | `scripts/schema.sql`, `docs/DATABASE_SCHEMA.md`, `js/projects.js` | ⬜ Planned |
+
 
 ## Phase 7 Execution Plans (3 Plans across 3 Waves)
 
