@@ -16,7 +16,7 @@
 var targetScope = typeof window !== 'undefined' ? window : (typeof global !== 'undefined' ? global : this);
 
 targetScope.AYOSIM_SUPABASE_CONFIG = {
-  url: 'https://czyutlgavugzgvzwfviz.supabase.co',
+  url: 'https://czyutigavugzgvzwfviz.supabase.co',
   anonKey: 'sb_publishable_yV-pg4Y50yepyPER1tmcEA_pPuHLmOU',
 
   /**
