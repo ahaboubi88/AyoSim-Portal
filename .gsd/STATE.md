@@ -1,7 +1,7 @@
 # STATE.md — Project State
 
-> **Last Updated**: 2026-11-20
-> **Current Phase**: Ultra-HD Social Thumbnail Polish Complete ✅
+> **Last Updated**: 2026-11-22
+> **Current Phase**: Mobile Simulator Modal Back-Navigation Fix ✅
 > **Status**: Verified and Deployed
 
 ## Progress
@@ -15,9 +15,11 @@
 | Simulator Cards Simplification & Hero Size Tuning | ✅ Complete | 100% |
 | Phase 5: Simulator Provisioning Loading Sequence | ✅ Complete | 100% |
 | Ultra-HD Facebook / Social Thumbnail | ✅ Complete | 100% |
+| Mobile Modal Back-Navigation Resolution | ✅ Complete | 100% |
 
 ## Recent Deliverables
 
+- [x] **Mobile Modal Back-Navigation Resolution**: Fixed the issue where returning to the portal page via mobile browser Back button left the loading modal active. Removed conditional `event.persisted` check on `pageshow` (which evaluates to `false` during cross-origin mobile back navigation despite preserved DOM cache), added `pagehide` cleanup so history/bfcache snapshots are saved with the modal closed, added `visibilitychange` & `popstate` handlers, cleared initial state on launcher initialization, and removed conflicting `target="_blank"` attributes from simulator card links. Bumped `main.js?v=2.1`.
 - [x] **Ultra-HD Facebook & Open Graph Thumbnail (2400x1260 @ 2x)**: Re-rendered and deployed a pristine 2400x1260 (2x Retina) Open Graph card in lossless PNG (`assets/og-image.png`, 1.68 MB) and 95% quality JPEG (`assets/og-image.jpg`, 486 KB). Removed scrollbars, perfected vertical padding and card layout, and updated Open Graph meta tags with version query string `?v=2.1` and explicit `2400x1260` dimensions for crisp rendering on high-DPI smartphone/desktop screens.
 - [x] **Phase 5 Simulator Loading Interface**: Implemented an interstitial cybernetic provisioning modal when a user clicks on any simulator card (Arduino, ESP32, Raspberry Pi) with background page blur (`backdrop-filter: blur(16px)`).
 - [x] **Animated Hardware Synthesis Graphics**: Designed multi-ring rotating HUD animations and pulsating microchip icon with dynamic glowing accents.

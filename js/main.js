@@ -292,10 +292,12 @@ function initSmoothScroll() {
    ============================================ */
 
 let activeLaunchTimeouts = [];
+let isRedirecting = false;
 
 function cancelLaunch() {
   activeLaunchTimeouts.forEach(t => clearTimeout(t));
   activeLaunchTimeouts = [];
+  isRedirecting = false;
   const modal = document.getElementById('sim-modal');
   if (modal) {
     modal.classList.remove('is-active');
@@ -311,6 +313,9 @@ function initSimulatorLauncher() {
   const backdrop = document.getElementById('sim-modal-backdrop');
 
   if (!cards.length || !modal) return;
+
+  // Ensure modal is cleanly closed on initial setup or page re-evaluation
+  cancelLaunch();
 
   const BOARD_SEQUENCES = {
     arduino: {
@@ -411,7 +416,15 @@ function initSimulatorLauncher() {
     const redirectTimer = setTimeout(() => {
       if (progressFill) progressFill.style.width = '100%';
       if (percentage) percentage.textContent = '100%';
+      isRedirecting = true;
       window.location.href = targetUrl;
+
+      // Close modal shortly after navigating as a safeguard so that if the page
+      // is preserved in memory or snapshot cache, it is stored in the closed state
+      const cleanupTimer = setTimeout(() => {
+        cancelLaunch();
+      }, 350);
+      activeLaunchTimeouts.push(cleanupTimer);
     }, 2050);
 
     activeLaunchTimeouts.push(redirectTimer);
@@ -445,10 +458,27 @@ function initSimulatorLauncher() {
     }
   });
 
-  // Clear modal when page is restored from bfcache (browser Back button)
-  window.addEventListener('pageshow', (event) => {
-    if (event.persisted) {
+  // Clear modal whenever page is shown (initial load, bfcache, and back navigation)
+  // CRITICAL for mobile: do NOT guard with event.persisted because mobile cross-origin
+  // back navigation sets event.persisted=false even though DOM state was preserved from cache!
+  window.addEventListener('pageshow', () => {
+    cancelLaunch();
+  });
+
+  // Clear modal when page is hidden/unloaded so the browser's history snapshot is clean
+  window.addEventListener('pagehide', () => {
+    cancelLaunch();
+  });
+
+  // If user returns to tab/app after redirect was triggered, ensure modal is closed
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && isRedirecting) {
       cancelLaunch();
     }
+  });
+
+  // Clear modal on popstate (browser back/forward)
+  window.addEventListener('popstate', () => {
+    cancelLaunch();
   });
 }
