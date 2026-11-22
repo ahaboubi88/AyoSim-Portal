@@ -81,14 +81,24 @@
 
 ---
 
-### Phase 7: User Authentication & Account System
+### Phase 7: User Authentication & Account System (Supabase)
 **Status**: ⬜ Not Started
-**Objective**: Implement secure user authentication (Sign Up, Sign In, Sign Out, Password Reset, and OAuth social providers) with session management, header profile UI, and trilingual support (EN, FR, AR) to establish user identity across AyoSim.
+**Objective**: Implement client-side authentication using Supabase Auth (`@supabase/supabase-js`), supporting Email/Password and Social OAuth (Google & GitHub), responsive auth modal, header profile avatar and session dropdown, session persistence, and trilingual (EN/FR/AR) localization.
 **Depends on**: Phase 4 & Phase 6
 
+**Scope & Specifications**:
+- **Provider**: Supabase Auth (Client-side JS SDK via CDN, zero custom server requirement)
+- **Auth Methods**: Email/Password + OAuth (Google & GitHub)
+- **UI Components**:
+  - Auth modal dialog (Sign In, Sign Up, Forgot Password view, OAuth buttons)
+  - Navigation header state: "Sign In" button (unauthenticated) vs User Avatar + dropdown menu (Profile, Sign Out)
+- **Localization**: Full trilingual support across English, French, and Arabic with RTL layout
+- **Future Integration**: Ready for cloud saving of user simulation circuits and projects
+
 **Tasks**:
-- [ ] TBD (run /plan 7 to create)
+- [ ] TBD (run /plan 7 to create execution plans)
 
 **Verification**:
 - TBD
+
 

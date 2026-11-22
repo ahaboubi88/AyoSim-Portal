@@ -1,7 +1,7 @@
 # STATE.md — Project State
 
 > **Last Updated**: 2026-11-22
-> **Current Phase**: Phase 7: User Authentication & Account System
+> **Current Phase**: Phase 7: User Authentication & Account System (Supabase)
 > **Status**: Added to Roadmap — Ready for Planning (/plan 7)
 
 ## Progress
@@ -17,11 +17,11 @@
 | Ultra-HD Facebook / Social Thumbnail | ✅ Complete | 100% |
 | Mobile Modal Back-Navigation Resolution | ✅ Complete | 100% |
 | Phase 6: SEO & Generative Engine Optimization (GEO) | ✅ Complete | 100% |
-| Phase 7: User Authentication & Account System | ⬜ Not Started | 0% |
+| Phase 7: User Authentication & Account System (Supabase) | ⬜ Not Started | 0% |
 
 ## Recent Deliverables
 
-- [ ] **Phase 7 User Authentication & Account System**: Phase added to roadmap via `/add-phase`. Scoped for secure authentication (Sign Up, Sign In, Sign Out, Password Reset, OAuth), header profile integration, and trilingual support (EN, FR, AR). Ready for `/plan 7`.
+- [ ] **Phase 7 User Authentication & Account System (Supabase)**: Phase added to roadmap via `/add-phase`. Stack selected: Supabase Auth (`@supabase/supabase-js`) supporting Email/Password, Google OAuth, GitHub OAuth, auth modal dialog, header user menu, and trilingual i18n (EN/FR/AR). Ready for `/plan 7`.
 - [x] **Phase 6 Search Engine Optimization (SEO) & Generative Engine Optimization (GEO)**: Implemented complete technical SEO and AI Search suite. Added `/llms.txt` and `/llms-full.txt` for machine knowledge ingestion by ChatGPT, Perplexity, Claude, and Gemini. Configured `robots.txt` explicitly allowing AI and search engine crawlers (GPTBot, PerplexityBot, ClaudeBot, Google-Extended, etc.). Enhanced `sitemap.xml` with multilingual `xhtml:link` hreflang annotations and sub-simulator URLs. Integrated full Schema.org JSON-LD graph (`WebSite`, `Organization`, `WebApplication`, and `FAQPage` covering AyoSim vs Wokwi, AyoSim vs Tinkercad, ESP32 BLE, and Raspberry Pi Linux simulation). Added `hreflang` alternate links (EN, FR, AR, x-default) and verification placeholders in `index.html`.
 - [x] **Mobile Modal Back-Navigation Resolution**: Fixed the issue where returning to the portal page via mobile browser Back button left the loading modal active. Removed conditional `event.persisted` check on `pageshow` (which evaluates to `false` during cross-origin mobile back navigation despite preserved DOM cache), added `pagehide` cleanup so history/bfcache snapshots are saved with the modal closed, added `visibilitychange` & `popstate` handlers, cleared initial state on launcher initialization, and removed conflicting `target="_blank"` attributes from simulator card links. Bumped `main.js?v=2.1`.
 - [x] **Ultra-HD Facebook & Open Graph Thumbnail (2400x1260 @ 2x)**: Re-rendered and deployed a pristine 2400x1260 (2x Retina) Open Graph card in lossless PNG (`assets/og-image.png`, 1.68 MB) and 95% quality JPEG (`assets/og-image.jpg`, 486 KB). Removed scrollbars, perfected vertical padding and card layout, and updated Open Graph meta tags with version query string `?v=2.1` and explicit `2400x1260` dimensions for crisp rendering on high-DPI smartphone/desktop screens.
