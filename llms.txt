@@ -12,9 +12,9 @@ AyoSim is an advanced, 100% client-side hardware simulation ecosystem that enabl
 
 ## Core Simulators
 
-- [AyoSim Arduino](https://ayosim-arduino.vercel.app/): ATmega328P 8-bit AVR virtual core @ 16 MHz (Uno R3 & Nano), in-browser C++17 Clang WebAssembly compiler, 32KB flash & 2KB SRAM profiling, 14 digital I/O, 6 PWM, 6 ADC, multi-channel Serial Plotter, and virtual EEPROM.
-- [AyoSim ESP32](https://ayosim-esp32.vercel.app/): Dual-core Tensilica Xtensa LX6 @ 240 MHz, MicroPython engine with firmware version switcher (v1.19.1 to v1.29.0), FreeRTOS, virtual 802.11 b/g/n Wi-Fi, BLE 4.2 GATT peripheral stack, capacitive touch, and 8-bit DAC.
-- [AyoSim Raspberry Pi](https://ayosim-rpi.vercel.app/): Broadcom BCM2711 quad-core Cortex-A72 @ 1.5 GHz (Raspberry Pi 4 Model B), embedded Linux kernel v6.1 & systemd rootfs, Python 3.11 runtime, dual `gpiozero` & `RPi.GPIO` APIs, and 40-pin memory-mapped GPIO.
+- [AyoSim Arduino](https://arduino.ayosim.app/): ATmega328P 8-bit AVR virtual core @ 16 MHz (Uno R3 & Nano), in-browser C++17 Clang WebAssembly compiler, 32KB flash & 2KB SRAM profiling, 14 digital I/O, 6 PWM, 6 ADC, multi-channel Serial Plotter, and virtual EEPROM.
+- [AyoSim ESP32](https://esp32.ayosim.app/): Dual-core Tensilica Xtensa LX6 @ 240 MHz, MicroPython engine with firmware version switcher (v1.19.1 to v1.29.0), FreeRTOS, virtual 802.11 b/g/n Wi-Fi, BLE 4.2 GATT peripheral stack, capacitive touch, and 8-bit DAC.
+- [AyoSim Raspberry Pi](https://rpi.ayosim.app/): Broadcom BCM2711 quad-core Cortex-A72 @ 1.5 GHz (Raspberry Pi 4 Model B), embedded Linux kernel v6.1 & systemd rootfs, Python 3.11 runtime, dual `gpiozero` & `RPi.GPIO` APIs, and 40-pin memory-mapped GPIO.
 
 ## Standout & Exclusive Features (Absent in Other Simulators)
 

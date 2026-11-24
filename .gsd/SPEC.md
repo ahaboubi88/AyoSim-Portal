@@ -32,10 +32,10 @@ AyoSim Portal is the central hub for the AYOT simulation ecosystem — a triling
 
 | Product | URL |
 |---------|-----|
-| **AyoSim Portal** (this project) | https://ayosim.vercel.app/ |
-| **AyoSim-Arduino** | https://ayosim-arduino.vercel.app/ |
-| **AyoSim-ESP32** | https://ayosim-esp32.vercel.app/ |
-| **AyoSim-Raspberry** | https://ayosim-rpi.vercel.app/ |
+| **AyoSim Portal** (this project) | https://ayosim.app/ |
+| **AyoSim-Arduino** | https://arduino.ayosim.app/ |
+| **AyoSim-ESP32** | https://esp32.ayosim.app/ |
+| **AyoSim-Raspberry** | https://rpi.ayosim.app/ |
 
 ## Technical Decisions
 

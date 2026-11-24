@@ -19,7 +19,7 @@ AyoSim is an in-browser hardware simulation platform developed by AYOT. It enabl
 ## 2. Core Simulators & Technical Specifications
 
 ### A. AyoSim Arduino
-- **Simulator URL**: https://ayosim-arduino.vercel.app/
+- **Simulator URL**: https://arduino.ayosim.app/
 - **Architecture**: Atmel AVR ATmega328P 8-bit microcontroller @ 16 MHz (Arduino Uno R3 and Arduino Nano)
 - **Memory**: 32 KB Flash memory, 2 KB SRAM, 1 KB EEPROM (accurate byte-level metering from WASM code/data sections)
 - **Compiler**: In-browser Clang/LLVM C++17 WebAssembly compiler (`@live-codes/clang-wasm`). Zero cloud server dependencies, sub-200ms compilation time, 100% offline-capable and confidential.
@@ -28,7 +28,7 @@ AyoSim is an in-browser hardware simulation platform developed by AYOT. It enabl
 - **Standard Libraries Bundled**: `Arduino.h`, `HardwareSerial`, `Wire` (I2C), `SPI`, `Servo`, `LiquidCrystal_I2C`, `DHT`, `EEPROM`, `NewPing`, `SoftwareSerial`, `<avr/pgmspace.h>`, `<avr/interrupt.h>`
 
 ### B. AyoSim ESP32
-- **Simulator URL**: https://ayosim-esp32.vercel.app/
+- **Simulator URL**: https://esp32.ayosim.app/
 - **Architecture**: Dual-core 32-bit Tensilica Xtensa LX6 @ 240 MHz on ESP32 DevKit V1
 - **Operating System / Scheduler**: FreeRTOS real-time kernel scheduler with inter-process queues
 - **Runtime Environment**: MicroPython on WebAssembly (Pyodide)
@@ -40,7 +40,7 @@ AyoSim is an in-browser hardware simulation platform developed by AYOT. It enabl
 - **Cloud IoT Integrations**: WebSocket MQTT 3.1.1 (`umqtt.simple`, `umqtt.robust`), Adafruit IO (REST/MQTT), Firebase Realtime Database, and local Node-RED bridge
 
 ### C. AyoSim Raspberry Pi
-- **Simulator URL**: https://ayosim-rpi.vercel.app/
+- **Simulator URL**: https://rpi.ayosim.app/
 - **Architecture**: Broadcom BCM2711 quad-core ARM Cortex-A72 (ARM v8 64-bit) @ 1.5 GHz (Raspberry Pi 4 Model B)
 - **Operating System**: Embedded Linux kernel v6.1 with busybox/systemd root filesystem and interactive bash terminal
 - **Runtime Environment**: Python 3.11 runtime

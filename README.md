@@ -14,7 +14,7 @@
 
 *A unified, zero-install, zero-driver hardware simulation and IoT engineering platform for Arduino, ESP32, and Raspberry Pi.*
 
-[Live Portal](https://ayosim.app/) • [AyoSim Arduino](https://ayosim-arduino.vercel.app/) • [AyoSim ESP32](https://ayosim-esp32.vercel.app/) • [AyoSim Raspberry Pi](https://ayosim-rpi.vercel.app/)
+[Live Portal](https://ayosim.app/) • [AyoSim Arduino](https://arduino.ayosim.app/) • [AyoSim ESP32](https://esp32.ayosim.app/) • [AyoSim Raspberry Pi](https://rpi.ayosim.app/)
 
 </div>
 
@@ -131,7 +131,7 @@ AyoSim delivers three specialized, purpose-built simulation engines:
 ---
 
 ### 3.1. AyoSim Arduino (AVR & C++17 Toolchain)
-- **URL**: [https://ayosim-arduino.vercel.app/](https://ayosim-arduino.vercel.app/)
+- **URL**: [https://arduino.ayosim.app/](https://arduino.ayosim.app/)
 - **Target Boards**: Arduino Uno R3 and Arduino Nano (with 1-click board switching in the UI).
 - **In-Browser Clang Toolchain**: Uses `@live-codes/clang-wasm` to compile real Arduino C++ sketches directly into WebAssembly relocatable object files inside the browser. Compilation takes under 200 ms with zero backend server round-trips.
 - **Physical Memory Metering**: Accurately measures Code Section (Flash) and Data Section (SRAM) byte sizes directly from WASM object bytecode headers, warning students when their sketch exceeds the ATmega328P's 32,256-byte flash or 2,048-byte SRAM boundaries.
@@ -150,7 +150,7 @@ AyoSim delivers three specialized, purpose-built simulation engines:
 ---
 
 ### 3.2. AyoSim ESP32 (MicroPython & Dual-Core IoT)
-- **URL**: [https://ayosim-esp32.vercel.app/](https://ayosim-esp32.vercel.app/)
+- **URL**: [https://esp32.ayosim.app/](https://esp32.ayosim.app/)
 - **Target Architecture**: Dual-core Tensilica Xtensa LX6 @ 240 MHz on ESP32 DevKit V1.
 - **MicroPython Engine**: Full MicroPython standard library emulation via Pyodide WebAssembly.
 - **Hardware Abstraction Layer (`machine` Module)**:
@@ -169,7 +169,7 @@ AyoSim delivers three specialized, purpose-built simulation engines:
 ---
 
 ### 3.3. AyoSim Raspberry Pi (Embedded Linux & Dual GPIO)
-- **URL**: [https://ayosim-rpi.vercel.app/](https://ayosim-rpi.vercel.app/)
+- **URL**: [https://rpi.ayosim.app/](https://rpi.ayosim.app/)
 - **Target Architecture**: Broadcom BCM2711 quad-core ARM Cortex-A72 @ 1.5 GHz (Raspberry Pi 4 Model B).
 - **Embedded Linux Environment**: Simulated Linux kernel v6.1 with a busybox/systemd virtual filesystem, interactive bash terminal, and Python 3.11 runtime.
 - **Dual GPIO Library Architecture**: Unlike competing tools that force developers into a single API, AyoSim provides simultaneous, 100% compatible implementations of both:
