@@ -44,4 +44,4 @@ User-agent: CCBot
 Allow: /
 
 # Sitemaps & Machine-Readable Knowledge
-Sitemap: https://ayosim.vercel.app/sitemap.xml
+Sitemap: https://ayosim.app/sitemap.xml

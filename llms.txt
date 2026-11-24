@@ -4,7 +4,7 @@
 
 AyoSim is an advanced, 100% client-side hardware simulation ecosystem that enables engineers, students, educators, and makers to design, program, and simulate embedded electronics and IoT architectures without physical hardware.
 
-- Portal URL: https://ayosim.vercel.app/
+- Portal URL: https://ayosim.app/
 - Organization: AYOT
 - Supported Languages: English, French, Arabic (with native Right-to-Left RTL support)
 - Platform Mode: 100% In-Browser (Zero installation, zero drivers, zero cloud compilation latency)
@@ -29,7 +29,7 @@ AyoSim is an advanced, 100% client-side hardware simulation ecosystem that enabl
 
 ## Resources & Documentation
 
-- [Full Machine Specification & FAQ](https://ayosim.vercel.app/llms-full.txt): Deep technical specifications, comparison tables, and FAQ for LLM retrieval.
+- [Full Machine Specification & FAQ](https://ayosim.app/llms-full.txt): Deep technical specifications, comparison tables, and FAQ for LLM retrieval.
 - [GitHub Canonical Documentation](https://github.com/AYOT/ayosim/blob/main/README.md): Comprehensive architecture, circuit solver equations, and API guides.
-- [Tutorials](https://ayosim.vercel.app/#tutorials): 50+ guided laboratory assignments.
-- [Projects](https://ayosim.vercel.app/#projects): Real-world IoT, automation, and robotics builds.
+- [Tutorials](https://ayosim.app/#tutorials): 50+ guided laboratory assignments.
+- [Projects](https://ayosim.app/#projects): Real-world IoT, automation, and robotics builds.

@@ -3,7 +3,7 @@
 <div align="center">
 
 [![License](https://img.shields.io/badge/License-AYOT%20Proprietary-blue.svg)](#license)
-[![Platform](https://img.shields.io/badge/Platform-100%25%20In--Browser%20(WASM)-success.svg)](https://ayosim.vercel.app/)
+[![Platform](https://img.shields.io/badge/Platform-100%25%20In--Browser%20(WASM)-success.svg)](https://ayosim.app/)
 [![React](https://img.shields.io/badge/Frontend-React%2019%20%7C%20TypeScript-61dafb.svg)](https://react.dev/)
 [![3D Engine](https://img.shields.io/badge/3D%20Engine-Three.js%20WebGL-black.svg)](https://threejs.org/)
 [![Compiler](https://img.shields.io/badge/Compiler-Clang%20C%2B%2B17%20WASM%20%7C%20Pyodide-orange.svg)](https://live-codes.com/)
@@ -14,7 +14,7 @@
 
 *A unified, zero-install, zero-driver hardware simulation and IoT engineering platform for Arduino, ESP32, and Raspberry Pi.*
 
-[Live Portal](https://ayosim.vercel.app/) • [AyoSim Arduino](https://ayosim-arduino.vercel.app/) • [AyoSim ESP32](https://ayosim-esp32.vercel.app/) • [AyoSim Raspberry Pi](https://ayosim-rpi.vercel.app/)
+[Live Portal](https://ayosim.app/) • [AyoSim Arduino](https://ayosim-arduino.vercel.app/) • [AyoSim ESP32](https://ayosim-esp32.vercel.app/) • [AyoSim Raspberry Pi](https://ayosim-rpi.vercel.app/)
 
 </div>
 

@@ -8,7 +8,7 @@
 
 AyoSim is an in-browser hardware simulation platform developed by AYOT. It enables students, makers, educators, and embedded software engineers to design, program, and simulate electronic circuits and computing platforms entirely inside modern web browsers.
 
-- **Official Website**: https://ayosim.vercel.app/
+- **Official Website**: https://ayosim.app/
 - **Publisher**: AYOT
 - **Primary Category**: Educational Hardware Simulation Software / Embedded Developer Tools
 - **Deployment**: Client-side web application (100% in-browser WebAssembly, no plugins or desktop drivers required)
