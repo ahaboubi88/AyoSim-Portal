@@ -29,3 +29,13 @@
 **Decision**: Keep independent build targets and runtime sandboxes, but unify user experience via sub-path routing (`/arduino`, `/esp32`, `/rpi`), shared global navigation/board switcher, and unified Supabase auth/storage.
 **Rationale**: Guarantees zero runtime crashes and process isolation while delivering a seamless "single app" feel to the end user.
 
+## ADR-005: Portal-Gated Simulator Access & Ephemeral Project Sharing
+**Date**: 2026-11-22
+**Status**: Accepted
+**Context**: Simulators must be restricted from direct standalone browser entry (preventing bypass of the portal) while simultaneously supporting viral "share by link" functionality without exhausting the Supabase Free Tier storage (500 MB).
+**Decision**: 
+1. Use a client-side stateless token handshake (HMAC/timestamp) from the Portal to grant simulator entry (`sessionStorage` clearance on boot; redirect to portal if absent/invalid).
+2. Route shared links through the Portal (`ayosim.vercel.app/project/:id`), which verifies access, records branding/analytics, and provisions the simulator.
+3. Support TTL expiration (e.g. 48 hours) on shared projects with automated physical deletion via PostgreSQL `pg_cron` (`DELETE FROM shared_projects WHERE expires_at < now()`), ensuring storage remains near zero on the free plan.
+**Rationale**: 100% blocks direct unauthenticated visits, avoids reverse proxy WASM/Worker asset issues, creates a user acquisition funnel on the portal, and guarantees zero database bloat.
+

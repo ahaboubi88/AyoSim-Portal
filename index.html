@@ -137,12 +137,17 @@
           "availability": "https://schema.org/InStock"
         },
         "featureList": [
-          "Interactive Arduino ATmega328P simulation with virtual UART serial monitor",
-          "ESP32 dual-core Xtensa simulation with FreeRTOS, Wi-Fi, and BLE 4.2",
-          "Raspberry Pi Cortex-A72 simulation with embedded Linux v6.1 and Python 3 runtime",
+          "Interactive Arduino ATmega328P simulation with in-browser Clang-WASM C++17 compiler and multi-channel serial plotter",
+          "ESP32 dual-core Xtensa simulation with FreeRTOS, Wi-Fi, BLE 4.2 GATT server, and switchable MicroPython firmware catalog (v1.19.1 to v1.29.0)",
+          "Raspberry Pi Cortex-A72 simulation with embedded Linux v6.1, interactive bash terminal, and dual gpiozero & RPi.GPIO APIs",
+          "Photorealistic Three.js 3D studio with dynamic LDR-responsive studio lighting and catenary curved DuPont jumper wires",
+          "Interactive in-browser Virtual Smartphone with HC-05 and BLE terminal, 6-button gamepad controller, and PWM slider",
+          "Bidirectional Node-RED WebSocket telemetry and remote GPIO actuation bridge at ws://localhost:1881/pisim",
+          "Electrical circuit solver with overcurrent burnout physics, charcoal meshes, and short-circuit safety detection",
+          "Mobile-first embedded ergonomics with floating programming punctuation keyboard bar",
           "Trilingual support in English, French, and Arabic with native RTL layout",
           "50+ step-by-step guided tutorials and real-world project builds",
-          "Zero software installation, 100% in-browser execution"
+          "Zero software installation, 100% client-side in-browser execution with complete privacy"
         ],
         "author": {
           "@id": "https://ayosim.vercel.app/#organization"
@@ -165,7 +170,7 @@
             "name": "How does AyoSim compare to Wokwi?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "While Wokwi supports Arduino, ESP32, and the Raspberry Pi Pico (RP2040 microcontroller), AyoSim simulates the full Raspberry Pi Single Board Computer (Cortex-A72) with Linux terminal emulation, Python 3, and 40-pin GPIO. AyoSim also includes ESP32 Bluetooth Low Energy (BLE) simulation, which Wokwi lacks, and provides native trilingual support (English, French, Arabic)."
+              "text": "While Wokwi supports Arduino, ESP32, and the Raspberry Pi Pico (RP2040 microcontroller), AyoSim simulates the full Raspberry Pi 4 Single Board Computer (BCM2711 Cortex-A72) with Linux terminal emulation, Python 3, and 40-pin GPIO. AyoSim also includes ESP32 Bluetooth Low Energy (BLE) simulation, an in-browser virtual smartphone, a photorealistic 3D studio with dynamic LDR lighting, a live Node-RED WebSocket bridge, local client-side Clang C++ compilation, and native trilingual support (English, French, Arabic RTL)."
             }
           },
           {
@@ -173,7 +178,7 @@
             "name": "How does AyoSim compare to Tinkercad Circuits?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Tinkercad Circuits only supports 8-bit Arduino microcontrollers and lacks both ESP32 and Raspberry Pi. AyoSim supports Arduino, ESP32 with Wi-Fi and Bluetooth, and full Raspberry Pi with Linux terminal and Python programming."
+              "text": "Tinkercad Circuits only supports 8-bit Arduino microcontrollers and lacks both ESP32 and Raspberry Pi. AyoSim supports Arduino, ESP32 with Wi-Fi and Bluetooth, and full Raspberry Pi with Linux terminal and Python programming, without requiring an account or login."
             }
           },
           {
@@ -189,7 +194,31 @@
             "name": "Can you simulate a full Raspberry Pi on AyoSim?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes. AyoSim provides full Raspberry Pi simulation featuring Broadcom BCM2711 quad-core Cortex-A72 architecture, an embedded Linux kernel v6.1 with bash shell, Python 3.11 runtime, and interactive 40-pin GPIO emulation."
+              "text": "Yes. AyoSim provides full Raspberry Pi simulation featuring Broadcom BCM2711 quad-core Cortex-A72 architecture, an embedded Linux kernel v6.1 with bash shell, Python 3.11 runtime, and interactive 40-pin GPIO emulation with both gpiozero and RPi.GPIO."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does AyoSim have a 3D view and realistic physics?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AyoSim features a photorealistic Three.js 3D studio with dynamic studio lighting that reacts in real-time to the circuit's LDR sensor. Dimming the LDR darkens the 3D room so active LEDs glow vividly in the dark. It also features electrical burnout physics where overcurrent causes LEDs to permanently turn into charred black charcoal meshes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I control simulated circuits from a virtual smartphone?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AyoSim includes an in-browser virtual smartphone that pairs with the HC-05 Bluetooth module on Arduino or connects via BLE on ESP32, featuring a serial terminal, customizable gamepad buttons, PWM control sliders, and macro buttons."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can AyoSim integrate with Node-RED?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. AyoSim provides a live bidirectional WebSocket bridge at ws://localhost:1881/pisim (node-red-contrib-pisim) to stream real-time sensor telemetry directly to Node-RED dashboards and accept GPIO remote actuation."
             }
           },
           {

@@ -1,8 +1,19 @@
 # STATE.md — Project State
 
-> **Last Updated**: 2026-11-22
+> **Last Updated**: 2026-11-22 (Context Hygiene Pause Dump)
 > **Current Phase**: Phase 8: Unified Simulator Ecosystem (Making All Simulators Feel Like One App Safely) ⬜
-> **Status**: Ready for Planning
+> **Status**: Paused (Ready to Resume)
+
+## Active Context & Architectural Alignment
+
+- **Portal-Only Simulator Gating**: Direct address-bar entry to raw simulator URLs (`ayosim-*.vercel.app`) must be blocked and bounced to the portal. Solved via stateless token handshake (`HMAC` / timestamp query parameter) validated by a simulator `guard.js` script on boot and stored in `sessionStorage`.
+- **Project Sharing Architecture**: User-shared simulation links will be branded portal URLs (`https://ayosim.vercel.app/project/:board?id=XYZ`). The portal verifies project status, displays the provisioning modal / preview, and forwards with a valid launch token.
+- **Supabase Free Plan Protection**:
+  - Launch tokens consume **0 bytes** (stateless crypto signature).
+  - Shared project data is plain text/JSON (~5–10 KB uncompressed, ~2 KB compressed).
+  - 48-hour expiration TTL enforced via `expires_at` column and RLS.
+  - Automated physical database garbage collection scheduled via PostgreSQL `pg_cron` extension running hourly cleanup queries (`DELETE FROM shared_projects WHERE expires_at < now()`).
+- **Architecture Decision Record**: Documented in `ADR-005` in `DECISIONS.md`.
 
 ## Progress
 

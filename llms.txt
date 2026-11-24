@@ -1,27 +1,35 @@
 # AyoSim
 
-> Interactive in-browser hardware simulation platform for Arduino, ESP32, and Raspberry Pi by AYOT.
+> Next-generation in-browser hardware simulation platform for Arduino, ESP32, and Raspberry Pi by AYOT.
 
-AyoSim is an advanced in-browser hardware simulation platform that lets engineers, students, and makers build, simulate, and debug embedded electronics without physical hardware.
+AyoSim is an advanced, 100% client-side hardware simulation ecosystem that enables engineers, students, educators, and makers to design, program, and simulate embedded electronics and IoT architectures without physical hardware.
 
 - Portal URL: https://ayosim.vercel.app/
 - Organization: AYOT
-- Supported Languages: English, French, Arabic (with native RTL support)
-- Platform Mode: 100% In-Browser (zero installation, zero drivers, zero setup)
+- Supported Languages: English, French, Arabic (with native Right-to-Left RTL support)
+- Platform Mode: 100% In-Browser (Zero installation, zero drivers, zero cloud compilation latency)
 
 ## Core Simulators
 
-- [AyoSim Arduino](https://ayosim-arduino.vercel.app/): ATmega328P 8-bit AVR virtual core @ 16 MHz, 14 digital I/O pins, 6 PWM channels, 6 ADC inputs, 32KB flash memory, 2KB SRAM buffer, and UART serial monitor bridge @ 115200 baud.
-- [AyoSim ESP32](https://ayosim-esp32.vercel.app/): Dual-core Tensilica Xtensa LX6 @ 240 MHz, FreeRTOS kernel scheduler, virtual 802.11 b/g/n Wi-Fi, Bluetooth Low Energy (BLE 4.2) stack, 4MB SPI Flash, and 520KB internal SRAM heap.
-- [AyoSim Raspberry Pi](https://ayosim-rpi.vercel.app/): Broadcom BCM2711 quad-core Cortex-A72 @ 1.5 GHz, embedded Linux kernel v6.1 & systemd rootfs, Python 3.11 runtime, and memory-mapped 40-pin GPIO header.
+- [AyoSim Arduino](https://ayosim-arduino.vercel.app/): ATmega328P 8-bit AVR virtual core @ 16 MHz (Uno R3 & Nano), in-browser C++17 Clang WebAssembly compiler, 32KB flash & 2KB SRAM profiling, 14 digital I/O, 6 PWM, 6 ADC, multi-channel Serial Plotter, and virtual EEPROM.
+- [AyoSim ESP32](https://ayosim-esp32.vercel.app/): Dual-core Tensilica Xtensa LX6 @ 240 MHz, MicroPython engine with firmware version switcher (v1.19.1 to v1.29.0), FreeRTOS, virtual 802.11 b/g/n Wi-Fi, BLE 4.2 GATT peripheral stack, capacitive touch, and 8-bit DAC.
+- [AyoSim Raspberry Pi](https://ayosim-rpi.vercel.app/): Broadcom BCM2711 quad-core Cortex-A72 @ 1.5 GHz (Raspberry Pi 4 Model B), embedded Linux kernel v6.1 & systemd rootfs, Python 3.11 runtime, dual `gpiozero` & `RPi.GPIO` APIs, and 40-pin memory-mapped GPIO.
 
-## Key Differentiators & Comparisons
+## Standout & Exclusive Features (Absent in Other Simulators)
 
-- **AyoSim vs Wokwi**: AyoSim features full Raspberry Pi simulation with Linux kernel emulation, Python execution, and 40-pin GPIO (Wokwi only supports the RP2040 Raspberry Pi Pico microcontroller, not a full Linux SBC). AyoSim also includes ESP32 Bluetooth Low Energy (BLE) simulation, which Wokwi does not support. AyoSim is fully trilingual (English, French, Arabic).
-- **AyoSim vs Tinkercad**: Tinkercad Circuits is limited to basic Arduino and has neither ESP32 nor Raspberry Pi support. AyoSim supports Arduino, ESP32 with Wi-Fi & BLE, and full Raspberry Pi with Linux terminal and Python runtime.
+1. **Full Linux Raspberry Pi SBC Simulation**: Simulates the full Cortex-A72 Single Board Computer with Linux OS, bash terminal, and Python 3.11 (Wokwi only simulates the microcontroller RP2040 Pico; Tinkercad has no Raspberry Pi).
+2. **Photorealistic 3D Studio with Dynamic LDR Lighting**: Three.js WebGL studio with OrbitControls where room lighting reacts in real time to the simulated LDR photoresistor, making LEDs glow realistically in the dark.
+3. **Interactive In-Browser Virtual Smartphone**: Simulated mobile phone for HC-05 Bluetooth pairing (PIN 1234), BLE serial terminal, 6-button gamepad controller, PWM slider, and macro manager.
+4. **Node-RED Bidirectional WebSocket Bridge**: Live telemetry streaming and remote GPIO actuation over `ws://localhost:1881/pisim` via `node-red-contrib-pisim`.
+5. **Local Clang-WASM C++17 Compilation**: 100% client-side compilation in under 200 ms with zero remote server round-trips and offline execution.
+6. **Destructive Burnout Physics**: Overcurrent ($I > 30\text{ mA}$) causes LEDs to physically burn out into charred black 3D meshes.
+7. **Multi-Channel Serial Waveform Plotter**: Graphs up to 6 simultaneous color-coded channels with auto-scaling and key-value parsing.
+8. **Mobile Embedded Keyboard Bar**: Dedicated floating punctuation bar (`{`, `}`, `(`, `)`, `;`, `\t`, quotes) for touch devices.
+9. **Trilingual with Native RTL**: First-class English, French, and Arabic with true Right-to-Left mirrored layout.
 
-## Resources & Links
+## Resources & Documentation
 
-- [Full Machine Specification](https://ayosim.vercel.app/llms-full.txt): Comprehensive hardware specifications, comparison matrices, and FAQs.
-- [Tutorials](https://ayosim.vercel.app/#tutorials): 50+ step-by-step embedded electronics tutorials.
-- [Projects](https://ayosim.vercel.app/#projects): Real-world IoT, automation, and robotics projects.
+- [Full Machine Specification & FAQ](https://ayosim.vercel.app/llms-full.txt): Deep technical specifications, comparison tables, and FAQ for LLM retrieval.
+- [GitHub Canonical Documentation](https://github.com/AYOT/ayosim/blob/main/README.md): Comprehensive architecture, circuit solver equations, and API guides.
+- [Tutorials](https://ayosim.vercel.app/#tutorials): 50+ guided laboratory assignments.
+- [Projects](https://ayosim.vercel.app/#projects): Real-world IoT, automation, and robotics builds.
