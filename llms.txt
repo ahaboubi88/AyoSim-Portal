@@ -8,6 +8,7 @@ AyoSim is an advanced, 100% client-side hardware simulation ecosystem that enabl
 - Organization: AYOT
 - Supported Languages: English, French, Arabic (with native Right-to-Left RTL support)
 - Platform Mode: 100% In-Browser (Zero installation, zero drivers, zero cloud compilation latency)
+- Pricing Model: Freemium (Free access tier available; upcoming subscription tiers for advanced hardware and team collaboration)
 
 ## Core Simulators
 

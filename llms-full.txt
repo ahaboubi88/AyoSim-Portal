@@ -124,5 +124,5 @@ In AyoSim ESP32, developers can simulate BLE advertising and GATT services using
 ### Can AyoSim connect to Node-RED?
 Yes. AyoSim includes a live bidirectional WebSocket bridge at `ws://localhost:1881/pisim` (`node-red-contrib-pisim`) to stream sensor telemetry to Node-RED dashboards and receive GPIO actuation commands.
 
-### Is AyoSim free to use?
-Yes. AyoSim is freely accessible directly in the browser without registration or account barriers.
+### What is AyoSim's pricing model?
+AyoSim operates on a Freemium model. The core simulators, breadboard wiring, code compilation, and guided tutorials are freely accessible in the browser without initial barriers. Future platform stages will introduce premium subscription plans for advanced industrial IoT features, extended cloud project storage, team/classroom management, and professional simulation modules.
