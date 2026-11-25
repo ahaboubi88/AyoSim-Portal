@@ -10,7 +10,7 @@
 let translations = {};
 let currentLang = 'en';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   initThemeToggle();
   initMobileMenu();
   initScrollAnimations();
@@ -18,9 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initAnimatedCounters();
   initBackToTop();
-  initI18n(); // Must come last — loads translations and triggers lang selector
-  initSimulatorLauncher(); // Phase 5: Interstitial provisioning modal
+  initSimulatorLauncher(); // Phase 5 + Phase 9: Provisioning modal & signed launch ticket
   initAuthUI(); // Phase 7: Supabase Authentication UI
+  await initI18n(); // Loads translations and triggers lang selector
+  await initPortalNoticesAndShareResolver(); // Phase 9: Handle ?access= & ?share=
 });
 
 /* ── Theme Toggle ── */
@@ -293,29 +294,84 @@ function initSmoothScroll() {
 
 let activeLaunchTimeouts = [];
 let isRedirecting = false;
+let activeLaunchAbort = null;
 
 function cancelLaunch() {
   activeLaunchTimeouts.forEach(t => clearTimeout(t));
   activeLaunchTimeouts = [];
   isRedirecting = false;
+  if (activeLaunchAbort) {
+    try { activeLaunchAbort.abort(); } catch {}
+    activeLaunchAbort = null;
+  }
   const modal = document.getElementById('sim-modal');
   if (modal) {
     modal.classList.remove('is-active');
     modal.setAttribute('aria-hidden', 'true');
   }
+  const errBox = document.getElementById('sim-modal-error');
+  if (errBox) errBox.style.display = 'none';
   document.body.classList.remove('sim-modal-active');
 }
 
+async function mintLaunchTicket(boardId, projectId, signal) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 1800);
+  const onParentAbort = () => controller.abort();
+  if (signal) {
+    if (signal.aborted) {
+      clearTimeout(timeoutId);
+      throw new DOMException('Aborted', 'AbortError');
+    }
+    signal.addEventListener('abort', onParentAbort, { once: true });
+  }
+
+  try {
+    const res = await fetch('/api/launch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        board: boardId,
+        project: projectId || null
+      }),
+      signal: controller.signal
+    });
+    if (!res.ok) {
+      throw new Error(`Launch API returned ${res.status}`);
+    }
+    const data = await res.json();
+    if (!data || !data.ticket) {
+      throw new Error('Missing launch ticket in response');
+    }
+    return data.ticket;
+  } finally {
+    clearTimeout(timeoutId);
+    if (signal) signal.removeEventListener('abort', onParentAbort);
+  }
+}
+
 function initSimulatorLauncher() {
-  const cards = document.querySelectorAll('.sim-card[data-sim]');
+  const launchTriggers = document.querySelectorAll('.sim-card[data-sim], .footer__col-link[data-sim]');
   const modal = document.getElementById('sim-modal');
   const closeBtn = document.getElementById('sim-modal-close');
   const backdrop = document.getElementById('sim-modal-backdrop');
 
-  if (!cards.length || !modal) return;
+  if (!launchTriggers.length || !modal) return;
 
   // Ensure modal is cleanly closed on initial setup or page re-evaluation
   cancelLaunch();
+
+  // Align all simulator links with current environment (local / dev.* / prod)
+  if (window.AYOSIM_ENV) {
+    launchTriggers.forEach(el => {
+      const boardId = el.getAttribute('data-sim');
+      const envUrl = window.AYOSIM_ENV.getSimulatorUrl(boardId);
+      if (envUrl) {
+        el.setAttribute('href', envUrl);
+        el.setAttribute('data-sim-url', envUrl);
+      }
+    });
+  }
 
   const BOARD_SEQUENCES = {
     arduino: {
@@ -353,29 +409,47 @@ function initSimulatorLauncher() {
     }
   };
 
-  function startSimulatorLaunch(boardId, targetUrl) {
+  function startSimulatorLaunch(boardId, targetUrl, options = {}) {
     cancelLaunch();
+
+    const resolvedTargetUrl =
+      targetUrl ||
+      (window.AYOSIM_ENV ? window.AYOSIM_ENV.getSimulatorUrl(boardId) : 'https://arduino.ayosim.app/');
 
     const modalTitle = document.getElementById('sim-modal-title');
     const stream = document.getElementById('sim-modal-stream');
     const stepName = document.getElementById('sim-modal-step-name');
     const percentage = document.getElementById('sim-modal-percentage');
     const progressFill = document.getElementById('sim-modal-progress-fill');
+    const errorBox = document.getElementById('sim-modal-error');
+    const retryBtn = document.getElementById('sim-modal-retry-btn');
 
     const boardConfig = BOARD_SEQUENCES[boardId] || BOARD_SEQUENCES.arduino;
     const boardTitle = (translations[currentLang] && translations[currentLang][boardConfig.titleKey]) || boardConfig.defaultTitle;
-    if (modalTitle) modalTitle.textContent = boardTitle;
+    if (modalTitle) {
+      modalTitle.textContent = options.projectTitle
+        ? `${boardTitle} — ${options.projectTitle}`
+        : boardTitle;
+    }
 
     // Reset interface elements
     if (stream) stream.innerHTML = '';
     if (progressFill) progressFill.style.width = '0%';
     if (percentage) percentage.textContent = '0%';
     if (stepName) stepName.textContent = 'Initializing virtual kernel...';
+    if (errorBox) errorBox.style.display = 'none';
 
     // Show modal & blurred page backdrop
     modal.classList.add('is-active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.classList.add('sim-modal-active');
+
+    // Start minting the ECDSA signed ticket immediately in parallel with the 2.0s animation
+    activeLaunchAbort = new AbortController();
+    const launchSignal = activeLaunchAbort.signal;
+    const ticketPromise = mintLaunchTicket(boardId, options.projectId, launchSignal);
+    // Prevent unhandled rejection if aborted early
+    ticketPromise.catch(() => {});
 
     // Run timed sequence (2.0s duration)
     boardConfig.steps.forEach((step) => {
@@ -412,19 +486,35 @@ function initSimulatorLauncher() {
       activeLaunchTimeouts.push(timer);
     });
 
-    // At 2050ms redirect to target simulator
-    const redirectTimer = setTimeout(() => {
-      if (progressFill) progressFill.style.width = '100%';
-      if (percentage) percentage.textContent = '100%';
-      isRedirecting = true;
-      window.location.href = targetUrl;
+    // At 2050ms redirect to target simulator with signed ticket
+    const redirectTimer = setTimeout(async () => {
+      try {
+        const ticket = await ticketPromise;
+        if (launchSignal.aborted) return;
 
-      // Close modal shortly after navigating as a safeguard so that if the page
-      // is preserved in memory or snapshot cache, it is stored in the closed state
-      const cleanupTimer = setTimeout(() => {
-        cancelLaunch();
-      }, 350);
-      activeLaunchTimeouts.push(cleanupTimer);
+        if (progressFill) progressFill.style.width = '100%';
+        if (percentage) percentage.textContent = '100%';
+        isRedirecting = true;
+
+        const dest = new URL(resolvedTargetUrl, window.location.origin);
+        dest.searchParams.set('ticket', ticket);
+        if (options.projectId) {
+          dest.searchParams.set('project', options.projectId);
+        }
+        window.location.href = dest.toString();
+
+        const cleanupTimer = setTimeout(() => {
+          cancelLaunch();
+        }, 350);
+        activeLaunchTimeouts.push(cleanupTimer);
+      } catch (err) {
+        if (launchSignal.aborted) return;
+        console.error('[AyoSim] Launch handshake failed:', err);
+        if (errorBox) errorBox.style.display = 'flex';
+        if (retryBtn) {
+          retryBtn.onclick = () => startSimulatorLaunch(boardId, resolvedTargetUrl, options);
+        }
+      }
     }, 2050);
 
     activeLaunchTimeouts.push(redirectTimer);
@@ -434,15 +524,14 @@ function initSimulatorLauncher() {
   window.startSimulatorLaunch = startSimulatorLaunch;
   window.cancelLaunch = cancelLaunch;
 
-  // Intercept click on simulator cards
-  cards.forEach(card => {
-    card.addEventListener('click', (e) => {
-      // Allow user to Ctrl+click / Cmd+click or middle click to open tab naturally if desired
+  // Intercept click on simulator cards & footer simulator links
+  launchTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
       if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey) return;
       e.preventDefault();
 
-      const boardId = card.getAttribute('data-sim');
-      const targetUrl = card.getAttribute('data-sim-url') || card.getAttribute('href');
+      const boardId = trigger.getAttribute('data-sim');
+      const targetUrl = trigger.getAttribute('data-sim-url') || trigger.getAttribute('href');
       startSimulatorLaunch(boardId, targetUrl);
     });
   });
@@ -747,4 +836,100 @@ function initAuthUI() {
 
   // Initialize engine
   window.AyoSimAuth.init();
+}
+
+/* ============================================
+   Phase 9: Portal Gate Notice & Share Resolver
+   ============================================ */
+
+async function initPortalNoticesAndShareResolver() {
+  const params = new URLSearchParams(window.location.search);
+  const accessParam = params.get('access');
+  const shareId = params.get('share');
+
+  // 1. Handle direct-simulator-visit redirect notice (?access=portal_required)
+  const noticeBanner = document.getElementById('portal-notice-banner');
+  const noticeClose = document.getElementById('portal-notice-close');
+  if (noticeBanner && accessParam === 'portal_required') {
+    noticeBanner.classList.add('is-visible');
+    noticeBanner.setAttribute('aria-hidden', 'false');
+
+    const dismissNotice = () => {
+      noticeBanner.classList.remove('is-visible');
+      noticeBanner.setAttribute('aria-hidden', 'true');
+    };
+    if (noticeClose) noticeClose.addEventListener('click', dismissNotice);
+    setTimeout(dismissNotice, 7500);
+
+    params.delete('access');
+    const cleanQuery = params.toString();
+    window.history.replaceState({}, '', window.location.pathname + (cleanQuery ? `?${cleanQuery}` : '') + window.location.hash);
+  }
+
+  // 2. Setup Share Status / Expired Modal close handlers
+  const shareModal = document.getElementById('share-status-modal');
+  const shareBackdrop = document.getElementById('share-status-backdrop');
+  const shareCloseBtn = document.getElementById('share-status-close-btn');
+
+  function showShareErrorModal() {
+    if (!shareModal) return;
+    shareModal.classList.add('is-active');
+    shareModal.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeShareErrorModal() {
+    if (!shareModal) return;
+    shareModal.classList.remove('is-active');
+    shareModal.setAttribute('aria-hidden', 'true');
+  }
+
+  if (shareBackdrop) shareBackdrop.addEventListener('click', closeShareErrorModal);
+  if (shareCloseBtn) shareCloseBtn.addEventListener('click', closeShareErrorModal);
+
+  // 3. Resolve ?share=<id> from Supabase shared_projects
+  if (shareId) {
+    const validId = /^[a-zA-Z0-9_-]{4,64}$/.test(shareId);
+    const cfg = window.AYOSIM_SUPABASE_CONFIG;
+
+    if (!validId || !cfg || !cfg.isConfigured()) {
+      showShareErrorModal();
+      return;
+    }
+
+    try {
+      const endpoint = `${cfg.url}/rest/v1/shared_projects?id=eq.${encodeURIComponent(shareId)}&select=id,board_type,title,expires_at`;
+      const res = await fetch(endpoint, {
+        headers: {
+          apikey: cfg.anonKey,
+          Authorization: `Bearer ${cfg.anonKey}`
+        }
+      });
+      if (!res.ok) throw new Error(`Supabase REST status ${res.status}`);
+      const rows = await res.json();
+      const row = Array.isArray(rows) ? rows[0] : null;
+
+      const isExpired = !row || !row.expires_at || new Date(row.expires_at).getTime() <= Date.now();
+      if (isExpired) {
+        showShareErrorModal();
+        params.delete('share');
+        const cleanQuery = params.toString();
+        window.history.replaceState({}, '', window.location.pathname + (cleanQuery ? `?${cleanQuery}` : '') + window.location.hash);
+        return;
+      }
+
+      const targetUrl = window.AYOSIM_ENV
+        ? window.AYOSIM_ENV.getSimulatorUrl(row.board_type)
+        : `https://${row.board_type}.ayosim.app/`;
+
+      if (typeof window.startSimulatorLaunch === 'function') {
+        window.startSimulatorLaunch(row.board_type, targetUrl, {
+          projectId: row.id,
+          projectTitle: row.title
+        });
+      }
+    } catch (err) {
+      console.error('[AyoSim] Failed resolving shared project:', err);
+      showShareErrorModal();
+    }
+  }
 }

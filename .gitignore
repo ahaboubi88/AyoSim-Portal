@@ -1,1 +1,5 @@
-﻿gsd-template/
+gsd-template/
+.env
+.env.*
+.env.launch-keys.json
+

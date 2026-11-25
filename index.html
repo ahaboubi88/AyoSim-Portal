@@ -78,7 +78,7 @@
   <link rel="stylesheet" href="css/variables.css?v=1.9">
   <link rel="stylesheet" href="css/reset.css?v=1.9">
   <link rel="stylesheet" href="css/layout.css?v=1.9">
-  <link rel="stylesheet" href="css/components.css?v=1.9">
+  <link rel="stylesheet" href="css/components.css?v=2.5">
   <link rel="stylesheet" href="css/responsive.css?v=1.9">
   <link rel="stylesheet" href="css/accessibility.css?v=1.9">
   <link rel="stylesheet" href="css/auth.css?v=2.2">
@@ -735,9 +735,9 @@
         <div class="footer__col">
           <h4 class="footer__col-title" data-i18n="footer.simulators">Simulators</h4>
           <div class="footer__col-links">
-            <a href="https://arduino.ayosim.app/" target="_blank" rel="noopener noreferrer" class="footer__col-link">AyoSim Arduino</a>
-            <a href="https://esp32.ayosim.app/" target="_blank" rel="noopener noreferrer" class="footer__col-link">AyoSim ESP32</a>
-            <a href="https://rpi.ayosim.app/" target="_blank" rel="noopener noreferrer" class="footer__col-link">AyoSim Raspberry Pi</a>
+            <a href="https://arduino.ayosim.app/" data-sim="arduino" data-sim-url="https://arduino.ayosim.app/" class="footer__col-link">AyoSim Arduino</a>
+            <a href="https://esp32.ayosim.app/" data-sim="esp32" data-sim-url="https://esp32.ayosim.app/" class="footer__col-link">AyoSim ESP32</a>
+            <a href="https://rpi.ayosim.app/" data-sim="rpi" data-sim-url="https://rpi.ayosim.app/" class="footer__col-link">AyoSim Raspberry Pi</a>
           </div>
         </div>
 
@@ -838,6 +838,13 @@
         <div class="sim-modal__progress-bar">
           <div class="sim-modal__progress-fill" id="sim-modal-progress-fill"></div>
         </div>
+      </div>
+
+      <!-- Inline Launch Handshake Error / Retry (hidden by default) -->
+      <div class="sim-modal__error" id="sim-modal-error" style="display: none;" role="alert">
+        <div class="sim-modal__error-title" data-i18n="sim_loader.error_title">Launch Handshake Failed</div>
+        <p class="sim-modal__error-desc" data-i18n="sim_loader.error_desc">Could not generate a secure portal launch ticket. Please check your connection and try again.</p>
+        <button type="button" class="sim-modal__retry-btn" id="sim-modal-retry-btn" data-i18n="sim_loader.retry">Retry Launch</button>
       </div>
 
       <!-- Footer Help / Abort Notice -->
@@ -964,6 +971,26 @@
     </div>
   </div>
 
+  <!-- Portal Gate Notice Toast -->
+  <div id="portal-notice-banner" class="portal-notice" role="status" aria-live="polite" aria-hidden="true">
+    <div class="portal-notice__content">
+      <div class="portal-notice__title" data-i18n="portal_gate.notice_title">Portal Launch Required</div>
+      <p class="portal-notice__desc" data-i18n="portal_gate.notice_desc">Simulators can only be opened through the AyoSim Portal. Select a board below to launch!</p>
+    </div>
+    <button type="button" class="portal-notice__close" id="portal-notice-close" aria-label="Dismiss notice">✕</button>
+  </div>
+
+  <!-- Share Status / Expired Link Modal -->
+  <div id="share-status-modal" class="share-status-modal" role="dialog" aria-modal="true" aria-labelledby="share-status-title" aria-hidden="true">
+    <div class="share-status-modal__backdrop" id="share-status-backdrop"></div>
+    <div class="share-status-modal__dialog">
+      <div class="share-status-modal__icon" aria-hidden="true">⏳</div>
+      <h3 id="share-status-title" class="share-status-modal__title" data-i18n="share_resolver.expired_title">Share Link Expired or Not Found</h3>
+      <p class="share-status-modal__desc" data-i18n="share_resolver.expired_desc">Shared project links automatically expire after 48 hours. Start a fresh project on any board below.</p>
+      <button type="button" class="share-status-modal__btn" id="share-status-close-btn" data-i18n="share_resolver.close">Browse Simulators</button>
+    </div>
+  </div>
+
   <!-- Back to Top -->
   <button class="back-to-top" aria-label="Back to top" title="Back to top">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -973,8 +1000,9 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/env-config.js?v=2.5"></script>
   <script src="js/supabase-config.js?v=2.4"></script>
   <script src="js/auth.js?v=2.2"></script>
-  <script src="js/main.js?v=2.4"></script>
+  <script src="js/main.js?v=2.5"></script>
 </body>
 </html>

@@ -155,5 +155,15 @@
   "auth.github": "GitHub",
   "auth.demoBadge": "Mode Démo Actif (API Supabase prête)",
   "auth.freePlan": "Plan Gratuit",
-  "auth.termsHint": "En continuant, vous acceptez les conditions d'utilisation et la politique de confidentialité d'AyoSim."
+  "auth.termsHint": "En continuant, vous acceptez les conditions d'utilisation et la politique de confidentialité d'AyoSim.",
+
+  "sim_loader.error_title": "Échec du lancement sécurisé",
+  "sim_loader.error_desc": "Impossible de générer le ticket d'accès du portail. Vérifiez votre connexion et réessayez.",
+  "sim_loader.retry": "Réessayer",
+  "portal_gate.notice_title": "Accès via le portail requis",
+  "portal_gate.notice_desc": "Les simulateurs ne peuvent être ouverts que depuis le portail AyoSim. Choisissez une carte ci-dessous !",
+  "share_resolver.expired_title": "Lien de partage expiré ou introuvable",
+  "share_resolver.expired_desc": "Les liens de partage expirent automatiquement après 48 heures. Lancez un simulateur ci-dessous pour créer un nouveau projet.",
+  "share_resolver.loading_prefix": "Projet partagé",
+  "share_resolver.close": "Voir les simulateurs"
 }

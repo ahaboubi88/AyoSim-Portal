@@ -155,5 +155,15 @@
   "auth.github": "GitHub",
   "auth.demoBadge": "Demo Mode Active (Live Supabase API ready)",
   "auth.freePlan": "Free Plan",
-  "auth.termsHint": "By continuing, you agree to AyoSim's terms of service and privacy policy."
+  "auth.termsHint": "By continuing, you agree to AyoSim's terms of service and privacy policy.",
+
+  "sim_loader.error_title": "Launch Handshake Failed",
+  "sim_loader.error_desc": "Could not generate a secure portal launch ticket. Please check your connection and try again.",
+  "sim_loader.retry": "Retry Launch",
+  "portal_gate.notice_title": "Portal Launch Required",
+  "portal_gate.notice_desc": "Simulators can only be opened through the AyoSim Portal. Select a board below to launch!",
+  "share_resolver.expired_title": "Share Link Expired or Not Found",
+  "share_resolver.expired_desc": "Shared project links automatically expire after 48 hours. Start a fresh project on any board below.",
+  "share_resolver.loading_prefix": "Shared project",
+  "share_resolver.close": "Browse Simulators"
 }

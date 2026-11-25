@@ -155,5 +155,15 @@
   "auth.github": "جيت هاب",
   "auth.demoBadge": "الوضع التجريبي نشط (جاهز لربط Supabase)",
   "auth.freePlan": "خطة مجانية",
-  "auth.termsHint": "بالمتابعة، فإنك توافق على شروط خدمة وسياسة خصوصية AyoSim."
+  "auth.termsHint": "بالمتابعة، فإنك توافق على شروط خدمة وسياسة خصوصية AyoSim.",
+
+  "sim_loader.error_title": "تعذر التحقق من تذكرة التشغيل",
+  "sim_loader.error_desc": "تعذر إنشاء تصريح التشغيل من البوابة. يرجى التحقق من اتصالك والمحاولة مرة أخرى.",
+  "sim_loader.retry": "إعادة المحاولة",
+  "portal_gate.notice_title": "يجب التشغيل عبر البوابة",
+  "portal_gate.notice_desc": "لا يمكن فتح المحاكيات مباشرةً، بل عبر بوابة AyoSim فقط. اختر لوحة من الأسفل للتشغيل!",
+  "share_resolver.expired_title": "انتهت صلاحية رابط المشاركة أو غير موجود",
+  "share_resolver.expired_desc": "تنتهي صلاحية روابط المشاريع المشاركة تلقائياً بعد 48 ساعة. يمكنك بدء مشروع جديد من أي محاكي أدناه.",
+  "share_resolver.loading_prefix": "مشروع مشترك",
+  "share_resolver.close": "تصفح المحاكيات"
 }

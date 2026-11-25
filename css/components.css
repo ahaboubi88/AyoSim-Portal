@@ -831,3 +831,197 @@ body.sim-modal-active > footer {
 [dir="rtl"] .sim-modal__step-name {
   text-align: right;
 }
+
+/* ============================================
+   Phase 9: Portal Gate Notice, Retry & Share Error UI
+   ============================================ */
+.sim-modal__error {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md, 10px);
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #fecaca;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-modal__error-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #f87171;
+}
+
+.sim-modal__error-desc {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+.sim-modal__retry-btn {
+  align-self: center;
+  margin-top: 4px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #2563eb, #3b82f6);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.sim-modal__retry-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.portal-notice {
+  position: fixed;
+  top: 84px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-14px);
+  z-index: 950;
+  max-width: min(560px, calc(100vw - 32px));
+  width: 100%;
+  background: var(--bg-surface, #ffffff);
+  color: var(--text-primary, #0f172a);
+  border: 1px solid rgba(74, 94, 171, 0.35);
+  border-inline-start: 4px solid var(--color-primary, #4A5EAB);
+  border-radius: 12px;
+  padding: 14px 16px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.22);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.portal-notice.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+[data-theme="dark"] .portal-notice {
+  background: #141933;
+  color: #f1f5f9;
+  border-color: rgba(96, 165, 250, 0.3);
+}
+
+.portal-notice__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.portal-notice__title {
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+.portal-notice__desc {
+  font-size: 0.83rem;
+  opacity: 0.85;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.portal-notice__close {
+  background: transparent;
+  border: none;
+  color: inherit;
+  opacity: 0.65;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  line-height: 1;
+}
+
+.portal-notice__close:hover {
+  opacity: 1;
+}
+
+.share-status-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+.share-status-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.share-status-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 28, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.share-status-modal__dialog {
+  position: relative;
+  z-index: 1;
+  max-width: 440px;
+  width: 100%;
+  background: var(--bg-surface, #ffffff);
+  color: var(--text-primary, #0f172a);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="dark"] .share-status-modal__dialog {
+  background: #12172f;
+  color: #f8fafc;
+}
+
+.share-status-modal__icon {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.share-status-modal__title {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.share-status-modal__desc {
+  margin: 0 0 20px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.82;
+}
+
+.share-status-modal__btn {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-primary, #4A5EAB);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.share-status-modal__btn:hover {
+  filter: brightness(1.08);
+}

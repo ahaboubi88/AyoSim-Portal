@@ -1,9 +1,21 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const launchHandler = require('../api/launch');
 
 const PORT = process.env.PORT || 3000;
 const ROOT = path.resolve(__dirname, '..');
+
+// Localhost-only development signing key (never trusted on *.ayosim.app).
+const LOCAL_DEV_PRIVATE_JWK = {
+  key_ops: ['sign'],
+  ext: true,
+  kty: 'EC',
+  x: 'mJL9H4gn1EECtp1Zf5NyDy8AiaB2eG6ZLjQZcie2nvY',
+  y: '_lg7ZrlKbLryHKT2ohVH-CTcO22XPum6lIDFsSeZqW4',
+  crv: 'P-256',
+  d: 'By7tsaFLKiq6faB4vf90eru2BA5FTe1LPTTct-fP4Kc'
+};
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -19,11 +31,19 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=utf-8'
 };
 
-const server = http.createServer((req, res) => {
-  let reqPath = decodeURI(req.url.split('?')[0]);
-  if (reqPath === '/') reqPath = '/index.html';
+const server = http.createServer(async (req, res) => {
+  const reqPath = decodeURI((req.url || '/').split('?')[0]);
 
-  const filePath = path.join(ROOT, reqPath);
+  // Local Serverless emulation for POST /api/launch
+  if (reqPath === '/api/launch') {
+    if (!process.env.LAUNCH_PRIVATE_KEY) {
+      process.env.LAUNCH_PRIVATE_KEY = JSON.stringify(LOCAL_DEV_PRIVATE_JWK);
+    }
+    return launchHandler(req, res);
+  }
+
+  const normalizedPath = reqPath === '/' ? '/index.html' : reqPath;
+  const filePath = path.join(ROOT, normalizedPath);
 
   // Security: prevent path traversal outside root
   if (!filePath.startsWith(ROOT)) {
@@ -53,6 +73,7 @@ server.listen(PORT, () => {
   console.log(`\n========================================`);
   console.log(` AyoSim Local Server Running!`);
   console.log(` URL: http://localhost:${PORT}`);
+  console.log(` API: POST http://localhost:${PORT}/api/launch (active)`);
   console.log(` Press Ctrl+C to stop.`);
   console.log(`========================================\n`);
 });

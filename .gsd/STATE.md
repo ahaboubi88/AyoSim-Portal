@@ -1,8 +1,8 @@
 # STATE.md — Project State
 
-> **Last Updated**: 2026-11-22 (Context Hygiene Pause Dump)
-> **Current Phase**: Phase 8: Unified Simulator Ecosystem (Making All Simulators Feel Like One App Safely) ⬜
-> **Status**: Paused (Ready to Resume)
+> **Last Updated**: 2026-11-25
+> **Current Phase**: Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link (`dev` branch) 🚧
+> **Status**: Mode A Verified — Ready for Mode C Staging Setup & `main` Merge
 
 ## Active Context & Architectural Alignment
 
@@ -29,7 +29,8 @@
 | Mobile Modal Back-Navigation Resolution | ✅ Complete | 100% |
 | Phase 6: SEO & Generative Engine Optimization (GEO) | ✅ Complete | 100% |
 | Phase 7: User Authentication & Account System (Supabase) | ✅ Complete | 100% |
-| Phase 8: Unified Simulator Ecosystem | 📋 Planned | 0% |
+| Phase 8: Unified Simulator Ecosystem | 📋 Planned (Superseded by Subdomains `eb978d4`) | 0% |
+| Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link | 🚧 Dev Complete (Mode A) | 90% |
 
 ## Phase 8 Execution Plans (3 Plans across 3 Waves)
 

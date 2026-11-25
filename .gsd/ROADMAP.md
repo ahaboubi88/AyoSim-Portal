@@ -124,6 +124,37 @@
 **Verification**:
 - Automated test script (`scripts/verify-phase-8.js`) validating rewrites, sub-path routes, database schema, and project state engine.
 
+---
+
+### Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link
+**Status**: 🚧 Dev Complete (Mode A Verified — Pending Mode C Staging & `main` Merge)
+**Objective**: Restrict direct browser access to all three simulator apps (`arduino.ayosim.app`, `esp32.ayosim.app`, `rpi.ayosim.app`) so they can only be opened through the AyoSim Portal (`www.ayosim.app`), while adding a "Share by Link" feature backed by Supabase with automatic 48-hour link expiration and database auto-purge (`pg_cron`).
+**Depends on**: Phase 7 (Supabase Auth & Config; targets custom subdomains per `eb978d4` and ADR-005)
+
+**Scope & Specifications**:
+- **Portal-Only Launch Gating (Stateless Token Handshake)**:
+  - Portal generates a short-lived signed launch token when launching any simulator (card clicks, footer links, or shared-project redirects).
+  - Each simulator (`Arduino Sim`, `Esp Sim`, `Rpi Sim`) enforces a boot guard before loading the workbench: validates the launch token (or active `sessionStorage` clearance preserved across F5 reloads via `src/session.ts`), strips the token from the URL (`history.replaceState`), and redirects unauthorized direct URL entries back to `https://www.ayosim.app/`.
+  - Portal displays a clean trilingual (EN/FR/AR) notice if a user lands back from a blocked direct simulator attempt.
+- **Supabase Ephemeral Sharing Schema & Auto-Purge**:
+  - `shared_projects` table (`id`, `board_type`, `title`, `project_data` JSONB, `user_id` nullable, `created_at`, `expires_at` defaulting to `now() + interval '48 hours'`).
+  - RLS policies permitting public `SELECT` strictly while `expires_at > now()`, and public/authenticated `INSERT` with size/schema safeguards.
+  - PostgreSQL `pg_cron` scheduled job running hourly to physically delete expired rows (`DELETE FROM public.shared_projects WHERE expires_at < now()`), protecting Supabase Free Tier storage.
+- **Portal Share Resolver**:
+  - Handle incoming share links on the Portal (`https://www.ayosim.app/?share=<id>`).
+  - Fetch project metadata from Supabase; if expired or missing, show a friendly trilingual "Link Expired / Not Found" modal.
+  - If valid, trigger the simulator provisioning modal ("Loading shared project...") and redirect to the target simulator subdomain with a fresh launch token + `project=<id>`.
+- **Cross-Simulator Share & Hydrate Integration** (`Arduino Sim`, `Esp Sim`, `Rpi Sim`):
+  - Add "Share Link" action in each simulator's `ProjectBar` that serializes the current circuit/code (`SavedProject`), uploads to `shared_projects` (with 48h default expiration), and copies the Portal share URL to clipboard.
+  - On simulator boot with `project=<id>`, fetch the payload from Supabase and load it directly into the workspace.
+
+**Deliverables**:
+- Supabase SQL migration (`scripts/shared-projects-schema.sql` with RLS + `pg_cron`)
+- Portal launch token generator, share-link resolver, and trilingual UI messages (`js/main.js`, `index.html`, `i18n/*.json`)
+- Shared boot guard & share-by-link integration across `Arduino Sim`, `Esp Sim`, and `Rpi Sim`
+- End-to-end verification covering direct-access blocking, portal launch, reload persistence, share link creation, share link loading, and expired-link handling
+
+
 
 
 
