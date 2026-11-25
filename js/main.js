@@ -501,12 +501,9 @@ function initSimulatorLauncher() {
         if (options.projectId) {
           dest.searchParams.set('project', options.projectId);
         }
+        // Keep the provisioning modal visible until the browser navigates away;
+        // pagehide / pageshow / visibilitychange handle cleanup on return.
         window.location.href = dest.toString();
-
-        const cleanupTimer = setTimeout(() => {
-          cancelLaunch();
-        }, 350);
-        activeLaunchTimeouts.push(cleanupTimer);
       } catch (err) {
         if (launchSignal.aborted) return;
         console.error('[AyoSim] Launch handshake failed:', err);
