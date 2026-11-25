@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 }
 
 .auth-trigger-btn {
@@ -20,6 +21,8 @@
   font-size: var(--font-size-sm);
   font-weight: 600;
   border-radius: var(--radius-full);
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 
@@ -532,6 +535,14 @@
 /* --------------------------------------------------------------------------
    Mobile Breakpoints
    -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .auth-trigger-btn {
+    padding: 5px 10px;
+    font-size: var(--font-size-xs);
+    gap: 5px;
+  }
+}
+
 @media (max-width: 640px) {
   .user-menu__name {
     display: none;
@@ -549,5 +560,17 @@
     padding-right: var(--space-4);
     margin-left: 0;
     margin-right: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-trigger-btn {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+
+  .auth-trigger-btn svg {
+    width: 13px;
+    height: 13px;
   }
 }

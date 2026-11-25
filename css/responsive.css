@@ -33,6 +33,43 @@
     --header-height: 64px;
   }
 
+  .header .container {
+    gap: var(--space-2);
+  }
+
+  .header__logo img {
+    height: 28px;
+    width: auto;
+  }
+
+  .header__nav {
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .header__actions {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .lang-selector__btn {
+    padding: 5px 8px;
+    gap: 4px;
+    font-size: var(--font-size-xs);
+    white-space: nowrap;
+  }
+
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .theme-toggle svg {
+    width: 17px;
+    height: 17px;
+  }
+
   /* Header: show hamburger, hide nav links */
   .header__links {
     display: none;
@@ -88,6 +125,44 @@
 
   .section__header {
     margin-bottom: var(--space-8);
+  }
+}
+
+/* ── Compact mobile header overrides (< 480px, ordered after 768px) ── */
+@media (max-width: 480px) {
+  .header__logo img {
+    height: 24px;
+  }
+
+  .header__nav {
+    gap: 4px;
+  }
+
+  .header__actions {
+    gap: 4px;
+  }
+
+  .lang-selector__btn {
+    padding: 5px 7px;
+    gap: 3px;
+  }
+
+  .lang-selector__btn > svg:first-child {
+    display: none;
+  }
+
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .header__menu-toggle {
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .header__menu-toggle span {
+    width: 20px;
   }
 }
 
