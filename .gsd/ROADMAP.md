@@ -127,7 +127,7 @@
 ---
 
 ### Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link
-**Status**: 🚧 Dev Complete (Mode A Verified — Pending Mode C Staging & `main` Merge)
+**Status**: ✅ Complete
 **Objective**: Restrict direct browser access to all three simulator apps (`arduino.ayosim.app`, `esp32.ayosim.app`, `rpi.ayosim.app`) so they can only be opened through the AyoSim Portal (`www.ayosim.app`), while adding a "Share by Link" feature backed by Supabase with automatic 48-hour link expiration and database auto-purge (`pg_cron`).
 **Depends on**: Phase 7 (Supabase Auth & Config; targets custom subdomains per `eb978d4` and ADR-005)
 

@@ -1,8 +1,8 @@
 # STATE.md — Project State
 
 > **Last Updated**: 2026-11-25
-> **Current Phase**: Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link (`dev` branch) 🚧
-> **Status**: Mode A Verified — Ready for Mode C Staging Setup & `main` Merge
+> **Current Phase**: Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link ✅
+> **Status**: Complete & Merged to Production (`main`)
 
 ## Active Context & Architectural Alignment
 
@@ -30,7 +30,7 @@
 | Phase 6: SEO & Generative Engine Optimization (GEO) | ✅ Complete | 100% |
 | Phase 7: User Authentication & Account System (Supabase) | ✅ Complete | 100% |
 | Phase 8: Unified Simulator Ecosystem | 📋 Planned (Superseded by Subdomains `eb978d4`) | 0% |
-| Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link | 🚧 Dev Complete (Mode A) | 90% |
+| Phase 9: Portal-Gated Simulator Access & Ephemeral Share-by-Link | ✅ Complete | 100% |
 
 ## Phase 8 Execution Plans (3 Plans across 3 Waves)
 
