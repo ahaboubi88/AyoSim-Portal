@@ -61,6 +61,14 @@ async function run() {
   }
   console.log('✓ ECDSA P-256 launch tickets sign & verify cleanly for arduino, esp32, rpi');
 
+  // 2b. Verify clientNow clock-skew offset signing
+  const skewedClientNow = Math.floor(Date.now() / 1000) - 86400 * 365;
+  const skewedSigned = await launchHandler.signLaunchTicket('esp32', null, keys.LAUNCH_PRIVATE_KEY, skewedClientNow);
+  const [skewPayloadB64] = skewedSigned.ticket.split('.');
+  const skewPayload = JSON.parse(Buffer.from(skewPayloadB64, 'base64url').toString('utf8'));
+  assert(typeof skewPayload.skew === 'number' && Math.abs(skewPayload.skew - (skewedClientNow - skewPayload.iat)) <= 1, 'skew mismatch');
+  console.log('✓ Client clock-skew offset signed into launch ticket');
+
   // 3. Verify invalid board rejected
   let rejectedInvalid = false;
   try {

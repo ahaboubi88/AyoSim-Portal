@@ -33,7 +33,7 @@ async function importSigningKey(jwkInput) {
   return key;
 }
 
-async function signLaunchTicket(board, projectId, privateKeyJwk) {
+async function signLaunchTicket(board, projectId, privateKeyJwk, clientNow = null) {
   if (!ALLOWED_BOARDS.has(board)) {
     throw new Error('Invalid simulator board');
   }
@@ -55,6 +55,9 @@ async function signLaunchTicket(board, projectId, privateKeyJwk) {
     exp,
     jti
   };
+  if (typeof clientNow === 'number' && Number.isFinite(clientNow)) {
+    payload.skew = Math.round(clientNow) - iat;
+  }
 
   const payloadB64 = toBase64Url(JSON.stringify(payload));
   const key = await importSigningKey(privateKeyJwk);
@@ -114,13 +117,14 @@ async function handler(req, res) {
     const body = await readJsonBody(req);
     const board = typeof body.board === 'string' ? body.board.trim().toLowerCase() : '';
     const project = typeof body.project === 'string' ? body.project.trim() : null;
+    const clientNow = typeof body.clientNow === 'number' && Number.isFinite(body.clientNow) ? body.clientNow : null;
 
     if (!ALLOWED_BOARDS.has(board)) {
       res.statusCode = 400;
       return res.end(JSON.stringify({ error: 'Invalid board parameter' }));
     }
 
-    const result = await signLaunchTicket(board, project, privateKeyEnv);
+    const result = await signLaunchTicket(board, project, privateKeyEnv, clientNow);
     res.statusCode = 200;
     return res.end(JSON.stringify(result));
   } catch (err) {

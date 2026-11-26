@@ -332,7 +332,8 @@ async function mintLaunchTicket(boardId, projectId, signal) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         board: boardId,
-        project: projectId || null
+        project: projectId || null,
+        clientNow: Math.floor(Date.now() / 1000)
       }),
       signal: controller.signal
     });
